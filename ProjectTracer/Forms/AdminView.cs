@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace ProjectTracer
 {
-    public partial class Model : Form
+    public partial class AdminView : Form
     {
-        public Model()
+        public AdminView()
         {
             InitializeComponent();
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

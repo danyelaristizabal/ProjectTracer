@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,25 +55,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Log In.cs">
+    <Compile Include="DeadLines.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Documents.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Log In.Designer.cs">
-      <DependentUpon>Log In.cs</DependentUpon>
+    <Compile Include="Forms\AdminView.Designer.cs">
+      <DependentUpon>AdminView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs">
+    <Compile Include="Forms\EntryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model.Designer.cs">
-      <DependentUpon>Model.cs</DependentUpon>
+    <Compile Include="Forms\EntryView.Designer.cs">
+      <DependentUpon>EntryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LogInView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LogInView.Designer.cs">
+      <DependentUpon>LogInView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegisterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterView.Designer.cs">
+      <DependentUpon>RegisterView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Projects.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTracerDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectTracerDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTracerDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTracerDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Log In.resx">
-      <DependentUpon>Log In.cs</DependentUpon>
+    <Compile Include="Results.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Steps.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teams.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\AdminView.resx">
+      <DependentUpon>AdminView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model.resx">
-      <DependentUpon>Model.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EntryView.resx">
+      <DependentUpon>EntryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LogInView.resx">
+      <DependentUpon>LogInView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterView.resx">
+      <DependentUpon>RegisterView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +136,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="ProjectTracerDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProjectTracerDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ProjectTracerDbModel.edmx.diagram">
+      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -87,10 +156,59 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Forms\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Untitled-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\868475db-80cc-4934-a451-58575b08debf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f5c55e90-4601-4bb1-9f3c-17d9e621208f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackGround1000x600.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackGround400x600.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectTracerDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectTracerDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ProjectTracerDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectTracerDbModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

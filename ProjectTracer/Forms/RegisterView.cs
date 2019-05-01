@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectTracer
+namespace ProjectTracer.Forms
 {
-    public partial class LogIn : Form
+    public partial class RegisterView : Form
     {
-        public LogIn()
+        public RegisterView()
         {
             InitializeComponent();
         }
 
-        private void Model_Load(object sender, EventArgs e)
+        private void RegisterBtn_Click(object sender, EventArgs e)
         {
 
         }
