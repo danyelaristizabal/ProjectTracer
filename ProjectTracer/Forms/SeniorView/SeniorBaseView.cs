@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectTracer
+namespace ProjectTracer.Forms.SeniorView
 {
-    public partial class AdminView : Form
+    public partial class SeniorBaseView : Form
     {
-        public AdminView()
+        public SeniorBaseView()
         {
             InitializeComponent();
-        }
-
-        private void Admin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

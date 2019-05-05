@@ -103,6 +103,36 @@ namespace ProjectTracer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Clients64 {
+            get {
+                object obj = ResourceManager.GetObject("Clients64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Developers64 {
+            get {
+                object obj = ResourceManager.GetObject("Developers64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap error {
+            get {
+                object obj = ResourceManager.GetObject("error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap f5c55e90_4601_4bb1_9f3c_17d9e621208f {
             get {
                 object obj = ResourceManager.GetObject("f5c55e90-4601-4bb1-9f3c-17d9e621208f", resourceCulture);
@@ -126,6 +156,46 @@ namespace ProjectTracer.Properties {
         internal static System.Drawing.Bitmap login_1_ {
             get {
                 object obj = ResourceManager.GetObject("login(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize {
+            get {
+                object obj = ResourceManager.GetObject("minimize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Projects {
+            get {
+                object obj = ResourceManager.GetObject("Projects", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap projects64 {
+            get {
+                object obj = ResourceManager.GetObject("projects64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tasks64 {
+            get {
+                object obj = ResourceManager.GetObject("Tasks64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

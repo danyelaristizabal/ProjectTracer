@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectTracerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectTracer.dbo.DeadLines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DeadLines">
+          <Key>
+            <PropertyRef Name="DeadLine ID" />
+            <PropertyRef Name="LastDate" />
+          </Key>
+          <Property Name="DeadLine ID" Type="int" Nullable="false" />
+          <Property Name="FirstDate" Type="date" />
+          <Property Name="LastDate" Type="date" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Document ID" />
+          </Key>
+          <Property Name="Document ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Project ID" />
+          </Key>
+          <Property Name="Project ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeadLine" Type="date" Nullable="false" />
+          <Property Name="Result" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="Result ID" />
+          </Key>
+          <Property Name="Result ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Steps">
+          <Key>
+            <PropertyRef Name="Step ID" />
+          </Key>
+          <Property Name="Step ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Team ID" />
+          </Key>
+          <Property Name="Team ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Senior Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dev1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dev2" Type="varchar" MaxLength="50" />
+          <Property Name="Dev3" Type="varchar" MaxLength="50" />
+          <Property Name="Dev4" Type="varchar" MaxLength="50" />
+          <Property Name="Dev5" Type="varchar" MaxLength="50" />
+          <Property Name="Dev6" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ProjectTracerModelStoreContainer">
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Steps" EntityType="Self.Steps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeadLines" EntityType="Self.DeadLines" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DeadLines].[DeadLine ID] AS [DeadLine ID], 
+    [DeadLines].[FirstDate] AS [FirstDate], 
+    [DeadLines].[LastDate] AS [LastDate], 
+    [DeadLines].[Description] AS [Description]
+    FROM [dbo].[DeadLines] AS [DeadLines]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectTracerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Document_ID" />
+          </Key>
+          <Property Name="Document_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="Result_ID" />
+          </Key>
+          <Property Name="Result_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Steps">
+          <Key>
+            <PropertyRef Name="Step_ID" />
+          </Key>
+          <Property Name="Step_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Team_ID" />
+          </Key>
+          <Property Name="Team_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Senior_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dev1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dev2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dev3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dev4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dev5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dev6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DeadLines">
+          <Key>
+            <PropertyRef Name="DeadLine_ID" />
+            <PropertyRef Name="LastDate" />
+          </Key>
+          <Property Name="DeadLine_ID" Type="Int32" Nullable="false" />
+          <Property Name="FirstDate" Type="DateTime" Precision="0" />
+          <Property Name="LastDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EntitiesProjectTracer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Documents" EntityType="Self.Documents" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" />
+          <EntitySet Name="Results" EntityType="Self.Results" />
+          <EntitySet Name="Steps" EntityType="Self.Steps" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" />
+          <EntitySet Name="DeadLines" EntityType="Self.DeadLines" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectTracerModelStoreContainer" CdmEntityContainer="EntitiesProjectTracer">
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="ProjectTracerModel.Documents">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="Document_ID" ColumnName="Document ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="ProjectTracerModel.Projects">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="Project_ID" ColumnName="Project ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DeadLine" ColumnName="DeadLine" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="ProjectTracerModel.Results">
+              <MappingFragment StoreEntitySet="Results">
+                <ScalarProperty Name="Result_ID" ColumnName="Result ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Steps">
+            <EntityTypeMapping TypeName="ProjectTracerModel.Steps">
+              <MappingFragment StoreEntitySet="Steps">
+                <ScalarProperty Name="Step_ID" ColumnName="Step ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="ProjectTracerModel.Teams">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="Team_ID" ColumnName="Team ID" />
+                <ScalarProperty Name="Senior_Id" ColumnName="Senior Id" />
+                <ScalarProperty Name="Dev1" ColumnName="Dev1" />
+                <ScalarProperty Name="Dev2" ColumnName="Dev2" />
+                <ScalarProperty Name="Dev3" ColumnName="Dev3" />
+                <ScalarProperty Name="Dev4" ColumnName="Dev4" />
+                <ScalarProperty Name="Dev5" ColumnName="Dev5" />
+                <ScalarProperty Name="Dev6" ColumnName="Dev6" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeadLines">
+            <EntityTypeMapping TypeName="ProjectTracerModel.DeadLines">
+              <MappingFragment StoreEntitySet="DeadLines">
+                <ScalarProperty Name="DeadLine_ID" ColumnName="DeadLine ID" />
+                <ScalarProperty Name="FirstDate" ColumnName="FirstDate" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
