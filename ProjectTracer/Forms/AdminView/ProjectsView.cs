@@ -21,14 +21,6 @@ namespace ProjectTracer.Forms
         }
         private void ProjectsView_Load(object sender, EventArgs e)
         {
-            var context = new EntitiesProjectTracer();
-            BindingSource bi = new BindingSource();
-           var x = context.Projects;
-
-            ProjectsDG.AutoGenerateColumns = true;
-            ProjectsDG.DataSource = x.ToList();
-            ProjectsDG.AutoResizeColumns();
-            ProjectsDG.Refresh(); 
          
         }
 
