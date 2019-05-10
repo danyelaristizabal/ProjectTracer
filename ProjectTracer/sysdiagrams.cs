@@ -12,11 +12,12 @@ namespace ProjectTracer
     using System;
     using System.Collections.Generic;
     
-    public partial class DeadLines
+    public partial class sysdiagrams
     {
-        public int DeadLine_ID { get; set; }
-        public Nullable<System.DateTime> FirstDate { get; set; }
-        public System.DateTime LastDate { get; set; }
-        public string Description { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

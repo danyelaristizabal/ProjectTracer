@@ -12,9 +12,15 @@ namespace ProjectTracer
     using System;
     using System.Collections.Generic;
     
-    public partial class Results
+    public partial class Tasks
     {
-        public int Result_ID { get; set; }
+        public int Task_Id { get; set; }
+        public string Project_Id { get; set; }
+        public string Developer_Id { get; set; }
         public string Description { get; set; }
+        public System.DateTime DeadLine { get; set; }
+    
+        public virtual Developers Developers { get; set; }
+        public virtual Projects Projects { get; set; }
     }
 }

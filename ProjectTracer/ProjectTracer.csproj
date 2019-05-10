@@ -58,14 +58,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aministrators.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Clients.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AdminProjectsController.cs" />
+    <Compile Include="Controllers\Encrypt.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\LogInControler.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="DeadLines.cs">
+    <Compile Include="Developers.cs">
       <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Documents.cs">
       <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminView\AddProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminView\AddProject.Designer.cs">
+      <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\BaseView.cs">
       <SubType>Form</SubType>
@@ -188,8 +202,10 @@
       <DependentUpon>SeniorTasksView.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\BoolEvent.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Developer.cs" />
+    <Compile Include="Models\LevenshteinDistance.cs" />
     <Compile Include="Models\Senior.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Program.cs" />
@@ -212,15 +228,27 @@
       <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Results.cs">
+    <Compile Include="Seniors.cs">
       <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Steps.cs">
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.cs">
       <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Teams.cs">
       <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AdminView\AddProject.resx">
+      <DependentUpon>AddProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
     </EmbeddedResource>
@@ -346,10 +374,6 @@
   <ItemGroup>
     <None Include="Resources\user%281%29.png" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="ProjectTracerDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -361,6 +385,11 @@
       <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
       <LastGenOutput>ProjectTracerDbModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\minimize.png" />
     <None Include="Resources\error.png" />
     <None Include="Resources\Clients64.png" />

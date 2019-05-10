@@ -12,22 +12,20 @@ namespace ProjectTracer
     using System;
     using System.Collections.Generic;
     
-    public partial class Teams
+    public partial class Developers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Teams()
+        public Developers()
         {
-            this.Developers = new HashSet<Developers>();
-            this.Projects = new HashSet<Projects>();
+            this.Tasks = new HashSet<Tasks>();
         }
     
-        public int Team_ID { get; set; }
-        public string Senior_Id { get; set; }
+        public string Developer_Id { get; set; }
+        public string Password { get; set; }
+        public int Team { get; set; }
     
+        public virtual Teams Teams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Developers> Developers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Projects> Projects { get; set; }
-        public virtual Seniors Seniors { get; set; }
+        public virtual ICollection<Tasks> Tasks { get; set; }
     }
 }

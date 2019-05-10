@@ -10,11 +10,10 @@
 namespace ProjectTracer
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Steps
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int Step_ID { get; set; }
-        public string Description { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

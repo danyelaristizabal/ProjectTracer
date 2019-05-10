@@ -70,5 +70,10 @@ namespace ProjectTracer.Forms
                 System.Environment.Exit(1);
             }
         }
+
+        private void DevelopersView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

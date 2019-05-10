@@ -12,12 +12,9 @@ namespace ProjectTracer
     using System;
     using System.Collections.Generic;
     
-    public partial class Documents
+    public partial class Aministrators
     {
-        public int Document_ID { get; set; }
-        public string Description { get; set; }
-        public string Project_Id { get; set; }
-    
-        public virtual Projects Projects { get; set; }
+        public string Admin_Id { get; set; }
+        public string Password { get; set; }
     }
 }

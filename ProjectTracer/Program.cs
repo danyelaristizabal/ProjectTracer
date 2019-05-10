@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Forms;
-using ProjectTracer.Forms.DeveloperView;
+using ProjectTracer.Forms;
 
 namespace ProjectTracer
 {
@@ -19,7 +19,7 @@ namespace ProjectTracer
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var MyEntry = new EntryView();
+            var MyEntry = new ProjectsView();
             MyEntry.Show(); 
             Application.Run();
 

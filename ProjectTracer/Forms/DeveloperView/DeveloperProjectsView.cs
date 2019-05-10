@@ -60,7 +60,7 @@ namespace ProjectTracer.Forms.DeveloperView
 
         private void Load_Click(object sender, EventArgs e)
         {
-            var context = new EntitiesProjectTracer();
+            var context = new ProjectTracerEntities();
             var x = context.Projects;
             List<Projects> z = x.ToList();
             ProjectsMaterialList.Items.Clear();

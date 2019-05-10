@@ -36,8 +36,24 @@
             this.DevelopersBtn = new System.Windows.Forms.Button();
             this.TasksBtn = new System.Windows.Forms.Button();
             this.ProjectsBtn = new System.Windows.Forms.Button();
+            this.AdminProjectsView = new MaterialSkin.Controls.MaterialListView();
+            this.ProjectId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Team = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeadLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Client = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AddBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.GenerateInvitationCodeBtn = new System.Windows.Forms.Button();
+            this.FindProject = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.FindByIdTxtB = new System.Windows.Forms.TextBox();
+            this.FindById = new System.Windows.Forms.Button();
+            this.Code = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.NavigationBar.SuspendLayout();
+            this.FindProject.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -168,7 +184,168 @@
             this.ProjectsBtn.Text = "Projects";
             this.ProjectsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ProjectsBtn.UseVisualStyleBackColor = false;
-            this.ProjectsBtn.Click += new System.EventHandler(this.ProjectsBtn_Click);
+            // 
+            // AdminProjectsView
+            // 
+            this.AdminProjectsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AdminProjectsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ProjectId,
+            this.Description,
+            this.Team,
+            this.DeadLine,
+            this.Result,
+            this.Client});
+            this.AdminProjectsView.Depth = 0;
+            this.AdminProjectsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.AdminProjectsView.FullRowSelect = true;
+            this.AdminProjectsView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.AdminProjectsView.Location = new System.Drawing.Point(148, 124);
+            this.AdminProjectsView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.AdminProjectsView.MouseState = MaterialSkin.MouseState.OUT;
+            this.AdminProjectsView.Name = "AdminProjectsView";
+            this.AdminProjectsView.OwnerDraw = true;
+            this.AdminProjectsView.Size = new System.Drawing.Size(840, 395);
+            this.AdminProjectsView.TabIndex = 2;
+            this.AdminProjectsView.UseCompatibleStateImageBehavior = false;
+            this.AdminProjectsView.View = System.Windows.Forms.View.Details;
+            this.AdminProjectsView.ItemActivate += new System.EventHandler(this.AdminProjectsView_ItemActivate);
+            // 
+            // ProjectId
+            // 
+            this.ProjectId.Text = "Project Name";
+            this.ProjectId.Width = 140;
+            // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 140;
+            // 
+            // Team
+            // 
+            this.Team.Text = "Team";
+            this.Team.Width = 140;
+            // 
+            // DeadLine
+            // 
+            this.DeadLine.Text = "DeadLine";
+            this.DeadLine.Width = 140;
+            // 
+            // Result
+            // 
+            this.Result.Text = "Result";
+            this.Result.Width = 140;
+            // 
+            // Client
+            // 
+            this.Client.Text = "Client";
+            this.Client.Width = 140;
+            // 
+            // AddBtn
+            // 
+            this.AddBtn.BackColor = System.Drawing.Color.Transparent;
+            this.AddBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddBtn.ForeColor = System.Drawing.Color.White;
+            this.AddBtn.Location = new System.Drawing.Point(148, 535);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(200, 40);
+            this.AddBtn.TabIndex = 8;
+            this.AddBtn.Text = "Add Project ";
+            this.AddBtn.UseVisualStyleBackColor = false;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Location = new System.Drawing.Point(380, 535);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(200, 40);
+            this.DeleteBtn.TabIndex = 9;
+            this.DeleteBtn.Text = "Delete Project";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // GenerateInvitationCodeBtn
+            // 
+            this.GenerateInvitationCodeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.GenerateInvitationCodeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.GenerateInvitationCodeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GenerateInvitationCodeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GenerateInvitationCodeBtn.ForeColor = System.Drawing.Color.White;
+            this.GenerateInvitationCodeBtn.Location = new System.Drawing.Point(611, 535);
+            this.GenerateInvitationCodeBtn.Name = "GenerateInvitationCodeBtn";
+            this.GenerateInvitationCodeBtn.Size = new System.Drawing.Size(200, 40);
+            this.GenerateInvitationCodeBtn.TabIndex = 10;
+            this.GenerateInvitationCodeBtn.Text = "Generate Invitation Code";
+            this.GenerateInvitationCodeBtn.UseVisualStyleBackColor = false;
+            this.GenerateInvitationCodeBtn.Click += new System.EventHandler(this.GenerateInvitationCodeBtn_Click);
+            // 
+            // FindProject
+            // 
+            this.FindProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.FindProject.Controls.Add(this.richTextBox1);
+            this.FindProject.Controls.Add(this.FindByIdTxtB);
+            this.FindProject.Controls.Add(this.FindById);
+            this.FindProject.Location = new System.Drawing.Point(148, 56);
+            this.FindProject.Name = "FindProject";
+            this.FindProject.Size = new System.Drawing.Size(840, 62);
+            this.FindProject.TabIndex = 11;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox1.Location = new System.Drawing.Point(232, 48);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(280, 1);
+            this.richTextBox1.TabIndex = 23;
+            this.richTextBox1.Text = "";
+            // 
+            // FindByIdTxtB
+            // 
+            this.FindByIdTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.FindByIdTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FindByIdTxtB.ForeColor = System.Drawing.Color.White;
+            this.FindByIdTxtB.Location = new System.Drawing.Point(232, 10);
+            this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
+            this.FindByIdTxtB.Name = "FindByIdTxtB";
+            this.FindByIdTxtB.Size = new System.Drawing.Size(280, 29);
+            this.FindByIdTxtB.TabIndex = 22;
+            this.FindByIdTxtB.TabStop = false;
+            // 
+            // FindById
+            // 
+            this.FindById.BackColor = System.Drawing.Color.Transparent;
+            this.FindById.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.FindById.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FindById.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FindById.ForeColor = System.Drawing.Color.White;
+            this.FindById.Location = new System.Drawing.Point(3, 10);
+            this.FindById.MinimumSize = new System.Drawing.Size(212, 32);
+            this.FindById.Name = "FindById";
+            this.FindById.Size = new System.Drawing.Size(212, 39);
+            this.FindById.TabIndex = 12;
+            this.FindById.Text = "Find by Id:";
+            this.FindById.UseVisualStyleBackColor = false;
+            this.FindById.Click += new System.EventHandler(this.FindById_Click);
+            // 
+            // Code
+            // 
+            this.Code.AutoSize = true;
+            this.Code.BackColor = System.Drawing.Color.Transparent;
+            this.Code.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Code.ForeColor = System.Drawing.Color.White;
+            this.Code.Location = new System.Drawing.Point(817, 535);
+            this.Code.MinimumSize = new System.Drawing.Size(180, 40);
+            this.Code.Name = "Code";
+            this.Code.Size = new System.Drawing.Size(180, 40);
+            this.Code.TabIndex = 12;
+            this.Code.Text = "Code";
+            this.Code.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProjectsView
             // 
@@ -176,6 +353,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.Code);
+            this.Controls.Add(this.FindProject);
+            this.Controls.Add(this.GenerateInvitationCodeBtn);
+            this.Controls.Add(this.DeleteBtn);
+            this.Controls.Add(this.AddBtn);
+            this.Controls.Add(this.AdminProjectsView);
             this.Controls.Add(this.NavigationBar);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -185,7 +368,10 @@
             this.Load += new System.EventHandler(this.ProjectsView_Load);
             this.panel1.ResumeLayout(false);
             this.NavigationBar.ResumeLayout(false);
+            this.FindProject.ResumeLayout(false);
+            this.FindProject.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -199,5 +385,20 @@
         private System.Windows.Forms.Button Clients;
         private System.Windows.Forms.Button Close;
         private System.Windows.Forms.Button Minimize;
+        private MaterialSkin.Controls.MaterialListView AdminProjectsView;
+        private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.Button GenerateInvitationCodeBtn;
+        private System.Windows.Forms.Panel FindProject;
+        private System.Windows.Forms.Button FindById;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox FindByIdTxtB;
+        private System.Windows.Forms.Label Code;
+        private System.Windows.Forms.ColumnHeader ProjectId;
+        private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.ColumnHeader Team;
+        private System.Windows.Forms.ColumnHeader DeadLine;
+        private System.Windows.Forms.ColumnHeader Result;
+        private System.Windows.Forms.ColumnHeader Client;
     }
 }
