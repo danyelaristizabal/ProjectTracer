@@ -11,23 +11,11 @@ namespace ProjectTracer
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var MyEntry = new ProjectsView();
             MyEntry.Show(); 
             Application.Run();
-
-            //var context = new EntitiesProjectTracer();
-            //var project = new Projects()
-            //{
-            //    Project_ID = "mypmlkusalkmksy888",
-            //    Description = "hi",
-            //    DeadLine = DateTime.Now,
-            //    Result = "FirstCommit"
-            //};
-            //context.Projects.Add(project);
-            //context.SaveChanges();
         }
     }
 }

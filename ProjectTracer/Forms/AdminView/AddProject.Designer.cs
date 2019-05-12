@@ -40,12 +40,9 @@
             this.NameTxtB = new System.Windows.Forms.TextBox();
             this.DescriptionTxtB = new System.Windows.Forms.TextBox();
             this.RegisterBtn = new System.Windows.Forms.Button();
-            this.ClientLbl = new System.Windows.Forms.Label();
             this.DeadLineTxtB = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
-            this.ClientTxtB = new System.Windows.Forms.TextBox();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -210,18 +207,6 @@
             this.RegisterBtn.UseVisualStyleBackColor = false;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
             // 
-            // ClientLbl
-            // 
-            this.ClientLbl.AutoSize = true;
-            this.ClientLbl.BackColor = System.Drawing.Color.Transparent;
-            this.ClientLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClientLbl.ForeColor = System.Drawing.Color.White;
-            this.ClientLbl.Location = new System.Drawing.Point(209, 346);
-            this.ClientLbl.Name = "ClientLbl";
-            this.ClientLbl.Size = new System.Drawing.Size(73, 25);
-            this.ClientLbl.TabIndex = 49;
-            this.ClientLbl.Text = "Client";
-            // 
             // DeadLineTxtB
             // 
             this.DeadLineTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
@@ -257,27 +242,6 @@
             this.richTextBox3.TabIndex = 52;
             this.richTextBox3.Text = "";
             // 
-            // richTextBox6
-            // 
-            this.richTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox6.Location = new System.Drawing.Point(296, 377);
-            this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(280, 1);
-            this.richTextBox6.TabIndex = 56;
-            this.richTextBox6.Text = "";
-            // 
-            // ClientTxtB
-            // 
-            this.ClientTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.ClientTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClientTxtB.ForeColor = System.Drawing.Color.White;
-            this.ClientTxtB.Location = new System.Drawing.Point(296, 339);
-            this.ClientTxtB.MinimumSize = new System.Drawing.Size(100, 32);
-            this.ClientTxtB.Name = "ClientTxtB";
-            this.ClientTxtB.Size = new System.Drawing.Size(280, 29);
-            this.ClientTxtB.TabIndex = 55;
-            this.ClientTxtB.TabStop = false;
-            // 
             // CancelBtn
             // 
             this.CancelBtn.BackColor = System.Drawing.Color.Transparent;
@@ -300,12 +264,9 @@
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround400x600;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.CancelBtn);
-            this.Controls.Add(this.richTextBox6);
-            this.Controls.Add(this.ClientTxtB);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DeadLineTxtB);
-            this.Controls.Add(this.ClientLbl);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DescriptionLbl);
@@ -338,12 +299,9 @@
         private System.Windows.Forms.TextBox NameTxtB;
         private System.Windows.Forms.TextBox DescriptionTxtB;
         private System.Windows.Forms.Button RegisterBtn;
-        private System.Windows.Forms.Label ClientLbl;
         private System.Windows.Forms.MaskedTextBox DeadLineTxtB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox6;
-        private System.Windows.Forms.TextBox ClientTxtB;
         private System.Windows.Forms.Button CancelBtn;
     }
 }

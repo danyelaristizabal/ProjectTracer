@@ -177,15 +177,17 @@ namespace ProjectTracer.Forms
             foreach (var project in projects)
             {
                 int Distance = LevenshteinDistance.Compute(SearchedProject.Project_ID, project.Project_ID); 
-                if ( Distance <= 4  ) 
+                if ( Distance <= 4) 
                 {
                     ListViewItem item = new ListViewItem(project.Project_ID.ToString());
                     item.SubItems.Add(project.Description.ToString());
                     item.SubItems.Add(project.DeadLine.ToString());
                     item.SubItems.Add(project.Result.ToString());
+                    item.SubItems.Add(project.Teams.ToString()); 
                     item.SubItems.Add(project.Client.ToString());
                     AdminProjectsView.Items.Add(item);
                 }
+
             }
 
 
