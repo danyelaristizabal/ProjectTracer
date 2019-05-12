@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Models; 
 
@@ -45,17 +38,10 @@ namespace ProjectTracer.Forms.AdminView
                 eh(this, e);
         }
 
-
-
         public AddProject()
         {
             InitializeComponent();
             myBool = new bool(); 
-        }
-
-        private void AddProject_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -75,7 +61,6 @@ namespace ProjectTracer.Forms.AdminView
             {
                 Project_ID = NameTxtB.Text,
                 Description = DescriptionTxtB.Text,
-                Team = 1,
                 DeadLine = DateTime.Parse(DeadLineTxtB.Text),
                 Result = "Not Registered yet",
                 Client = ClientTxtB.Text

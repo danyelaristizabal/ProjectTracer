@@ -42,22 +42,6 @@ namespace ProjectTracer.Forms.DeveloperView
             tasksForm.Show();
             this.Close();
         }
-
-        private void ProjectsBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DeveloperProjectsView_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void ProjectsMaterialList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Load_Click(object sender, EventArgs e)
         {
             var context = new ProjectTracerEntities();

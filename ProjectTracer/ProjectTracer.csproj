@@ -59,10 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aministrators.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Clients.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminProjectsController.cs" />
     <Compile Include="Controllers\Encrypt.cs" />
@@ -70,10 +70,10 @@
     <Compile Include="Controllers\LogInControler.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Developers.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Documents.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\AddProject.cs">
       <SubType>Form</SubType>
@@ -210,41 +210,41 @@
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projects.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTracerDbModel.Context.cs">
+    <Compile Include="ProjectTracerDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectTracerDbModel.Context.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTracerDbModel.cs">
+    <Compile Include="ProjectTracerDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTracerDbModel.Designer.cs">
+    <Compile Include="ProjectTracerDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seniors.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Tasks.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Teams.cs">
-      <DependentUpon>ProjectTracerDbModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AdminView\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
@@ -321,12 +321,12 @@
     </Compile>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="ProjectTracerDbModel.edmx">
+    <EntityDeploy Include="ProjectTracerDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProjectTracerDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProjectTracerDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ProjectTracerDbModel.edmx.diagram">
-      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
+    <None Include="ProjectTracerDataModel.edmx.diagram">
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -337,9 +337,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Forms\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Untitled-1.jpg" />
@@ -375,18 +372,6 @@
     <None Include="Resources\user%281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTracerDbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectTracerDbModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ProjectTracerDbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectTracerDbModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectTracerDbModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +382,18 @@
     <None Include="Resources\Tasks64.png" />
     <None Include="Resources\projects64.png" />
     <None Include="Resources\Projects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectTracerDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectTracerDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ProjectTracerDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectTracerDataModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

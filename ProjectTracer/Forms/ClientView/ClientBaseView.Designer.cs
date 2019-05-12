@@ -162,7 +162,6 @@
             this.Name = "ClientBaseView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientBaseView";
-            this.Load += new System.EventHandler(this.ClientBaseView_Load);
             this.NavigationBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -19,11 +19,11 @@ namespace ProjectTracer
         {
             this.Documents = new HashSet<Documents>();
             this.Tasks = new HashSet<Tasks>();
+            this.Teams = new HashSet<Teams>();
         }
     
         public string Project_ID { get; set; }
         public string Description { get; set; }
-        public int Team { get; set; }
         public System.DateTime DeadLine { get; set; }
         public string Result { get; set; }
         public string Client { get; set; }
@@ -31,8 +31,9 @@ namespace ProjectTracer
         public virtual Clients Clients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Documents> Documents { get; set; }
-        public virtual Teams Teams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tasks> Tasks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Teams> Teams { get; set; }
     }
 }

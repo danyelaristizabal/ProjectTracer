@@ -40,7 +40,6 @@ namespace ProjectTracer.Forms
             {
                 ListViewItem item = new ListViewItem(project.Project_ID.ToString());
                 item.SubItems.Add(project.Description.ToString());
-                item.SubItems.Add(project.Team.ToString());
                 item.SubItems.Add(project.DeadLine.ToString());
                 item.SubItems.Add(project.Result.ToString());
                 item.SubItems.Add(project.Client.ToString());
@@ -121,7 +120,6 @@ namespace ProjectTracer.Forms
                     SelectedProject = new Projects() {
                         Project_ID = Item.SubItems[0].Text,
                         Description = Item.SubItems[1].Text,
-                        Team = Int32.Parse(Item.SubItems[2].Text),
                         DeadLine = DateTime.Parse(Item.SubItems[3].Text),
                         Result = Item.SubItems[4].Text,
                         Client = Item.SubItems[5].Text
@@ -183,7 +181,6 @@ namespace ProjectTracer.Forms
                 {
                     ListViewItem item = new ListViewItem(project.Project_ID.ToString());
                     item.SubItems.Add(project.Description.ToString());
-                    item.SubItems.Add(project.Team.ToString());
                     item.SubItems.Add(project.DeadLine.ToString());
                     item.SubItems.Add(project.Result.ToString());
                     item.SubItems.Add(project.Client.ToString());
@@ -193,5 +190,7 @@ namespace ProjectTracer.Forms
 
 
         }
+
+        
     }
 }

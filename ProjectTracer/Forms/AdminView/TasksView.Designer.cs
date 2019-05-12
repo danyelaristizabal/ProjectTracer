@@ -42,6 +42,8 @@
             this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
             this.button1 = new System.Windows.Forms.Button();
             this.AddTask = new System.Windows.Forms.Button();
+            this.materialListView2 = new MaterialSkin.Controls.MaterialListView();
+            this.EditTaskBtn = new System.Windows.Forms.Button();
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -194,7 +196,7 @@
             this.PasswordTxtBox.Location = new System.Drawing.Point(374, 73);
             this.PasswordTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.PasswordTxtBox.Name = "PasswordTxtBox";
-            this.PasswordTxtBox.Size = new System.Drawing.Size(280, 32);
+            this.PasswordTxtBox.Size = new System.Drawing.Size(280, 29);
             this.PasswordTxtBox.TabIndex = 25;
             this.PasswordTxtBox.TabStop = false;
             // 
@@ -220,12 +222,12 @@
             this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(148, 125);
+            this.materialListView1.Location = new System.Drawing.Point(566, 125);
             this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
             this.materialListView1.Name = "materialListView1";
             this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(840, 395);
+            this.materialListView1.Size = new System.Drawing.Size(422, 405);
             this.materialListView1.TabIndex = 27;
             this.materialListView1.UseCompatibleStateImageBehavior = false;
             this.materialListView1.View = System.Windows.Forms.View.Details;
@@ -258,12 +260,45 @@
             this.AddTask.Text = "Add Task";
             this.AddTask.UseVisualStyleBackColor = false;
             // 
+            // materialListView2
+            // 
+            this.materialListView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.materialListView2.Depth = 0;
+            this.materialListView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.materialListView2.FullRowSelect = true;
+            this.materialListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.materialListView2.Location = new System.Drawing.Point(147, 125);
+            this.materialListView2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView2.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialListView2.Name = "materialListView2";
+            this.materialListView2.OwnerDraw = true;
+            this.materialListView2.Size = new System.Drawing.Size(413, 405);
+            this.materialListView2.TabIndex = 30;
+            this.materialListView2.UseCompatibleStateImageBehavior = false;
+            this.materialListView2.View = System.Windows.Forms.View.Details;
+            // 
+            // EditTaskBtn
+            // 
+            this.EditTaskBtn.BackColor = System.Drawing.Color.Transparent;
+            this.EditTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.EditTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditTaskBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EditTaskBtn.ForeColor = System.Drawing.Color.White;
+            this.EditTaskBtn.Location = new System.Drawing.Point(615, 536);
+            this.EditTaskBtn.Name = "EditTaskBtn";
+            this.EditTaskBtn.Size = new System.Drawing.Size(200, 40);
+            this.EditTaskBtn.TabIndex = 31;
+            this.EditTaskBtn.Text = "Edit Task";
+            this.EditTaskBtn.UseVisualStyleBackColor = false;
+            // 
             // TasksView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.EditTaskBtn);
+            this.Controls.Add(this.materialListView2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.AddTask);
             this.Controls.Add(this.materialListView1);
@@ -276,7 +311,6 @@
             this.Name = "TasksView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TasksView";
-            this.Load += new System.EventHandler(this.TasksView_Load);
             this.NavigationBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -300,5 +334,7 @@
         private MaterialSkin.Controls.MaterialListView materialListView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button AddTask;
+        private MaterialSkin.Controls.MaterialListView materialListView2;
+        private System.Windows.Forms.Button EditTaskBtn;
     }
 }

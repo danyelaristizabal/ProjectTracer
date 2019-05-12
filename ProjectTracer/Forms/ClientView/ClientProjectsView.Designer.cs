@@ -103,7 +103,6 @@
             this.ProjectsBtn.Text = "Projects";
             this.ProjectsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ProjectsBtn.UseVisualStyleBackColor = false;
-            this.ProjectsBtn.Click += new System.EventHandler(this.ProjectsBtn_Click);
             // 
             // panel1
             // 

@@ -60,9 +60,5 @@ namespace ProjectTracer.Forms
                 System.Environment.Exit(1);
             }
         }
-        private void PhoneTxtBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -31,5 +31,10 @@ namespace ProjectTracer.Forms
         {
 
         }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

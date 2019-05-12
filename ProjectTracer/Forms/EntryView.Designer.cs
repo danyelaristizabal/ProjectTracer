@@ -52,7 +52,6 @@
             this.Logo.Size = new System.Drawing.Size(200, 200);
             this.Logo.TabIndex = 0;
             this.Logo.TabStop = false;
-            this.Logo.Click += new System.EventHandler(this.Logo_Click);
             // 
             // ClientBtn
             // 
@@ -126,7 +125,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 50);
             this.panel1.TabIndex = 9;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // Minimizr
             // 

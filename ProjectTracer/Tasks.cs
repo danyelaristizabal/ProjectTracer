@@ -14,13 +14,19 @@ namespace ProjectTracer
     
     public partial class Tasks
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tasks()
+        {
+            this.Developers = new HashSet<Developers>();
+        }
+    
         public int Task_Id { get; set; }
         public string Project_Id { get; set; }
-        public string Developer_Id { get; set; }
         public string Description { get; set; }
         public System.DateTime DeadLine { get; set; }
     
-        public virtual Developers Developers { get; set; }
         public virtual Projects Projects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Developers> Developers { get; set; }
     }
 }

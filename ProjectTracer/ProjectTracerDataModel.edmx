@@ -25,6 +25,15 @@
           </Key>
           <Property Name="Developer_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectTracer.dbo.DevelopersAndTeams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DevelopersAndTeams">
+          <Key>
+            <PropertyRef Name="Developer" />
+            <PropertyRef Name="Team" />
+          </Key>
+          <Property Name="Developer" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Team" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Documents">
@@ -41,7 +50,6 @@
           </Key>
           <Property Name="Project ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Team" Type="int" Nullable="false" />
           <Property Name="DeadLine" Type="date" Nullable="false" />
           <Property Name="Result" Type="varchar" MaxLength="50" />
           <Property Name="Client" Type="varchar" MaxLength="50" Nullable="false" />
@@ -52,6 +60,16 @@
           </Key>
           <Property Name="Senior_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectTracer.dbo.SeniorsAndTeams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SeniorsAndTeams">
+          <Key>
+            <PropertyRef Name="Team" />
+            <PropertyRef Name="Senior" />
+          </Key>
+          <Property Name="Team" Type="int" Nullable="false" />
+          <Property Name="Senior" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -69,25 +87,55 @@
           </Key>
           <Property Name="Task_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Project_Id" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Developer_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" />
           <Property Name="DeadLine" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectTracer.dbo.TasksAndDevelopers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TasksAndDevelopers">
+          <Key>
+            <PropertyRef Name="Developer" />
+            <PropertyRef Name="Task" />
+          </Key>
+          <Property Name="Developer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Task" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Teams">
           <Key>
             <PropertyRef Name="Team ID" />
           </Key>
           <Property Name="Team ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Senior Id" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Developers_Teams">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TeamsAndProject">
+          <Key>
+            <PropertyRef Name="Team" />
+            <PropertyRef Name="Project" />
+          </Key>
+          <Property Name="Team" Type="int" Nullable="false" />
+          <Property Name="Project" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DevelopersAndTeams_Developer">
+          <End Role="Developers" Type="Self.Developers" Multiplicity="1" />
+          <End Role="DevelopersAndTeams" Type="Self.DevelopersAndTeams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developers">
+              <PropertyRef Name="Developer_Id" />
+            </Principal>
+            <Dependent Role="DevelopersAndTeams">
+              <PropertyRef Name="Developer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DevelopersAndTeams_Teams">
           <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Developers" Type="Self.Developers" Multiplicity="*" />
+          <End Role="DevelopersAndTeams" Type="Self.DevelopersAndTeams" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Teams">
               <PropertyRef Name="Team ID" />
             </Principal>
-            <Dependent Role="Developers">
+            <Dependent Role="DevelopersAndTeams">
               <PropertyRef Name="Team" />
             </Dependent>
           </ReferentialConstraint>
@@ -116,27 +164,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Projects_Team">
+        <Association Name="FK_SeniorsAndTeams_Seniors">
+          <End Role="Seniors" Type="Self.Seniors" Multiplicity="1" />
+          <End Role="SeniorsAndTeams" Type="Self.SeniorsAndTeams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seniors">
+              <PropertyRef Name="Senior_Id" />
+            </Principal>
+            <Dependent Role="SeniorsAndTeams">
+              <PropertyRef Name="Senior" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeniorsAndTeams_Teams">
           <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <End Role="SeniorsAndTeams" Type="Self.SeniorsAndTeams" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Teams">
               <PropertyRef Name="Team ID" />
             </Principal>
-            <Dependent Role="Projects">
+            <Dependent Role="SeniorsAndTeams">
               <PropertyRef Name="Team" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_Developer">
-          <End Role="Developers" Type="Self.Developers" Multiplicity="1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Developers">
-              <PropertyRef Name="Developer_Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="Developer_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -152,15 +200,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teams_Senior">
-          <End Role="Seniors" Type="Self.Seniors" Multiplicity="1" />
-          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
+        <Association Name="FK_TasksAndDevelopers_Developers">
+          <End Role="Developers" Type="Self.Developers" Multiplicity="1" />
+          <End Role="TasksAndDevelopers" Type="Self.TasksAndDevelopers" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Seniors">
-              <PropertyRef Name="Senior_Id" />
+            <Principal Role="Developers">
+              <PropertyRef Name="Developer_Id" />
             </Principal>
-            <Dependent Role="Teams">
-              <PropertyRef Name="Senior Id" />
+            <Dependent Role="TasksAndDevelopers">
+              <PropertyRef Name="Developer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TasksAndDevelopers_Tasks">
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+          <End Role="TasksAndDevelopers" Type="Self.TasksAndDevelopers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Task_Id" />
+            </Principal>
+            <Dependent Role="TasksAndDevelopers">
+              <PropertyRef Name="Task" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamsAndProject_Projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="TeamsAndProject" Type="Self.TeamsAndProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project ID" />
+            </Principal>
+            <Dependent Role="TeamsAndProject">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamsAndProject_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="TeamsAndProject" Type="Self.TeamsAndProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Team ID" />
+            </Principal>
+            <Dependent Role="TeamsAndProject">
+              <PropertyRef Name="Team" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -205,9 +289,37 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Developers_Teams" Association="Self.FK_Developers_Teams">
-            <End Role="Teams" EntitySet="Teams" />
+          <EntitySet Name="DevelopersAndTeams" EntityType="Self.DevelopersAndTeams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DevelopersAndTeams].[Developer] AS [Developer], 
+    [DevelopersAndTeams].[Team] AS [Team]
+    FROM [dbo].[DevelopersAndTeams] AS [DevelopersAndTeams]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SeniorsAndTeams" EntityType="Self.SeniorsAndTeams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SeniorsAndTeams].[Team] AS [Team], 
+    [SeniorsAndTeams].[Senior] AS [Senior]
+    FROM [dbo].[SeniorsAndTeams] AS [SeniorsAndTeams]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TasksAndDevelopers" EntityType="Self.TasksAndDevelopers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TasksAndDevelopers].[Developer] AS [Developer], 
+    [TasksAndDevelopers].[Task] AS [Task]
+    FROM [dbo].[TasksAndDevelopers] AS [TasksAndDevelopers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TeamsAndProject" EntityType="Self.TeamsAndProject" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TeamsAndProject].[Team] AS [Team], 
+    [TeamsAndProject].[Project] AS [Project]
+    FROM [dbo].[TeamsAndProject] AS [TeamsAndProject]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DevelopersAndTeams_Developer" Association="Self.FK_DevelopersAndTeams_Developer">
             <End Role="Developers" EntitySet="Developers" />
+            <End Role="DevelopersAndTeams" EntitySet="DevelopersAndTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DevelopersAndTeams_Teams" Association="Self.FK_DevelopersAndTeams_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="DevelopersAndTeams" EntitySet="DevelopersAndTeams" />
           </AssociationSet>
           <AssociationSet Name="FK_Documents_ProjectId" Association="Self.FK_Documents_ProjectId">
             <End Role="Projects" EntitySet="Projects" />
@@ -217,21 +329,33 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
-          <AssociationSet Name="FK_Projects_Team" Association="Self.FK_Projects_Team">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Projects" EntitySet="Projects" />
+          <AssociationSet Name="FK_SeniorsAndTeams_Seniors" Association="Self.FK_SeniorsAndTeams_Seniors">
+            <End Role="Seniors" EntitySet="Seniors" />
+            <End Role="SeniorsAndTeams" EntitySet="SeniorsAndTeams" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Developer" Association="Self.FK_Tasks_Developer">
-            <End Role="Developers" EntitySet="Developers" />
-            <End Role="Tasks" EntitySet="Tasks" />
+          <AssociationSet Name="FK_SeniorsAndTeams_Teams" Association="Self.FK_SeniorsAndTeams_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="SeniorsAndTeams" EntitySet="SeniorsAndTeams" />
           </AssociationSet>
           <AssociationSet Name="FK_Tasks_Project" Association="Self.FK_Tasks_Project">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teams_Senior" Association="Self.FK_Teams_Senior">
-            <End Role="Seniors" EntitySet="Seniors" />
+          <AssociationSet Name="FK_TasksAndDevelopers_Developers" Association="Self.FK_TasksAndDevelopers_Developers">
+            <End Role="Developers" EntitySet="Developers" />
+            <End Role="TasksAndDevelopers" EntitySet="TasksAndDevelopers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TasksAndDevelopers_Tasks" Association="Self.FK_TasksAndDevelopers_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="TasksAndDevelopers" EntitySet="TasksAndDevelopers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamsAndProject_Projects" Association="Self.FK_TeamsAndProject_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="TeamsAndProject" EntitySet="TeamsAndProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamsAndProject_Teams" Association="Self.FK_TeamsAndProject_Teams">
             <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamsAndProject" EntitySet="TeamsAndProject" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -260,9 +384,8 @@
           </Key>
           <Property Name="Developer_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Team" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Teams" Relationship="Self.FK_Developers_Teams" FromRole="Developers" ToRole="Teams" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Developer" FromRole="Developers" ToRole="Tasks" />
+          <NavigationProperty Name="Teams" Relationship="Self.DevelopersAndTeams" FromRole="Developers" ToRole="Teams" />
+          <NavigationProperty Name="Tasks" Relationship="Self.TasksAndDevelopers" FromRole="Developers" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Documents">
           <Key>
@@ -279,14 +402,13 @@
           </Key>
           <Property Name="Project_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Team" Type="Int32" Nullable="false" />
           <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Client" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Clients" Relationship="Self.FK_Projects_Client" FromRole="Projects" ToRole="Clients" />
           <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ProjectId" FromRole="Projects" ToRole="Documents" />
-          <NavigationProperty Name="Teams" Relationship="Self.FK_Projects_Team" FromRole="Projects" ToRole="Teams" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Project" FromRole="Projects" ToRole="Tasks" />
+          <NavigationProperty Name="Teams" Relationship="Self.TeamsAndProject" FromRole="Projects" ToRole="Teams" />
         </EntityType>
         <EntityType Name="Seniors">
           <Key>
@@ -294,7 +416,7 @@
           </Key>
           <Property Name="Senior_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Teams" Relationship="Self.FK_Teams_Senior" FromRole="Seniors" ToRole="Teams" />
+          <NavigationProperty Name="Teams" Relationship="Self.SeniorsAndTeams" FromRole="Seniors" ToRole="Teams" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -312,21 +434,19 @@
           </Key>
           <Property Name="Task_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Project_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Developer_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Developers" Relationship="Self.FK_Tasks_Developer" FromRole="Tasks" ToRole="Developers" />
           <NavigationProperty Name="Projects" Relationship="Self.FK_Tasks_Project" FromRole="Tasks" ToRole="Projects" />
+          <NavigationProperty Name="Developers" Relationship="Self.TasksAndDevelopers" FromRole="Tasks" ToRole="Developers" />
         </EntityType>
         <EntityType Name="Teams">
           <Key>
             <PropertyRef Name="Team_ID" />
           </Key>
           <Property Name="Team_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Senior_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Developers" Relationship="Self.FK_Developers_Teams" FromRole="Teams" ToRole="Developers" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Projects_Team" FromRole="Teams" ToRole="Projects" />
-          <NavigationProperty Name="Seniors" Relationship="Self.FK_Teams_Senior" FromRole="Teams" ToRole="Seniors" />
+          <NavigationProperty Name="Developers" Relationship="Self.DevelopersAndTeams" FromRole="Teams" ToRole="Developers" />
+          <NavigationProperty Name="Seniors" Relationship="Self.SeniorsAndTeams" FromRole="Teams" ToRole="Seniors" />
+          <NavigationProperty Name="Projects" Relationship="Self.TeamsAndProject" FromRole="Teams" ToRole="Projects" />
         </EntityType>
         <Association Name="FK_Projects_Client">
           <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
@@ -337,30 +457,6 @@
             </Principal>
             <Dependent Role="Projects">
               <PropertyRef Name="Client" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Developers_Teams">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Developers" Type="Self.Developers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="Team_ID" />
-            </Principal>
-            <Dependent Role="Developers">
-              <PropertyRef Name="Team" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_Developer">
-          <End Role="Developers" Type="Self.Developers" Multiplicity="1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Developers">
-              <PropertyRef Name="Developer_Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="Developer_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -376,18 +472,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Projects_Team">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="Team_ID" />
-            </Principal>
-            <Dependent Role="Projects">
-              <PropertyRef Name="Team" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tasks_Project">
           <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
           <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
@@ -400,17 +484,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teams_Senior">
-          <End Role="Seniors" Type="Self.Seniors" Multiplicity="1" />
+        <Association Name="DevelopersAndTeams">
+          <End Role="Developers" Type="Self.Developers" Multiplicity="*" />
           <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Seniors">
-              <PropertyRef Name="Senior_Id" />
-            </Principal>
-            <Dependent Role="Teams">
-              <PropertyRef Name="Senior_Id" />
-            </Dependent>
-          </ReferentialConstraint>
+        </Association>
+        <Association Name="SeniorsAndTeams">
+          <End Role="Seniors" Type="Self.Seniors" Multiplicity="*" />
+          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
+        </Association>
+        <Association Name="TasksAndDevelopers">
+          <End Role="Developers" Type="Self.Developers" Multiplicity="*" />
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+        </Association>
+        <Association Name="TeamsAndProject">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
         </Association>
         <EntityContainer Name="ProjectTracerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Aministrators" EntityType="Self.Aministrators" />
@@ -426,28 +514,28 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
-          <AssociationSet Name="FK_Developers_Teams" Association="Self.FK_Developers_Teams">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Developers" EntitySet="Developers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Developer" Association="Self.FK_Tasks_Developer">
-            <End Role="Developers" EntitySet="Developers" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
           <AssociationSet Name="FK_Documents_ProjectId" Association="Self.FK_Documents_ProjectId">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Documents" EntitySet="Documents" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Projects_Team" Association="Self.FK_Projects_Team">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
           <AssociationSet Name="FK_Tasks_Project" Association="Self.FK_Tasks_Project">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teams_Senior" Association="Self.FK_Teams_Senior">
+          <AssociationSet Name="DevelopersAndTeams" Association="Self.DevelopersAndTeams">
+            <End Role="Developers" EntitySet="Developers" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="SeniorsAndTeams" Association="Self.SeniorsAndTeams">
             <End Role="Seniors" EntitySet="Seniors" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="TasksAndDevelopers" Association="Self.TasksAndDevelopers">
+            <End Role="Developers" EntitySet="Developers" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="TeamsAndProject" Association="Self.TeamsAndProject">
+            <End Role="Projects" EntitySet="Projects" />
             <End Role="Teams" EntitySet="Teams" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
@@ -519,7 +607,6 @@
               <MappingFragment StoreEntitySet="Developers">
                 <ScalarProperty Name="Developer_Id" ColumnName="Developer_Id" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Team" ColumnName="Team" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -537,7 +624,6 @@
               <MappingFragment StoreEntitySet="Projects">
                 <ScalarProperty Name="Project_ID" ColumnName="Project ID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Team" ColumnName="Team" />
                 <ScalarProperty Name="DeadLine" ColumnName="DeadLine" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
                 <ScalarProperty Name="Client" ColumnName="Client" />
@@ -568,7 +654,6 @@
               <MappingFragment StoreEntitySet="Tasks">
                 <ScalarProperty Name="Task_Id" ColumnName="Task_Id" />
                 <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
-                <ScalarProperty Name="Developer_Id" ColumnName="Developer_Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DeadLine" ColumnName="DeadLine" />
               </MappingFragment>
@@ -578,10 +663,41 @@
             <EntityTypeMapping TypeName="ProjectTracerModel.Teams">
               <MappingFragment StoreEntitySet="Teams">
                 <ScalarProperty Name="Team_ID" ColumnName="Team ID" />
-                <ScalarProperty Name="Senior_Id" ColumnName="Senior Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="DevelopersAndTeams" TypeName="ProjectTracerModel.DevelopersAndTeams" StoreEntitySet="DevelopersAndTeams">
+            <EndProperty Name="Developers">
+              <ScalarProperty Name="Developer_Id" ColumnName="Developer" />
+            </EndProperty>
+            <EndProperty Name="Teams">
+              <ScalarProperty Name="Team_ID" ColumnName="Team" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SeniorsAndTeams" TypeName="ProjectTracerModel.SeniorsAndTeams" StoreEntitySet="SeniorsAndTeams">
+            <EndProperty Name="Seniors">
+              <ScalarProperty Name="Senior_Id" ColumnName="Senior" />
+            </EndProperty>
+            <EndProperty Name="Teams">
+              <ScalarProperty Name="Team_ID" ColumnName="Team" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TasksAndDevelopers" TypeName="ProjectTracerModel.TasksAndDevelopers" StoreEntitySet="TasksAndDevelopers">
+            <EndProperty Name="Developers">
+              <ScalarProperty Name="Developer_Id" ColumnName="Developer" />
+            </EndProperty>
+            <EndProperty Name="Tasks">
+              <ScalarProperty Name="Task_Id" ColumnName="Task" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TeamsAndProject" TypeName="ProjectTracerModel.TeamsAndProject" StoreEntitySet="TeamsAndProject">
+            <EndProperty Name="Projects">
+              <ScalarProperty Name="Project_ID" ColumnName="Project" />
+            </EndProperty>
+            <EndProperty Name="Teams">
+              <ScalarProperty Name="Team_ID" ColumnName="Team" />
+            </EndProperty>
+          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ProjectTracerModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ProjectTracerModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ProjectTracerModel.Store.sp_dropdiagram" />

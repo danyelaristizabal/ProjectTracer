@@ -41,23 +41,10 @@ namespace ProjectTracer
             myLogin.Show();
             this.Close();
         }
-        private void Logo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Minimizr_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
-     
-
         private void Closr_Click(object sender, EventArgs e)
         {
             if (System.Windows.Forms.Application.MessageLoop)
@@ -72,9 +59,5 @@ namespace ProjectTracer
             }
         }
 
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

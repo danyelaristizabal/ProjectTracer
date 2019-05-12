@@ -459,7 +459,6 @@
             this.Name = "DevelopersView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DevelopersView";
-            this.Load += new System.EventHandler(this.DevelopersView_Load);
             this.NavigationBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

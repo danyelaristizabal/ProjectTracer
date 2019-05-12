@@ -76,10 +76,5 @@ namespace ProjectTracer
                 System.Environment.Exit(1);
             }
         }
-
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

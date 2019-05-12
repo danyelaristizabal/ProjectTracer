@@ -35,7 +35,6 @@ namespace ProjectTracer.Forms.SeniorView
                 System.Environment.Exit(1);
             }
         }
-
         private void ProjectsBtn_Click(object sender, EventArgs e)
         {
             var projectsForm = new SeniorProjectsView();

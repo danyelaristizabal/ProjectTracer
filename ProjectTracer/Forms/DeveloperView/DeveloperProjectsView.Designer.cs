@@ -89,7 +89,6 @@
             this.ProjectsBtn.Text = "Projects";
             this.ProjectsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ProjectsBtn.UseVisualStyleBackColor = false;
-            this.ProjectsBtn.Click += new System.EventHandler(this.ProjectsBtn_Click);
             // 
             // panel1
             // 
@@ -157,7 +156,6 @@
             this.ProjectsMaterialList.TabIndex = 4;
             this.ProjectsMaterialList.UseCompatibleStateImageBehavior = false;
             this.ProjectsMaterialList.View = System.Windows.Forms.View.Details;
-            this.ProjectsMaterialList.SelectedIndexChanged += new System.EventHandler(this.ProjectsMaterialList_SelectedIndexChanged);
             // 
             // Project_Id
             // 

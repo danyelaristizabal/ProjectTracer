@@ -39,7 +39,6 @@
             this.AdminProjectsView = new MaterialSkin.Controls.MaterialListView();
             this.ProjectId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Team = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DeadLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Client = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -191,7 +190,6 @@
             this.AdminProjectsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ProjectId,
             this.Description,
-            this.Team,
             this.DeadLine,
             this.Result,
             this.Client});
@@ -219,11 +217,6 @@
             // 
             this.Description.Text = "Description";
             this.Description.Width = 140;
-            // 
-            // Team
-            // 
-            this.Team.Text = "Team";
-            this.Team.Width = 140;
             // 
             // DeadLine
             // 
@@ -396,7 +389,6 @@
         private System.Windows.Forms.Label Code;
         private System.Windows.Forms.ColumnHeader ProjectId;
         private System.Windows.Forms.ColumnHeader Description;
-        private System.Windows.Forms.ColumnHeader Team;
         private System.Windows.Forms.ColumnHeader DeadLine;
         private System.Windows.Forms.ColumnHeader Result;
         private System.Windows.Forms.ColumnHeader Client;

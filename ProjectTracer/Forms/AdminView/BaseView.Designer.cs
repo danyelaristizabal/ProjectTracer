@@ -34,9 +34,9 @@
             this.TasksBtn = new System.Windows.Forms.Button();
             this.ProjectsBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Close = new System.Windows.Forms.Button();
             this.Minimize = new System.Windows.Forms.Button();
+            this.Close = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -140,22 +140,22 @@
             this.panel1.Size = new System.Drawing.Size(1000, 50);
             this.panel1.TabIndex = 4;
             // 
-            // button1
+            // Minimize
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ProjectTracer.Properties.Resources.user;
-            this.button1.Location = new System.Drawing.Point(950, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(0, 0);
-            this.button1.TabIndex = 6;
-            this.button1.TabStop = false;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
+            this.Minimize.BackColor = System.Drawing.Color.Transparent;
+            this.Minimize.FlatAppearance.BorderSize = 0;
+            this.Minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Minimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Minimize.ForeColor = System.Drawing.Color.White;
+            this.Minimize.Image = global::ProjectTracer.Properties.Resources.minimize;
+            this.Minimize.Location = new System.Drawing.Point(894, 0);
+            this.Minimize.Name = "Minimize";
+            this.Minimize.Size = new System.Drawing.Size(50, 50);
+            this.Minimize.TabIndex = 0;
+            this.Minimize.TabStop = false;
+            this.Minimize.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Minimize.UseVisualStyleBackColor = false;
             // 
             // Close
             // 
@@ -173,23 +173,24 @@
             this.Close.TabStop = false;
             this.Close.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Close.UseVisualStyleBackColor = false;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
-            // Minimize
+            // button1
             // 
-            this.Minimize.BackColor = System.Drawing.Color.Transparent;
-            this.Minimize.FlatAppearance.BorderSize = 0;
-            this.Minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Minimize.ForeColor = System.Drawing.Color.White;
-            this.Minimize.Image = global::ProjectTracer.Properties.Resources.minimize;
-            this.Minimize.Location = new System.Drawing.Point(894, 0);
-            this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(50, 50);
-            this.Minimize.TabIndex = 0;
-            this.Minimize.TabStop = false;
-            this.Minimize.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Minimize.UseVisualStyleBackColor = false;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::ProjectTracer.Properties.Resources.user;
+            this.button1.Location = new System.Drawing.Point(950, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(0, 0);
+            this.button1.TabIndex = 6;
+            this.button1.TabStop = false;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // BaseView
             // 

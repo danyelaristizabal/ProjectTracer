@@ -24,7 +24,7 @@ namespace ProjectTracer.Controllers
             foreach (Projects project in ListOfProjects)
             {
                 projectsTables.Add(new List<string>() {
-                 project.Description.ToString(), project.Team.ToString(),
+                 project.Description.ToString(), 
                 project.DeadLine.ToString(),project.Result.ToString(),
                 project.Client.ToString(),project.Project_ID.ToString(),
                 }); 

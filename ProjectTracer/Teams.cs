@@ -18,16 +18,17 @@ namespace ProjectTracer
         public Teams()
         {
             this.Developers = new HashSet<Developers>();
+            this.Seniors = new HashSet<Seniors>();
             this.Projects = new HashSet<Projects>();
         }
     
         public int Team_ID { get; set; }
-        public string Senior_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Developers> Developers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Seniors> Seniors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Projects> Projects { get; set; }
-        public virtual Seniors Seniors { get; set; }
     }
 }

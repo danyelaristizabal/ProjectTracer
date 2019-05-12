@@ -17,10 +17,7 @@ namespace ProjectTracer.Forms
             InitializeComponent();
         }
 
-        private void TasksView_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void ProjectsBtn_Click(object sender, EventArgs e)
         {
