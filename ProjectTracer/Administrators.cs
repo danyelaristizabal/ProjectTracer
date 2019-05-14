@@ -12,9 +12,9 @@ namespace ProjectTracer
     using System;
     using System.Collections.Generic;
     
-    public partial class Aministrators
+    public partial class Administrators
     {
-        public string Admin_Id { get; set; }
+        public string Administrator { get; set; }
         public string Password { get; set; }
     }
 }

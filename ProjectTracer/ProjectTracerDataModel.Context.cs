@@ -27,7 +27,7 @@ namespace ProjectTracer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Aministrators> Aministrators { get; set; }
+        public virtual DbSet<Administrators> Administrators { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Developers> Developers { get; set; }
         public virtual DbSet<Documents> Documents { get; set; }

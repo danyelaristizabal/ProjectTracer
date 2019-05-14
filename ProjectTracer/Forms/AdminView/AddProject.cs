@@ -62,8 +62,8 @@ namespace ProjectTracer.Forms.AdminView
                 Project_ID = NameTxtB.Text,
                 Description = DescriptionTxtB.Text,
                 DeadLine = DateTime.Parse(DeadLineTxtB.Text),
-                Result = "Not Registered yet",
-                Client = "Not Registered yet"
+                Result = "notregistered",
+                Client = "notregistered"
             });
             try
             {

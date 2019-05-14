@@ -12,12 +12,9 @@ namespace ProjectTracer.Repository
         TEntity Get(string id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
-
         void Add(TEntity entity);
         void AddRange(List<TEntity> entities);
-
         void Remove(TEntity entity);
-        void RemoveRange(List<TEntity> entities); 
-
+        void RemoveRange(List<TEntity> entities);
     }
 }

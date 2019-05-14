@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectTracer.Models; 
+using ProjectTracer.Models;
+using ProjectTracer.Repository;
 
 namespace ProjectTracer.Controllers
 {
@@ -14,13 +15,35 @@ namespace ProjectTracer.Controllers
         public static bool RegisterInServer(IUser user)
         {
             SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True");
-            SqlCommand scmd = new SqlCommand($"CREATE LOGIN {user.Name} WITH PASSWORD = '{user.Password}'", sq);
+            SqlCommand scmd = new SqlCommand($"CREATE LOGIN {user.Name} WITH PASSWORD = '{Encrypt.EncryptString(user.Password, "Pass")}'", sq);
             scmd.Parameters.Clear();
             sq.Open();
             try
             {
                 scmd.ExecuteScalar();
                 sq.Close();
+                var UnitOFWork = new UnityOfWork(new ProjectTracerEntities());
+                switch (user.GetType().Name)
+                {
+                    case "Client":
+                         UnitOFWork.Clients.Add(new Clients() {Client_Id = user.Name,Password = Encrypt.EncryptString(user.Password, "Pass") });
+                        UnitOFWork.Complete();
+                        break; 
+                    case "Developer":
+                        UnitOFWork.Developers.Add(new Developers() { Developer_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                        UnitOFWork.Complete();
+                        break; 
+                    case "Senior":
+                        UnitOFWork.Seniors.Add(new Seniors() { Senior_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                        UnitOFWork.Complete();
+                        break; 
+                    case "Admin":
+                         UnitOFWork.Administrators.Add(new Administrators() { Administrator = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                        UnitOFWork.Complete();
+                        break;
+                    default:
+                        break; 
+                }
                 return true;
             }
             catch (Exception E)
@@ -40,6 +63,7 @@ namespace ProjectTracer.Controllers
             {
                 scmd.ExecuteScalar();
                 sq.Close();
+                var unitOfWork = new UnityOfWork(new ProjectTracerEntities()); 
                 return true;
             }
             catch (Exception E)

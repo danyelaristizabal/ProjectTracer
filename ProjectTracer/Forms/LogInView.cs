@@ -38,16 +38,22 @@ namespace ProjectTracer
         private void LogInBtn_Click(object sender, EventArgs e)
         {
             myUser.Name = UserTxtB.Text;
-            myUser.Password = PasswordTxtB.Text; 
-            if (LogInControler.CheckUser(myUser))
+            myUser.Password = PasswordTxtB.Text;
+            if (LogInControler.CheckUser(myUser) & LogInControler.CheckUserInUserTable(myUser))
             {
                 MessageBox.Show("Correct User and password");
                 var baseForm = new BaseView();
-                baseForm.Show(); 
+                baseForm.Show();
                 var StartPage = LogInControler.ChooseStartPage(myUser);
                 StartPage.Show();
-                this.Close(); 
-            } 
+                this.Close();
+            }
+            else {
+                MessageBox.Show($"CheckUser: {LogInControler.CheckUser(myUser)}");
+                MessageBox.Show($"CheckUserInUserTable: {LogInControler.CheckUserInUserTable(myUser)}");
+                MessageBox.Show("INCorrect User and password");
+            }
+
         }
         private void RegisterBtn_Click(object sender, EventArgs e)
         {

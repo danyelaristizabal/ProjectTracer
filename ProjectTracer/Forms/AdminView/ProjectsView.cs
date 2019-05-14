@@ -17,9 +17,6 @@ namespace ProjectTracer.Forms
 {
     public partial class ProjectsView : Form
     {
-        private static List<Projects> ListOfProjects { get; set; }
-
-
         private Projects SelectedProject { get; set; }
 
         public ProjectsView()
@@ -34,17 +31,7 @@ namespace ProjectTracer.Forms
         private void LoadProjects()
         {
             AdminProjectsView.Items.Clear(); 
-            var context = new ProjectTracerEntities();
-            List<Projects> ListOfProjects = context.Projects.ToList();
-            foreach (var project in ListOfProjects)
-            {
-                ListViewItem item = new ListViewItem(project.Project_ID.ToString());
-                item.SubItems.Add(project.Description.ToString());
-                item.SubItems.Add(project.DeadLine.ToString());
-                item.SubItems.Add(project.Result.ToString());
-                item.SubItems.Add(project.Client.ToString());
-                AdminProjectsView.Items.Add(item);
-            }
+            AdminProjectsController.GetProjectsItemList().ForEach(item => AdminProjectsView.Items.Add(item)); 
         }
 
         private void TasksBtn_Click(object sender, EventArgs e)
@@ -84,29 +71,17 @@ namespace ProjectTracer.Forms
         {
             if (System.Windows.Forms.Application.MessageLoop)
             {
-                // WinForms app
                 System.Windows.Forms.Application.Exit();
             }
             else
             {
-                // Console app
                 System.Environment.Exit(1);
             }
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            var context = new ProjectTracerEntities();
-            context.Projects.Attach(SelectedProject);
-            context.Projects.Remove(SelectedProject);
-            try
-            {
-                context.SaveChanges();
-            }
-            catch(Exception ex){
-                MessageBox.Show(ex.ToString()); 
-            }
-             
+            AdminProjectsController.RemoveProject(SelectedProject);
             LoadProjects(); 
         }
 

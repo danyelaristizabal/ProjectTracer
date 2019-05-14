@@ -6,30 +6,48 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
+using ProjectTracer.Repository; 
 
 namespace ProjectTracer.Controllers
 {
     public static class AdminProjectsController
     {
-        public static List<List<string>> GetProjects()
+        public static List<ListViewItem> GetProjectsItemList()
         {
-            var context = new ProjectTracerEntities();
+            var unit = new UnityOfWork(new ProjectTracerEntities());
+            
+            List<Projects> ListOfProjects = unit.Projects.GetAll().ToList();
 
-            var x = context.Projects;
+            List<ListViewItem> ProjectsItemList = new List<ListViewItem>(); 
 
-            List<Projects> ListOfProjects = x.ToList();
-
-            var projectsTables = new List<List<string>>();
-
-            foreach (Projects project in ListOfProjects)
+            foreach (var project in ListOfProjects)
             {
-                projectsTables.Add(new List<string>() {
-                 project.Description.ToString(), 
-                project.DeadLine.ToString(),project.Result.ToString(),
-                project.Client.ToString(),project.Project_ID.ToString(),
-                }); 
+                ListViewItem item = new ListViewItem(project.Project_ID.ToString());
+                item.SubItems.Add(project.Description.ToString());
+                item.SubItems.Add(project.DeadLine.ToString());
+                item.SubItems.Add(project.Result.ToString());
+                item.SubItems.Add(project.Client.ToString());
+                ProjectsItemList.Add(item);
             }
-            return projectsTables;  
+            return ProjectsItemList;
         }
+
+        public static bool RemoveProject(Projects project)
+        {
+            var unit = new UnityOfWork(new ProjectTracerEntities());
+            try
+            {
+                unit.Projects.Remove(project);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+
+        }
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace ProjectTracer.Controllers
         // 32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
         private const string initVector = "pemgail9uzpgz188";
         // This constant is used to determine the keysize of the encryption algorithm
-        private const int keysize = 128;
+        private const int keysize = 256;
         //Encrypt
         public static string EncryptString(string plainText, string passPhrase)
         {

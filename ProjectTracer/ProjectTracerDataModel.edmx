@@ -5,11 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ProjectTracerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Aministrators">
+        <EntityType Name="Administrators">
           <Key>
-            <PropertyRef Name="Admin_Id" />
+            <PropertyRef Name="Administrator" />
           </Key>
-          <Property Name="Admin_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Administrator" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Clients">
@@ -280,7 +280,7 @@ warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ProjectTracerModelStoreContainer">
-          <EntitySet Name="Aministrators" EntityType="Self.Aministrators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Developers" EntityType="Self.Developers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
@@ -363,11 +363,11 @@ warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjectTracerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Aministrators">
+        <EntityType Name="Administrators">
           <Key>
-            <PropertyRef Name="Admin_Id" />
+            <PropertyRef Name="Administrator" />
           </Key>
-          <Property Name="Admin_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Administrator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Clients">
@@ -501,7 +501,7 @@ warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a
           <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
         </Association>
         <EntityContainer Name="ProjectTracerEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Aministrators" EntityType="Self.Aministrators" />
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
           <EntitySet Name="Developers" EntityType="Self.Developers" />
           <EntitySet Name="Documents" EntityType="Self.Documents" />
@@ -586,10 +586,10 @@ warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ProjectTracerModelStoreContainer" CdmEntityContainer="ProjectTracerEntities">
-          <EntitySetMapping Name="Aministrators">
-            <EntityTypeMapping TypeName="ProjectTracerModel.Aministrators">
-              <MappingFragment StoreEntitySet="Aministrators">
-                <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="ProjectTracerModel.Administrators">
+              <MappingFragment StoreEntitySet="Administrators">
+                <ScalarProperty Name="Administrator" ColumnName="Administrator" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>

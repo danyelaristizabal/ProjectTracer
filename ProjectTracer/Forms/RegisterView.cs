@@ -40,7 +40,7 @@ namespace ProjectTracer.Forms
             }
             else
             {
-                MessageBox.Show("Error Ocurred, please try again");
+                MessageBox.Show("Error, please try again");
             } 
         }
         private void Minimizr_Click(object sender, EventArgs e)
