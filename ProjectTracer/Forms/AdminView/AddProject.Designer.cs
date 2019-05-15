@@ -174,11 +174,11 @@
             this.NameTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NameTxtB.ForeColor = System.Drawing.Color.White;
             this.NameTxtB.Location = new System.Drawing.Point(296, 155);
+            this.NameTxtB.MaxLength = 60;
             this.NameTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.NameTxtB.Name = "NameTxtB";
             this.NameTxtB.Size = new System.Drawing.Size(280, 29);
-            this.NameTxtB.TabIndex = 37;
-            this.NameTxtB.TabStop = false;
+            this.NameTxtB.TabIndex = 0;
             // 
             // DescriptionTxtB
             // 
@@ -186,11 +186,11 @@
             this.DescriptionTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DescriptionTxtB.ForeColor = System.Drawing.Color.White;
             this.DescriptionTxtB.Location = new System.Drawing.Point(296, 222);
+            this.DescriptionTxtB.MaxLength = 60;
             this.DescriptionTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.DescriptionTxtB.Name = "DescriptionTxtB";
             this.DescriptionTxtB.Size = new System.Drawing.Size(280, 29);
-            this.DescriptionTxtB.TabIndex = 36;
-            this.DescriptionTxtB.TabStop = false;
+            this.DescriptionTxtB.TabIndex = 1;
             // 
             // RegisterBtn
             // 
@@ -202,7 +202,7 @@
             this.RegisterBtn.Location = new System.Drawing.Point(473, 491);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(200, 40);
-            this.RegisterBtn.TabIndex = 46;
+            this.RegisterBtn.TabIndex = 4;
             this.RegisterBtn.Text = "Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
@@ -219,7 +219,7 @@
             this.DeadLineTxtB.MinimumSize = new System.Drawing.Size(0, 32);
             this.DeadLineTxtB.Name = "DeadLineTxtB";
             this.DeadLineTxtB.Size = new System.Drawing.Size(280, 22);
-            this.DeadLineTxtB.TabIndex = 50;
+            this.DeadLineTxtB.TabIndex = 3;
             // 
             // label1
             // 
@@ -252,7 +252,7 @@
             this.CancelBtn.Location = new System.Drawing.Point(240, 491);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(200, 40);
-            this.CancelBtn.TabIndex = 57;
+            this.CancelBtn.TabIndex = 5;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = false;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);

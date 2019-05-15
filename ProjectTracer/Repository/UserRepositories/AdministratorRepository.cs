@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    class AdministratorRepository : Repository<Administrators>, IAdministratorRepository
+    public class AdministratorRepository : Repository<Administrators>, IAdministratorRepository
     {
         public AdministratorRepository(ProjectTracerEntities Context) : base(Context)
         {

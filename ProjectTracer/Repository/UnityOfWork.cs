@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    class UnityOfWork : IUnityOfWork
+    public class UnityOfWork : IUnityOfWork
     {
         private readonly ProjectTracerEntities context;
 

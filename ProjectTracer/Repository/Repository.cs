@@ -42,7 +42,8 @@ namespace ProjectTracer.Repository
 
         public void Remove(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity); 
+            
+            Context.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(List<TEntity> entities)

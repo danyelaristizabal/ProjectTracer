@@ -81,6 +81,7 @@
             this.Minimize.TabIndex = 10;
             this.Minimize.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Minimize.UseVisualStyleBackColor = false;
+            this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
             // 
             // Close
             // 
@@ -211,27 +212,27 @@
             // ProjectId
             // 
             this.ProjectId.Text = "Project Name";
-            this.ProjectId.Width = 140;
+            this.ProjectId.Width = 120;
             // 
             // Description
             // 
             this.Description.Text = "Description";
-            this.Description.Width = 140;
+            this.Description.Width = 340;
             // 
             // DeadLine
             // 
             this.DeadLine.Text = "DeadLine";
-            this.DeadLine.Width = 140;
+            this.DeadLine.Width = 121;
             // 
             // Result
             // 
             this.Result.Text = "Result";
-            this.Result.Width = 140;
+            this.Result.Width = 120;
             // 
             // Client
             // 
             this.Client.Text = "Client";
-            this.Client.Width = 140;
+            this.Client.Width = 121;
             // 
             // AddBtn
             // 

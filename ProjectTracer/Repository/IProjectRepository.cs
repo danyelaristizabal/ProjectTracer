@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    interface IProjectRepository : IRepository<Projects>
+    public interface IProjectRepository : IRepository<Projects>
     {
     }
 }

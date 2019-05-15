@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    class ClientRepository : Repository<Clients>, IClientRepository
+    public class ClientRepository : Repository<Clients>, IClientRepository
     {
         public ClientRepository(ProjectTracerEntities Context) : base(Context)
         {

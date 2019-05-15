@@ -64,6 +64,7 @@
     <Compile Include="Clients.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AddProjectController.cs" />
     <Compile Include="Controllers\AdminProjectsController.cs" />
     <Compile Include="Controllers\Encrypt.cs" />
     <Compile Include="Controllers\EntryController.cs" />

@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectTracer.Models; 
+using ProjectTracer.Models;
+using ProjectTracer.Controllers;
+
 
 namespace ProjectTracer.Forms.AdminView
 {
     public partial class AddProject : Form
     {
         public event EventHandler<BoolEvent> BoolRegisteredChanged;
-        private bool myBool;
 
-        
+        private bool myBool;
         public bool MyBool
         {
             get { return myBool; }
-            /* Setting this property will raise the event if the value is different.
-             * As this property has a public getter you can access it and raise the
-             * event from any reference to this class. in this example it is set from
-             * the textBox.TextChanged handler above. The setter can be marked as
-             * as private if required. */
             set
             {
                 if (myBool != value)
@@ -27,15 +23,11 @@ namespace ProjectTracer.Forms.AdminView
                 }
             }
         }
-
         protected virtual void OnBoolRegisteredChanged(BoolEvent e)
         {
-            // Create a copy of the event to work with
             EventHandler<BoolEvent> eh = BoolRegisteredChanged;
-            /* If there are no subscribers, eh will be null so we need to check
-             * to avoid a NullReferenceException. */
-            if (eh != null)
-                eh(this, e);
+            if(eh != null)
+            eh(this, e);
         }
 
         public AddProject()
@@ -53,28 +45,16 @@ namespace ProjectTracer.Forms.AdminView
         {
             this.Close();
         }
-
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            var context = new ProjectTracerEntities();
-            context.Projects.Add(new Projects()
-            {
-                Project_ID = NameTxtB.Text,
-                Description = DescriptionTxtB.Text,
-                DeadLine = DateTime.Parse(DeadLineTxtB.Text),
-                Result = "notregistered",
-                Client = "notregistered"
-            });
             try
             {
-                context.SaveChanges();
-
+                AddProjectController.AddProject(NameTxtB.Text, DescriptionTxtB.Text, DeadLineTxtB.Text);
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show($"{E}"); 
+                MessageBox.Show("Error ocurred saving changes, please try later");
             }
-            
             MyBool = true;
             this.Close(); 
         }
@@ -82,7 +62,6 @@ namespace ProjectTracer.Forms.AdminView
         private void Minimizr_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-
         }
     }
 }

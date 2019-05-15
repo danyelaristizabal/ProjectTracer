@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    interface IUnityOfWork : IDisposable
+    public interface IUnityOfWork : IDisposable
     {
         IProjectRepository Projects { get; }
         IClientRepository Clients { get; }

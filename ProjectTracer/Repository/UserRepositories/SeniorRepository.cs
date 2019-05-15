@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    class SeniorRepository : Repository<Seniors>, ISeniorRepository
+    public class SeniorRepository : Repository<Seniors>, ISeniorRepository
     {
         public SeniorRepository(ProjectTracerEntities Context) : base(Context)
         {
