@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Models;
 using ProjectTracer.Forms;
@@ -15,55 +8,46 @@ namespace ProjectTracer
 {
     public partial class LogInView : Form
     {
-        public IUser myUser { get; set; }
-        public LogInView(IUser User)
+        public IUser MyUser { get; set; }
+        public Form MyBase { get; set; }
+        public LogInView(IUser User, Form _base)
         {
             InitializeComponent();
-            myUser = User; 
-           
+            MyUser = User;
+            MyBase = _base; 
         }
         private void LogIn_Load(object sender, EventArgs e)
         {
-            UserLbl.Text = myUser.GetType().Name;
+            UserLbl.Text = MyUser.GetType().Name;
         }
 
-        private void UserTxtB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void PasswordTxtB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void LogInBtn_Click(object sender, EventArgs e)
         {
-            myUser.Name = UserTxtB.Text;
-            myUser.Password = PasswordTxtB.Text;
-            if (LogInControler.CheckUser(myUser) & LogInControler.CheckUserInUserTable(myUser))
+            MyUser.Name = UserTxtB.Text;
+            MyUser.Password = PasswordTxtB.Text;
+            try
             {
-                MessageBox.Show("Correct User and password");
-                var baseForm = new BaseView();
-                baseForm.Show();
-                var StartPage = LogInControler.ChooseStartPage(myUser);
-                StartPage.Show();
-                this.Close();
+                if (LogInControler.Autentificate(MyUser))
+                {
+                    var baseForm = new BaseView();
+                    baseForm.Show();
+                    var StartPage = LogInControler.ChooseStartPage(MyUser);
+                    StartPage.Show();
+                    this.Close();
+                    base.Close(); 
+                }
             }
-            else {
-                MessageBox.Show($"CheckUser: {LogInControler.CheckUser(myUser)}");
-                MessageBox.Show($"CheckUserInUserTable: {LogInControler.CheckUserInUserTable(myUser)}");
+            catch (Exception)
+            {
                 MessageBox.Show("INCorrect User and password");
             }
-
         }
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            var myRegistration = new RegisterView(myUser);
+            var myRegistration = new RegisterView(MyUser);
             myRegistration.Show();
+            base.Close(); 
             this.Close(); 
-        }
-        private void UserLbl_Click(object sender, EventArgs e)
-        {
-
         }
         private void Minimizr_Click(object sender, EventArgs e)
         {
@@ -73,12 +57,10 @@ namespace ProjectTracer
         {
             if (System.Windows.Forms.Application.MessageLoop)
             {
-                // WinForms app
                 System.Windows.Forms.Application.Exit();
             }
             else
             {
-                // Console app
                 System.Environment.Exit(1);
             }
         }

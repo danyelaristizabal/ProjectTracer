@@ -4,5 +4,7 @@
     {
       string Name { get;  set; }
       string Password { get; set; }
+      string InvitationCode { get; set; }
+
     }
 }

@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Models;
 using ProjectTracer.Controllers;
@@ -25,14 +17,14 @@ namespace ProjectTracer.Forms
         {
             UserLbl.Text = User.GetType().Name;
         }
-
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
             User.Name = NameTxtBox.Text;
             User.Password = PasswordTxtBox.Text;
-
-            if (RegisterController.RegisterInServer(User) &
-             RegisterController.RegisterInDatabase(User))
+            User.InvitationCode = RegistrtionCodeTxtB.Text; 
+            
+            
+            if (RegisterController.Registrate(User))
             {
                 var startForm = LogInControler.ChooseStartPage(User);
                 startForm.Show();
@@ -51,12 +43,10 @@ namespace ProjectTracer.Forms
         {
             if (System.Windows.Forms.Application.MessageLoop)
             {
-                // WinForms app
                 System.Windows.Forms.Application.Exit();
             }
             else
             {
-                // Console app
                 System.Environment.Exit(1);
             }
         }

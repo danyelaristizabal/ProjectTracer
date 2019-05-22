@@ -26,8 +26,6 @@
           <Property Name="Developer_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProjectTracer.dbo.DevelopersAndTeams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DevelopersAndTeams">
           <Key>
             <PropertyRef Name="Developer" />
@@ -61,8 +59,6 @@ warning 6002: The table/view 'ProjectTracer.dbo.DevelopersAndTeams' does not hav
           <Property Name="Senior_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProjectTracer.dbo.SeniorsAndTeams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SeniorsAndTeams">
           <Key>
             <PropertyRef Name="Team" />
@@ -90,8 +86,6 @@ warning 6002: The table/view 'ProjectTracer.dbo.SeniorsAndTeams' does not have a
           <Property Name="Description" Type="varchar" MaxLength="50" />
           <Property Name="DeadLine" Type="date" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProjectTracer.dbo.TasksAndDevelopers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TasksAndDevelopers">
           <Key>
             <PropertyRef Name="Developer" />
@@ -104,10 +98,8 @@ warning 6002: The table/view 'ProjectTracer.dbo.TasksAndDevelopers' does not hav
           <Key>
             <PropertyRef Name="Team ID" />
           </Key>
-          <Property Name="Team ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Team ID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TeamsAndProject">
           <Key>
             <PropertyRef Name="Team" />
@@ -283,36 +275,16 @@ warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a
           <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Developers" EntityType="Self.Developers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DevelopersAndTeams" EntityType="Self.DevelopersAndTeams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seniors" EntityType="Self.Seniors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeniorsAndTeams" EntityType="Self.SeniorsAndTeams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TasksAndDevelopers" EntityType="Self.TasksAndDevelopers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DevelopersAndTeams" EntityType="Self.DevelopersAndTeams" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DevelopersAndTeams].[Developer] AS [Developer], 
-    [DevelopersAndTeams].[Team] AS [Team]
-    FROM [dbo].[DevelopersAndTeams] AS [DevelopersAndTeams]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="SeniorsAndTeams" EntityType="Self.SeniorsAndTeams" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SeniorsAndTeams].[Team] AS [Team], 
-    [SeniorsAndTeams].[Senior] AS [Senior]
-    FROM [dbo].[SeniorsAndTeams] AS [SeniorsAndTeams]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TasksAndDevelopers" EntityType="Self.TasksAndDevelopers" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TasksAndDevelopers].[Developer] AS [Developer], 
-    [TasksAndDevelopers].[Task] AS [Task]
-    FROM [dbo].[TasksAndDevelopers] AS [TasksAndDevelopers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TeamsAndProject" EntityType="Self.TeamsAndProject" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TeamsAndProject].[Team] AS [Team], 
-    [TeamsAndProject].[Project] AS [Project]
-    FROM [dbo].[TeamsAndProject] AS [TeamsAndProject]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="TeamsAndProject" EntityType="Self.TeamsAndProject" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_DevelopersAndTeams_Developer" Association="Self.FK_DevelopersAndTeams_Developer">
             <End Role="Developers" EntitySet="Developers" />
             <End Role="DevelopersAndTeams" EntitySet="DevelopersAndTeams" />
@@ -443,7 +415,7 @@ warning 6002: The table/view 'ProjectTracer.dbo.TeamsAndProject' does not have a
           <Key>
             <PropertyRef Name="Team_ID" />
           </Key>
-          <Property Name="Team_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Team_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Developers" Relationship="Self.DevelopersAndTeams" FromRole="Teams" ToRole="Developers" />
           <NavigationProperty Name="Seniors" Relationship="Self.SeniorsAndTeams" FromRole="Teams" ToRole="Seniors" />
           <NavigationProperty Name="Projects" Relationship="Self.TeamsAndProject" FromRole="Teams" ToRole="Projects" />

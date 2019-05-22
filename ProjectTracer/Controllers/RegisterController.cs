@@ -15,31 +15,162 @@ namespace ProjectTracer.Controllers
         public static bool RegisterInServer(IUser user)
         {
             SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True");
+
             SqlCommand scmd = new SqlCommand($"CREATE LOGIN {user.Name} WITH PASSWORD = '{Encrypt.EncryptString(user.Password, "Pass")}'", sq);
+
             scmd.Parameters.Clear();
+
             sq.Open();
+
             try
             {
-                scmd.ExecuteScalar();
-                sq.Close();
+               
                 var UnitOFWork = new UnityOfWork(new ProjectTracerEntities());
+                var projects = UnitOFWork.Projects.GetAll().ToList();
+
                 switch (user.GetType().Name)
                 {
                     case "Client":
-                         UnitOFWork.Clients.Add(new Clients() {Client_Id = user.Name,Password = Encrypt.EncryptString(user.Password, "Pass") });
-                        UnitOFWork.Complete();
+                        if (user.InvitationCode != string.Empty)
+                        {
+                            var decryptedId = Encrypt.DecryptString(user.InvitationCode, "Pass");
+
+                            foreach (var project in projects)
+                            {
+                                if (project.Project_ID == decryptedId)
+                                {
+                                    scmd.ExecuteScalar();
+
+                                    sq.Close();
+
+                                    UnitOFWork.Clients.Add(new Clients() { Client_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+
+                                    UnitOFWork.Projects
+                                        .GetAll()
+                                        .FirstOrDefault(i => i.Project_ID == project.Project_ID)
+                                        .Client = user.Name;
+
+                                    UnitOFWork.Complete();
+
+                                    MessageBox.Show("Client registrated");
+                                    return true;
+                                }
+                            }
+
+                            MessageBox.Show("Incorrect Registration Code");
+                            return false;
+
+                        }
+                        else
+                        {
+                            scmd.ExecuteScalar();
+
+                            sq.Close();
+
+                            UnitOFWork.Clients.Add(new Clients() { Client_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+
+                            UnitOFWork.Complete();
+                        }
                         break; 
                     case "Developer":
-                        UnitOFWork.Developers.Add(new Developers() { Developer_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
-                        UnitOFWork.Complete();
+                        if (user.InvitationCode != string.Empty)
+                        {
+                            var decryptedId = Encrypt.DecryptString(user.InvitationCode, "Pass");
+
+                            foreach (var project in projects)
+                            {
+                                if (project.Project_ID == decryptedId)
+                                {
+                                    scmd.ExecuteScalar();
+
+                                    sq.Close();
+                                    // Add the new dev 
+                                    UnitOFWork.Developers
+                                        .Add(
+                                                new Developers()
+                                                {
+                                                    Developer_Id = user.Name,
+                                                    Password = Encrypt.EncryptString(user.Password, "Pass")
+                                                }
+                                            );
+                                    UnitOFWork.Complete();
+                                    //No teams in this project? ok, then we create one
+                                    var teamId = UnitOFWork.Teams.GetAll().Count() + 1;
+                                    if (UnitOFWork.Projects
+                                    .GetAll()
+                                    .FirstOrDefault(p => p.Project_ID == project.Project_ID)
+                                    .Teams.Count == 0)
+                                    {
+                                        // Add one team to teams 
+                                        UnitOFWork.Teams
+                                            .Add(new Teams() { Team_ID = teamId });
+                                        UnitOFWork.Complete(); 
+                                        //Relate this team to our project 
+                                        UnitOFWork.Teams
+                                            .GetAll()
+                                            .FirstOrDefault(t => t.Team_ID == teamId)
+                                            .Projects
+                                            .Add(UnitOFWork.Projects.GetAll().FirstOrDefault(t => t.Project_ID == project.Project_ID));
+                                        UnitOFWork.Complete();
+
+                                        //Add our Team to our Developer
+                                        UnitOFWork.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name)
+                                            .Teams
+                                            .Add(
+                                            UnitOFWork.Teams
+                                            .GetAll()
+                                            .FirstOrDefault(t => t.Team_ID == teamId )
+                                            );
+                                        UnitOFWork.Complete();
+                                    }
+                                    else
+                                    {
+                                        //In case that there is already teams working on the project we add the developer to the first
+                                        UnitOFWork.Projects
+                                           .GetAll()
+                                           .FirstOrDefault(p => p.Project_ID == project.Project_ID)
+                                           .Teams
+                                           .FirstOrDefault()
+                                           .Developers
+                                           .Add(UnitOFWork.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name));
+                                        UnitOFWork.Complete();
+                                    }
+                                        
+                                    UnitOFWork.Complete();
+                                    MessageBox.Show("Developer registrated");
+                                    return true;
+                                }
+                            }
+
+                            MessageBox.Show("Incorrect Registration Code");
+                            return false;
+
+                        }
+                        else
+                        {
+                            scmd.ExecuteScalar();
+
+                            sq.Close();
+                            UnitOFWork.Developers.Add(new Developers() { Developer_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+
+                            UnitOFWork.Complete();
+                        }
+                            
                         break; 
                     case "Senior":
+                        scmd.ExecuteScalar();
+
+                        sq.Close();
                         UnitOFWork.Seniors.Add(new Seniors() { Senior_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
-                        UnitOFWork.Complete();
+                        
+                            UnitOFWork.Complete();
                         break; 
                     case "Admin":
-                         UnitOFWork.Administrators.Add(new Administrators() { Administrator = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
-                        UnitOFWork.Complete();
+                        scmd.ExecuteScalar();
+
+                        sq.Close();
+                        UnitOFWork.Administrators.Add(new Administrators() { Administrator = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                            UnitOFWork.Complete();
                         break;
                     default:
                         break; 
@@ -48,11 +179,16 @@ namespace ProjectTracer.Controllers
             }
             catch (Exception E)
             {
-                MessageBox.Show("Error in SERVER:" + E);
+                MessageBox.Show("Error in sever:" + E);
                 sq.Close();
                 return false;
             }
         }
+        internal static bool Registrate(IUser user)
+        {
+            return (RegisterInServer(user) &
+              RegisterInDatabase(user));
+        }    
         public static bool RegisterInDatabase(IUser user)
         {
             SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True ");
@@ -63,7 +199,6 @@ namespace ProjectTracer.Controllers
             {
                 scmd.ExecuteScalar();
                 sq.Close();
-                var unitOfWork = new UnityOfWork(new ProjectTracerEntities()); 
                 return true;
             }
             catch (Exception E)

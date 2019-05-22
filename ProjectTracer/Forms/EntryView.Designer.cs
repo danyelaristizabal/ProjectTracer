@@ -34,10 +34,10 @@
             this.SeniorDevBtn = new System.Windows.Forms.Button();
             this.AdminBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Closr = new System.Windows.Forms.Button();
             this.Minimizr = new System.Windows.Forms.Button();
             this.Minimize = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
-            this.Closr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +63,7 @@
             this.ClientBtn.Location = new System.Drawing.Point(95, 284);
             this.ClientBtn.Name = "ClientBtn";
             this.ClientBtn.Size = new System.Drawing.Size(200, 40);
-            this.ClientBtn.TabIndex = 5;
+            this.ClientBtn.TabIndex = 0;
             this.ClientBtn.Text = "Client";
             this.ClientBtn.UseVisualStyleBackColor = false;
             this.ClientBtn.Click += new System.EventHandler(this.ClientBtn_Click);
@@ -78,7 +78,7 @@
             this.Developer.Location = new System.Drawing.Point(95, 340);
             this.Developer.Name = "Developer";
             this.Developer.Size = new System.Drawing.Size(200, 40);
-            this.Developer.TabIndex = 6;
+            this.Developer.TabIndex = 1;
             this.Developer.Text = "Developer";
             this.Developer.UseVisualStyleBackColor = false;
             this.Developer.Click += new System.EventHandler(this.Developer_Click);
@@ -93,7 +93,7 @@
             this.SeniorDevBtn.Location = new System.Drawing.Point(95, 396);
             this.SeniorDevBtn.Name = "SeniorDevBtn";
             this.SeniorDevBtn.Size = new System.Drawing.Size(200, 40);
-            this.SeniorDevBtn.TabIndex = 7;
+            this.SeniorDevBtn.TabIndex = 2;
             this.SeniorDevBtn.Text = "SeniorDev";
             this.SeniorDevBtn.UseVisualStyleBackColor = false;
             this.SeniorDevBtn.Click += new System.EventHandler(this.SeniorDevBtn_Click);
@@ -108,7 +108,7 @@
             this.AdminBtn.Location = new System.Drawing.Point(95, 453);
             this.AdminBtn.Name = "AdminBtn";
             this.AdminBtn.Size = new System.Drawing.Size(200, 40);
-            this.AdminBtn.TabIndex = 8;
+            this.AdminBtn.TabIndex = 3;
             this.AdminBtn.Text = "Admin";
             this.AdminBtn.UseVisualStyleBackColor = false;
             this.AdminBtn.Click += new System.EventHandler(this.AdminBtn_Click);
@@ -126,6 +126,24 @@
             this.panel1.Size = new System.Drawing.Size(400, 50);
             this.panel1.TabIndex = 9;
             // 
+            // Closr
+            // 
+            this.Closr.BackColor = System.Drawing.Color.Transparent;
+            this.Closr.FlatAppearance.BorderSize = 0;
+            this.Closr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.Closr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Closr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Closr.ForeColor = System.Drawing.Color.White;
+            this.Closr.Image = global::ProjectTracer.Properties.Resources.error;
+            this.Closr.Location = new System.Drawing.Point(347, 0);
+            this.Closr.Name = "Closr";
+            this.Closr.Size = new System.Drawing.Size(50, 50);
+            this.Closr.TabIndex = 30;
+            this.Closr.TabStop = false;
+            this.Closr.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Closr.UseVisualStyleBackColor = false;
+            this.Closr.Click += new System.EventHandler(this.Closr_Click);
+            // 
             // Minimizr
             // 
             this.Minimizr.BackColor = System.Drawing.Color.Transparent;
@@ -138,7 +156,8 @@
             this.Minimizr.Location = new System.Drawing.Point(295, 0);
             this.Minimizr.Name = "Minimizr";
             this.Minimizr.Size = new System.Drawing.Size(50, 50);
-            this.Minimizr.TabIndex = 16;
+            this.Minimizr.TabIndex = 31;
+            this.Minimizr.TabStop = false;
             this.Minimizr.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Minimizr.UseVisualStyleBackColor = false;
             this.Minimizr.Click += new System.EventHandler(this.Minimizr_Click);
@@ -174,23 +193,6 @@
             this.Close.TabIndex = 11;
             this.Close.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Close.UseVisualStyleBackColor = false;
-            // 
-            // Closr
-            // 
-            this.Closr.BackColor = System.Drawing.Color.Transparent;
-            this.Closr.FlatAppearance.BorderSize = 0;
-            this.Closr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.Closr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Closr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Closr.ForeColor = System.Drawing.Color.White;
-            this.Closr.Image = global::ProjectTracer.Properties.Resources.error;
-            this.Closr.Location = new System.Drawing.Point(347, 0);
-            this.Closr.Name = "Closr";
-            this.Closr.Size = new System.Drawing.Size(50, 50);
-            this.Closr.TabIndex = 17;
-            this.Closr.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Closr.UseVisualStyleBackColor = false;
-            this.Closr.Click += new System.EventHandler(this.Closr_Click);
             // 
             // EntryView
             // 

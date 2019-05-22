@@ -36,24 +36,27 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Minimize = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.TeamsListView = new MaterialSkin.Controls.MaterialListView();
+            this.Team_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Senior = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.PasswordTxtBox = new System.Windows.Forms.TextBox();
+            this.FindByProjectTxtB = new System.Windows.Forms.TextBox();
             this.FindByProjectBtn = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FindByTeamNumberTxtB = new System.Windows.Forms.TextBox();
             this.FindByTeamBtn = new System.Windows.Forms.Button();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.FindByIdTxtB = new System.Windows.Forms.TextBox();
             this.FindByIdBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.AddDeveloper = new System.Windows.Forms.Button();
-            this.materialListView2 = new MaterialSkin.Controls.MaterialListView();
-            this.Add = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.InTeamLbl = new System.Windows.Forms.Label();
+            this.RemoveDevBtn = new System.Windows.Forms.Button();
+            this.DevelopersListView = new MaterialSkin.Controls.MaterialListView();
+            this.Developer_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AddDevToTeam = new System.Windows.Forms.Button();
+            this.DeleteDevFromTeam = new System.Windows.Forms.Button();
             this.Developers = new System.Windows.Forms.Label();
             this.Teams = new System.Windows.Forms.Label();
+            this.ShowALL = new System.Windows.Forms.Button();
+            this.CreateTeamBtn = new System.Windows.Forms.Button();
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -189,43 +192,57 @@
             this.Close.UseVisualStyleBackColor = false;
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
-            // materialListView1
+            // TeamsListView
             // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(573, 108);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(418, 242);
-            this.materialListView1.TabIndex = 28;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.TeamsListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TeamsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Team_Id,
+            this.Senior});
+            this.TeamsListView.Depth = 0;
+            this.TeamsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.TeamsListView.FullRowSelect = true;
+            this.TeamsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.TeamsListView.Location = new System.Drawing.Point(567, 157);
+            this.TeamsListView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.TeamsListView.MouseState = MaterialSkin.MouseState.OUT;
+            this.TeamsListView.Name = "TeamsListView";
+            this.TeamsListView.OwnerDraw = true;
+            this.TeamsListView.Size = new System.Drawing.Size(418, 242);
+            this.TeamsListView.TabIndex = 28;
+            this.TeamsListView.UseCompatibleStateImageBehavior = false;
+            this.TeamsListView.View = System.Windows.Forms.View.Details;
+            this.TeamsListView.ItemActivate += new System.EventHandler(this.TeamsListView_ItemActivate);
+            // 
+            // Team_Id
+            // 
+            this.Team_Id.Text = "Team";
+            this.Team_Id.Width = 160;
+            // 
+            // Senior
+            // 
+            this.Senior.Text = "Senior";
+            this.Senior.Width = 258;
             // 
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(370, 408);
+            this.richTextBox1.Location = new System.Drawing.Point(776, 458);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(194, 1);
             this.richTextBox1.TabIndex = 31;
             this.richTextBox1.Text = "";
             // 
-            // PasswordTxtBox
+            // FindByProjectTxtB
             // 
-            this.PasswordTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.PasswordTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PasswordTxtBox.ForeColor = System.Drawing.Color.White;
-            this.PasswordTxtBox.Location = new System.Drawing.Point(370, 370);
-            this.PasswordTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
-            this.PasswordTxtBox.Name = "PasswordTxtBox";
-            this.PasswordTxtBox.Size = new System.Drawing.Size(194, 32);
-            this.PasswordTxtBox.TabIndex = 30;
-            this.PasswordTxtBox.TabStop = false;
+            this.FindByProjectTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.FindByProjectTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FindByProjectTxtB.ForeColor = System.Drawing.Color.White;
+            this.FindByProjectTxtB.Location = new System.Drawing.Point(776, 420);
+            this.FindByProjectTxtB.MinimumSize = new System.Drawing.Size(100, 32);
+            this.FindByProjectTxtB.Name = "FindByProjectTxtB";
+            this.FindByProjectTxtB.Size = new System.Drawing.Size(194, 29);
+            this.FindByProjectTxtB.TabIndex = 30;
+            this.FindByProjectTxtB.TabStop = false;
             // 
             // FindByProjectBtn
             // 
@@ -234,34 +251,36 @@
             this.FindByProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FindByProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByProjectBtn.ForeColor = System.Drawing.Color.White;
-            this.FindByProjectBtn.Location = new System.Drawing.Point(141, 370);
-            this.FindByProjectBtn.MinimumSize = new System.Drawing.Size(212, 32);
+            this.FindByProjectBtn.Location = new System.Drawing.Point(576, 420);
+            this.FindByProjectBtn.MinimumSize = new System.Drawing.Size(194, 40);
             this.FindByProjectBtn.Name = "FindByProjectBtn";
-            this.FindByProjectBtn.Size = new System.Drawing.Size(212, 39);
+            this.FindByProjectBtn.Size = new System.Drawing.Size(194, 40);
             this.FindByProjectBtn.TabIndex = 29;
             this.FindByProjectBtn.Text = "Find by Project";
             this.FindByProjectBtn.UseVisualStyleBackColor = false;
+            this.FindByProjectBtn.Click += new System.EventHandler(this.FindByProjectBtn_Click);
             // 
             // richTextBox2
             // 
             this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox2.Location = new System.Drawing.Point(370, 470);
+            this.richTextBox2.Location = new System.Drawing.Point(366, 520);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(194, 1);
             this.richTextBox2.TabIndex = 34;
             this.richTextBox2.Text = "";
             // 
-            // textBox1
+            // FindByTeamNumberTxtB
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(370, 432);
-            this.textBox1.MinimumSize = new System.Drawing.Size(100, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 32);
-            this.textBox1.TabIndex = 33;
-            this.textBox1.TabStop = false;
+            this.FindByTeamNumberTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.FindByTeamNumberTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FindByTeamNumberTxtB.ForeColor = System.Drawing.Color.White;
+            this.FindByTeamNumberTxtB.Location = new System.Drawing.Point(366, 482);
+            this.FindByTeamNumberTxtB.MinimumSize = new System.Drawing.Size(100, 32);
+            this.FindByTeamNumberTxtB.Name = "FindByTeamNumberTxtB";
+            this.FindByTeamNumberTxtB.Size = new System.Drawing.Size(194, 29);
+            this.FindByTeamNumberTxtB.TabIndex = 33;
+            this.FindByTeamNumberTxtB.TabStop = false;
+            this.FindByTeamNumberTxtB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FindByTeamNumberTxtB_KeyPress);
             // 
             // FindByTeamBtn
             // 
@@ -270,34 +289,35 @@
             this.FindByTeamBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FindByTeamBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByTeamBtn.ForeColor = System.Drawing.Color.White;
-            this.FindByTeamBtn.Location = new System.Drawing.Point(141, 432);
+            this.FindByTeamBtn.Location = new System.Drawing.Point(137, 482);
             this.FindByTeamBtn.MinimumSize = new System.Drawing.Size(212, 32);
             this.FindByTeamBtn.Name = "FindByTeamBtn";
             this.FindByTeamBtn.Size = new System.Drawing.Size(212, 39);
             this.FindByTeamBtn.TabIndex = 32;
             this.FindByTeamBtn.Text = "Find by Team Number";
             this.FindByTeamBtn.UseVisualStyleBackColor = false;
+            this.FindByTeamBtn.Click += new System.EventHandler(this.FindByTeamBtn_Click);
             // 
             // richTextBox3
             // 
             this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox3.Location = new System.Drawing.Point(370, 522);
+            this.richTextBox3.Location = new System.Drawing.Point(366, 461);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(194, 1);
             this.richTextBox3.TabIndex = 37;
             this.richTextBox3.Text = "";
             // 
-            // textBox2
+            // FindByIdTxtB
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(370, 484);
-            this.textBox2.MinimumSize = new System.Drawing.Size(100, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(194, 32);
-            this.textBox2.TabIndex = 36;
-            this.textBox2.TabStop = false;
+            this.FindByIdTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.FindByIdTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FindByIdTxtB.ForeColor = System.Drawing.Color.White;
+            this.FindByIdTxtB.Location = new System.Drawing.Point(366, 423);
+            this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
+            this.FindByIdTxtB.Name = "FindByIdTxtB";
+            this.FindByIdTxtB.Size = new System.Drawing.Size(194, 29);
+            this.FindByIdTxtB.TabIndex = 36;
+            this.FindByIdTxtB.TabStop = false;
             // 
             // FindByIdBtn
             // 
@@ -306,100 +326,86 @@
             this.FindByIdBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FindByIdBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByIdBtn.ForeColor = System.Drawing.Color.White;
-            this.FindByIdBtn.Location = new System.Drawing.Point(141, 484);
+            this.FindByIdBtn.Location = new System.Drawing.Point(137, 423);
             this.FindByIdBtn.MinimumSize = new System.Drawing.Size(212, 32);
             this.FindByIdBtn.Name = "FindByIdBtn";
             this.FindByIdBtn.Size = new System.Drawing.Size(212, 39);
             this.FindByIdBtn.TabIndex = 35;
             this.FindByIdBtn.Text = "Find By Id";
             this.FindByIdBtn.UseVisualStyleBackColor = false;
+            this.FindByIdBtn.Click += new System.EventHandler(this.FindByIdBtn_Click);
             // 
-            // button1
+            // RemoveDevBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(370, 552);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 40);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Delete Developer";
-            this.button1.UseVisualStyleBackColor = false;
+            this.RemoveDevBtn.BackColor = System.Drawing.Color.Transparent;
+            this.RemoveDevBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.RemoveDevBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveDevBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemoveDevBtn.ForeColor = System.Drawing.Color.White;
+            this.RemoveDevBtn.Location = new System.Drawing.Point(137, 544);
+            this.RemoveDevBtn.Name = "RemoveDevBtn";
+            this.RemoveDevBtn.Size = new System.Drawing.Size(421, 40);
+            this.RemoveDevBtn.TabIndex = 39;
+            this.RemoveDevBtn.Text = "Delete Developer";
+            this.RemoveDevBtn.UseVisualStyleBackColor = false;
+            this.RemoveDevBtn.Click += new System.EventHandler(this.RemoveDevBtn_Click);
             // 
-            // AddDeveloper
+            // DevelopersListView
             // 
-            this.AddDeveloper.BackColor = System.Drawing.Color.Transparent;
-            this.AddDeveloper.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.AddDeveloper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddDeveloper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddDeveloper.ForeColor = System.Drawing.Color.White;
-            this.AddDeveloper.Location = new System.Drawing.Point(143, 552);
-            this.AddDeveloper.Name = "AddDeveloper";
-            this.AddDeveloper.Size = new System.Drawing.Size(212, 40);
-            this.AddDeveloper.TabIndex = 38;
-            this.AddDeveloper.Text = "Add Developer";
-            this.AddDeveloper.UseVisualStyleBackColor = false;
+            this.DevelopersListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DevelopersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Developer_Id});
+            this.DevelopersListView.Depth = 0;
+            this.DevelopersListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.DevelopersListView.FullRowSelect = true;
+            this.DevelopersListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.DevelopersListView.Location = new System.Drawing.Point(137, 157);
+            this.DevelopersListView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.DevelopersListView.MouseState = MaterialSkin.MouseState.OUT;
+            this.DevelopersListView.Name = "DevelopersListView";
+            this.DevelopersListView.OwnerDraw = true;
+            this.DevelopersListView.Size = new System.Drawing.Size(421, 242);
+            this.DevelopersListView.TabIndex = 40;
+            this.DevelopersListView.UseCompatibleStateImageBehavior = false;
+            this.DevelopersListView.View = System.Windows.Forms.View.Details;
+            this.DevelopersListView.ItemActivate += new System.EventHandler(this.DevelopersListView_ItemActivate);
+            this.DevelopersListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.DevelopersListView_ItemSelectionChanged);
+            this.DevelopersListView.SelectedIndexChanged += new System.EventHandler(this.DevelopersListView_SelectedIndexChanged);
             // 
-            // materialListView2
+            // Developer_Id
             // 
-            this.materialListView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView2.Depth = 0;
-            this.materialListView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView2.FullRowSelect = true;
-            this.materialListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView2.Location = new System.Drawing.Point(143, 108);
-            this.materialListView2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView2.Name = "materialListView2";
-            this.materialListView2.OwnerDraw = true;
-            this.materialListView2.Size = new System.Drawing.Size(421, 242);
-            this.materialListView2.TabIndex = 40;
-            this.materialListView2.UseCompatibleStateImageBehavior = false;
-            this.materialListView2.View = System.Windows.Forms.View.Details;
+            this.Developer_Id.Text = "Developer";
+            this.Developer_Id.Width = 423;
             // 
-            // Add
+            // AddDevToTeam
             // 
-            this.Add.BackColor = System.Drawing.Color.Transparent;
-            this.Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Add.ForeColor = System.Drawing.Color.White;
-            this.Add.Location = new System.Drawing.Point(594, 411);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(194, 40);
-            this.Add.TabIndex = 41;
-            this.Add.Text = "Add Developer";
-            this.Add.UseVisualStyleBackColor = false;
+            this.AddDevToTeam.BackColor = System.Drawing.Color.Transparent;
+            this.AddDevToTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.AddDevToTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddDevToTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddDevToTeam.ForeColor = System.Drawing.Color.White;
+            this.AddDevToTeam.Location = new System.Drawing.Point(576, 482);
+            this.AddDevToTeam.Name = "AddDevToTeam";
+            this.AddDevToTeam.Size = new System.Drawing.Size(194, 40);
+            this.AddDevToTeam.TabIndex = 41;
+            this.AddDevToTeam.Text = "Add Developer to Team";
+            this.AddDevToTeam.UseVisualStyleBackColor = false;
+            this.AddDevToTeam.Click += new System.EventHandler(this.AddDevToTeam_Click);
             // 
-            // button3
+            // DeleteDevFromTeam
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(797, 411);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 40);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "Delete Developer";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // InTeamLbl
-            // 
-            this.InTeamLbl.AutoSize = true;
-            this.InTeamLbl.BackColor = System.Drawing.Color.Transparent;
-            this.InTeamLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InTeamLbl.ForeColor = System.Drawing.Color.White;
-            this.InTeamLbl.Location = new System.Drawing.Point(588, 368);
-            this.InTeamLbl.MinimumSize = new System.Drawing.Size(400, 32);
-            this.InTeamLbl.Name = "InTeamLbl";
-            this.InTeamLbl.Size = new System.Drawing.Size(400, 32);
-            this.InTeamLbl.TabIndex = 43;
-            this.InTeamLbl.Text = "In Team";
-            this.InTeamLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DeleteDevFromTeam.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteDevFromTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.DeleteDevFromTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteDevFromTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteDevFromTeam.ForeColor = System.Drawing.Color.White;
+            this.DeleteDevFromTeam.Location = new System.Drawing.Point(779, 482);
+            this.DeleteDevFromTeam.Name = "DeleteDevFromTeam";
+            this.DeleteDevFromTeam.Size = new System.Drawing.Size(194, 40);
+            this.DeleteDevFromTeam.TabIndex = 42;
+            this.DeleteDevFromTeam.Text = "Delete Developer from Team";
+            this.DeleteDevFromTeam.UseVisualStyleBackColor = false;
+            this.DeleteDevFromTeam.Click += new System.EventHandler(this.DeleteDevFromTeam_Click);
             // 
             // Developers
             // 
@@ -407,7 +413,7 @@
             this.Developers.BackColor = System.Drawing.Color.Transparent;
             this.Developers.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Developers.ForeColor = System.Drawing.Color.White;
-            this.Developers.Location = new System.Drawing.Point(136, 70);
+            this.Developers.Location = new System.Drawing.Point(148, 122);
             this.Developers.MinimumSize = new System.Drawing.Size(400, 32);
             this.Developers.Name = "Developers";
             this.Developers.Size = new System.Drawing.Size(400, 32);
@@ -421,7 +427,7 @@
             this.Teams.BackColor = System.Drawing.Color.Transparent;
             this.Teams.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Teams.ForeColor = System.Drawing.Color.White;
-            this.Teams.Location = new System.Drawing.Point(589, 70);
+            this.Teams.Location = new System.Drawing.Point(573, 122);
             this.Teams.MinimumSize = new System.Drawing.Size(400, 32);
             this.Teams.Name = "Teams";
             this.Teams.Size = new System.Drawing.Size(400, 32);
@@ -429,30 +435,60 @@
             this.Teams.Text = "Teams";
             this.Teams.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ShowALL
+            // 
+            this.ShowALL.BackColor = System.Drawing.Color.Transparent;
+            this.ShowALL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.ShowALL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowALL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowALL.ForeColor = System.Drawing.Color.White;
+            this.ShowALL.Location = new System.Drawing.Point(137, 56);
+            this.ShowALL.Name = "ShowALL";
+            this.ShowALL.Size = new System.Drawing.Size(848, 40);
+            this.ShowALL.TabIndex = 46;
+            this.ShowALL.Text = "SHOW ALL";
+            this.ShowALL.UseVisualStyleBackColor = false;
+            this.ShowALL.Click += new System.EventHandler(this.ShowALL_Click);
+            // 
+            // CreateTeamBtn
+            // 
+            this.CreateTeamBtn.BackColor = System.Drawing.Color.Transparent;
+            this.CreateTeamBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.CreateTeamBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateTeamBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateTeamBtn.ForeColor = System.Drawing.Color.White;
+            this.CreateTeamBtn.Location = new System.Drawing.Point(578, 544);
+            this.CreateTeamBtn.Name = "CreateTeamBtn";
+            this.CreateTeamBtn.Size = new System.Drawing.Size(395, 40);
+            this.CreateTeamBtn.TabIndex = 47;
+            this.CreateTeamBtn.Text = "Create Team";
+            this.CreateTeamBtn.UseVisualStyleBackColor = false;
+            this.CreateTeamBtn.Click += new System.EventHandler(this.CreateTeamBtn_Click);
+            // 
             // DevelopersView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.CreateTeamBtn);
+            this.Controls.Add(this.ShowALL);
             this.Controls.Add(this.Teams);
             this.Controls.Add(this.Developers);
-            this.Controls.Add(this.InTeamLbl);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.Add);
-            this.Controls.Add(this.materialListView2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.AddDeveloper);
+            this.Controls.Add(this.DeleteDevFromTeam);
+            this.Controls.Add(this.AddDevToTeam);
+            this.Controls.Add(this.DevelopersListView);
+            this.Controls.Add(this.RemoveDevBtn);
             this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.FindByIdTxtB);
             this.Controls.Add(this.FindByIdBtn);
             this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.FindByTeamNumberTxtB);
             this.Controls.Add(this.FindByTeamBtn);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.PasswordTxtBox);
+            this.Controls.Add(this.FindByProjectTxtB);
             this.Controls.Add(this.FindByProjectBtn);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.TeamsListView);
             this.Controls.Add(this.NavigationBar);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -476,23 +512,26 @@
         private System.Windows.Forms.Button Clients;
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button Close;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private MaterialSkin.Controls.MaterialListView TeamsListView;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox PasswordTxtBox;
+        private System.Windows.Forms.TextBox FindByProjectTxtB;
         private System.Windows.Forms.Button FindByProjectBtn;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox FindByTeamNumberTxtB;
         private System.Windows.Forms.Button FindByTeamBtn;
         private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox FindByIdTxtB;
         private System.Windows.Forms.Button FindByIdBtn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button AddDeveloper;
-        private MaterialSkin.Controls.MaterialListView materialListView2;
-        private System.Windows.Forms.Button Add;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label InTeamLbl;
+        private System.Windows.Forms.Button RemoveDevBtn;
+        private MaterialSkin.Controls.MaterialListView DevelopersListView;
+        private System.Windows.Forms.Button AddDevToTeam;
+        private System.Windows.Forms.Button DeleteDevFromTeam;
         private System.Windows.Forms.Label Developers;
         private System.Windows.Forms.Label Teams;
+        private System.Windows.Forms.ColumnHeader Team_Id;
+        private System.Windows.Forms.ColumnHeader Developer_Id;
+        private System.Windows.Forms.ColumnHeader Senior;
+        private System.Windows.Forms.Button ShowALL;
+        private System.Windows.Forms.Button CreateTeamBtn;
     }
 }

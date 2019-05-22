@@ -212,7 +212,7 @@
             // ProjectId
             // 
             this.ProjectId.Text = "Project Name";
-            this.ProjectId.Width = 120;
+            this.ProjectId.Width = 142;
             // 
             // Description
             // 

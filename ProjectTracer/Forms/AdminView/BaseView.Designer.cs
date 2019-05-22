@@ -109,6 +109,7 @@
             this.TasksBtn.Text = "Tasks";
             this.TasksBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.TasksBtn.UseVisualStyleBackColor = false;
+            this.TasksBtn.Click += new System.EventHandler(this.TasksBtn_Click);
             // 
             // ProjectsBtn
             // 

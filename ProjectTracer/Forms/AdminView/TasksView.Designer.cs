@@ -37,12 +37,18 @@
             this.Minimize = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.PasswordTxtBox = new System.Windows.Forms.TextBox();
+            this.InputTextBox = new System.Windows.Forms.TextBox();
             this.ProjectName = new System.Windows.Forms.Button();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.AddTask = new System.Windows.Forms.Button();
-            this.materialListView2 = new MaterialSkin.Controls.MaterialListView();
+            this.TasksViewList = new MaterialSkin.Controls.MaterialListView();
+            this.Task_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DescriptionTask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeadlLineTask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeleteTaskBtn = new System.Windows.Forms.Button();
+            this.AddTaskBtn = new System.Windows.Forms.Button();
+            this.ProjectsViewList = new MaterialSkin.Controls.MaterialListView();
+            this.Project_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeadLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EditTaskBtn = new System.Windows.Forms.Button();
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -188,17 +194,17 @@
             this.richTextBox1.TabIndex = 26;
             this.richTextBox1.Text = "";
             // 
-            // PasswordTxtBox
+            // InputTextBox
             // 
-            this.PasswordTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.PasswordTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PasswordTxtBox.ForeColor = System.Drawing.Color.White;
-            this.PasswordTxtBox.Location = new System.Drawing.Point(374, 73);
-            this.PasswordTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
-            this.PasswordTxtBox.Name = "PasswordTxtBox";
-            this.PasswordTxtBox.Size = new System.Drawing.Size(280, 29);
-            this.PasswordTxtBox.TabIndex = 25;
-            this.PasswordTxtBox.TabStop = false;
+            this.InputTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.InputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InputTextBox.ForeColor = System.Drawing.Color.White;
+            this.InputTextBox.Location = new System.Drawing.Point(374, 73);
+            this.InputTextBox.MinimumSize = new System.Drawing.Size(100, 32);
+            this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.Size = new System.Drawing.Size(280, 29);
+            this.InputTextBox.TabIndex = 25;
+            this.InputTextBox.TabStop = false;
             // 
             // ProjectName
             // 
@@ -214,68 +220,111 @@
             this.ProjectName.TabIndex = 24;
             this.ProjectName.Text = "Project Name";
             this.ProjectName.UseVisualStyleBackColor = false;
+            this.ProjectName.Click += new System.EventHandler(this.ProjectName_Click);
             // 
-            // materialListView1
+            // TasksViewList
             // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(566, 125);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(422, 405);
-            this.materialListView1.TabIndex = 27;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.TasksViewList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TasksViewList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Task_Id,
+            this.DescriptionTask,
+            this.DeadlLineTask});
+            this.TasksViewList.Depth = 0;
+            this.TasksViewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.TasksViewList.FullRowSelect = true;
+            this.TasksViewList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.TasksViewList.Location = new System.Drawing.Point(566, 125);
+            this.TasksViewList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.TasksViewList.MouseState = MaterialSkin.MouseState.OUT;
+            this.TasksViewList.Name = "TasksViewList";
+            this.TasksViewList.OwnerDraw = true;
+            this.TasksViewList.Size = new System.Drawing.Size(422, 405);
+            this.TasksViewList.TabIndex = 27;
+            this.TasksViewList.UseCompatibleStateImageBehavior = false;
+            this.TasksViewList.View = System.Windows.Forms.View.Details;
+            this.TasksViewList.ItemActivate += new System.EventHandler(this.TasksViewList_ItemActivate);
             // 
-            // button1
+            // Task_Id
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(353, 536);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 40);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Delete Task";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Task_Id.Text = "Task";
+            this.Task_Id.Width = 120;
             // 
-            // AddTask
+            // DescriptionTask
             // 
-            this.AddTask.BackColor = System.Drawing.Color.Transparent;
-            this.AddTask.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.AddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddTask.ForeColor = System.Drawing.Color.White;
-            this.AddTask.Location = new System.Drawing.Point(147, 536);
-            this.AddTask.Name = "AddTask";
-            this.AddTask.Size = new System.Drawing.Size(200, 40);
-            this.AddTask.TabIndex = 28;
-            this.AddTask.Text = "Add Task";
-            this.AddTask.UseVisualStyleBackColor = false;
+            this.DescriptionTask.Text = "Description";
+            this.DescriptionTask.Width = 200;
             // 
-            // materialListView2
+            // DeadlLineTask
             // 
-            this.materialListView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView2.Depth = 0;
-            this.materialListView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView2.FullRowSelect = true;
-            this.materialListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView2.Location = new System.Drawing.Point(147, 125);
-            this.materialListView2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView2.Name = "materialListView2";
-            this.materialListView2.OwnerDraw = true;
-            this.materialListView2.Size = new System.Drawing.Size(413, 405);
-            this.materialListView2.TabIndex = 30;
-            this.materialListView2.UseCompatibleStateImageBehavior = false;
-            this.materialListView2.View = System.Windows.Forms.View.Details;
+            this.DeadlLineTask.Text = "DeadLine";
+            this.DeadlLineTask.Width = 100;
+            // 
+            // DeleteTaskBtn
+            // 
+            this.DeleteTaskBtn.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.DeleteTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteTaskBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteTaskBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteTaskBtn.Location = new System.Drawing.Point(353, 536);
+            this.DeleteTaskBtn.Name = "DeleteTaskBtn";
+            this.DeleteTaskBtn.Size = new System.Drawing.Size(200, 40);
+            this.DeleteTaskBtn.TabIndex = 29;
+            this.DeleteTaskBtn.Text = "Delete Task";
+            this.DeleteTaskBtn.UseVisualStyleBackColor = false;
+            this.DeleteTaskBtn.Click += new System.EventHandler(this.DeleteTaskBtn_Click);
+            // 
+            // AddTaskBtn
+            // 
+            this.AddTaskBtn.BackColor = System.Drawing.Color.Transparent;
+            this.AddTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.AddTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTaskBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddTaskBtn.ForeColor = System.Drawing.Color.White;
+            this.AddTaskBtn.Location = new System.Drawing.Point(147, 536);
+            this.AddTaskBtn.Name = "AddTaskBtn";
+            this.AddTaskBtn.Size = new System.Drawing.Size(200, 40);
+            this.AddTaskBtn.TabIndex = 28;
+            this.AddTaskBtn.Text = "Add Task";
+            this.AddTaskBtn.UseVisualStyleBackColor = false;
+            this.AddTaskBtn.Click += new System.EventHandler(this.AddTaskBtn_Click);
+            // 
+            // ProjectsViewList
+            // 
+            this.ProjectsViewList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ProjectsViewList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Project_Id,
+            this.Description,
+            this.DeadLine});
+            this.ProjectsViewList.Depth = 0;
+            this.ProjectsViewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.ProjectsViewList.FullRowSelect = true;
+            this.ProjectsViewList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ProjectsViewList.Location = new System.Drawing.Point(147, 125);
+            this.ProjectsViewList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ProjectsViewList.MouseState = MaterialSkin.MouseState.OUT;
+            this.ProjectsViewList.Name = "ProjectsViewList";
+            this.ProjectsViewList.OwnerDraw = true;
+            this.ProjectsViewList.Size = new System.Drawing.Size(413, 405);
+            this.ProjectsViewList.TabIndex = 30;
+            this.ProjectsViewList.UseCompatibleStateImageBehavior = false;
+            this.ProjectsViewList.View = System.Windows.Forms.View.Details;
+            this.ProjectsViewList.ItemActivate += new System.EventHandler(this.ProjectsViewList_ItemActivate);
+            // 
+            // Project_Id
+            // 
+            this.Project_Id.Text = "Project Id";
+            this.Project_Id.Width = 120;
+            // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 180;
+            // 
+            // DeadLine
+            // 
+            this.DeadLine.Text = "DeadLine";
+            this.DeadLine.Width = 120;
             // 
             // EditTaskBtn
             // 
@@ -284,12 +333,13 @@
             this.EditTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditTaskBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EditTaskBtn.ForeColor = System.Drawing.Color.White;
-            this.EditTaskBtn.Location = new System.Drawing.Point(607, 536);
+            this.EditTaskBtn.Location = new System.Drawing.Point(566, 536);
             this.EditTaskBtn.Name = "EditTaskBtn";
             this.EditTaskBtn.Size = new System.Drawing.Size(200, 40);
             this.EditTaskBtn.TabIndex = 31;
             this.EditTaskBtn.Text = "Edit Task";
             this.EditTaskBtn.UseVisualStyleBackColor = false;
+            this.EditTaskBtn.Click += new System.EventHandler(this.EditTaskBtn_Click);
             // 
             // TasksView
             // 
@@ -298,12 +348,12 @@
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.EditTaskBtn);
-            this.Controls.Add(this.materialListView2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.AddTask);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.ProjectsViewList);
+            this.Controls.Add(this.DeleteTaskBtn);
+            this.Controls.Add(this.AddTaskBtn);
+            this.Controls.Add(this.TasksViewList);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.PasswordTxtBox);
+            this.Controls.Add(this.InputTextBox);
             this.Controls.Add(this.ProjectName);
             this.Controls.Add(this.NavigationBar);
             this.Controls.Add(this.panel1);
@@ -329,12 +379,18 @@
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button Close;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox PasswordTxtBox;
+        private System.Windows.Forms.TextBox InputTextBox;
         private System.Windows.Forms.Button ProjectName;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button AddTask;
-        private MaterialSkin.Controls.MaterialListView materialListView2;
+        private MaterialSkin.Controls.MaterialListView TasksViewList;
+        private System.Windows.Forms.Button DeleteTaskBtn;
+        private System.Windows.Forms.Button AddTaskBtn;
+        private MaterialSkin.Controls.MaterialListView ProjectsViewList;
         private System.Windows.Forms.Button EditTaskBtn;
+        private System.Windows.Forms.ColumnHeader Task_Id;
+        private System.Windows.Forms.ColumnHeader DescriptionTask;
+        private System.Windows.Forms.ColumnHeader DeadlLineTask;
+        private System.Windows.Forms.ColumnHeader Project_Id;
+        private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.ColumnHeader DeadLine;
     }
 }

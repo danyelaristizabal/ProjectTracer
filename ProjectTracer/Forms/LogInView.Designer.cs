@@ -57,7 +57,7 @@
             this.RegisterBtn.Location = new System.Drawing.Point(103, 351);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(200, 40);
-            this.RegisterBtn.TabIndex = 8;
+            this.RegisterBtn.TabIndex = 4;
             this.RegisterBtn.Text = "Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
@@ -72,7 +72,7 @@
             this.LogInBtn.Location = new System.Drawing.Point(103, 295);
             this.LogInBtn.Name = "LogInBtn";
             this.LogInBtn.Size = new System.Drawing.Size(200, 40);
-            this.LogInBtn.TabIndex = 7;
+            this.LogInBtn.TabIndex = 2;
             this.LogInBtn.Text = "Log In";
             this.LogInBtn.UseVisualStyleBackColor = false;
             this.LogInBtn.Click += new System.EventHandler(this.LogInBtn_Click);
@@ -90,7 +90,6 @@
             this.UserLbl.TabIndex = 9;
             this.UserLbl.Text = "User";
             this.UserLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.UserLbl.Click += new System.EventHandler(this.UserLbl_Click);
             // 
             // PasswordTxtB
             // 
@@ -98,13 +97,13 @@
             this.PasswordTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PasswordTxtB.ForeColor = System.Drawing.Color.White;
             this.PasswordTxtB.Location = new System.Drawing.Point(139, 220);
+            this.PasswordTxtB.MaxLength = 50;
             this.PasswordTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.PasswordTxtB.Name = "PasswordTxtB";
             this.PasswordTxtB.PasswordChar = '*';
             this.PasswordTxtB.Size = new System.Drawing.Size(164, 29);
-            this.PasswordTxtB.TabIndex = 10;
-            this.PasswordTxtB.TabStop = false;
-            this.PasswordTxtB.TextChanged += new System.EventHandler(this.PasswordTxtB_TextChanged);
+            this.PasswordTxtB.TabIndex = 1;
+            this.PasswordTxtB.UseSystemPasswordChar = true;
             // 
             // UserTxtB
             // 
@@ -112,12 +111,11 @@
             this.UserTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserTxtB.ForeColor = System.Drawing.Color.White;
             this.UserTxtB.Location = new System.Drawing.Point(139, 165);
+            this.UserTxtB.MaxLength = 50;
             this.UserTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.UserTxtB.Name = "UserTxtB";
             this.UserTxtB.Size = new System.Drawing.Size(164, 29);
-            this.UserTxtB.TabIndex = 11;
-            this.UserTxtB.TabStop = false;
-            this.UserTxtB.TextChanged += new System.EventHandler(this.UserTxtB_TextChanged);
+            this.UserTxtB.TabIndex = 0;
             // 
             // UserBar
             // 

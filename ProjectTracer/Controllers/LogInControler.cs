@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ProjectTracer.Models;
 using ProjectTracer.Forms;
@@ -22,8 +18,7 @@ namespace ProjectTracer.Controllers
           Password={Encrypt.EncryptString(user.Password,"Pass")};");
             try
             {
-                MessageBox.Show($"Password: {user.Password} Encrypted: {Encrypt.EncryptString(user.Password, "Pass")} ");
-
+                MessageBox.Show($"Password: {user.Password} Encrypted: {Encrypt.EncryptString(user.Password, "Pass")}");
                 sq.Open();
                 sq.Close();
                 return true;
@@ -52,6 +47,12 @@ namespace ProjectTracer.Controllers
                     return false;  
             }
         }
+
+        internal static bool Autentificate(IUser myUser)
+        {
+            return (CheckUser(myUser) & CheckUserInUserTable(myUser)); 
+        }
+
         public static Form ChooseStartPage(IUser user)
         {
             var StartPage = new Form();

@@ -26,6 +26,7 @@ namespace ProjectTracer.Forms
             try
             {
                 AdminProjectsView.Items.Clear();
+
                 AdminProjectsController.GetProjectsItemList(Unit).ForEach(item => AdminProjectsView.Items.Add(item));
             }
             catch (Exception)
@@ -51,14 +52,19 @@ namespace ProjectTracer.Forms
                 }
 
                 SelectedProject = new Projects() {
+
                 Project_ID = Item.SubItems[0].Text,
+
                 Description = Item.SubItems[1].Text,
+
                 DeadLine = DateTime.Parse(Item.SubItems[2].Text),
+
                 Result = Item.SubItems[3].Text,
+
                 Client = Item.SubItems[4].Text
+
                 };
                 MessageBox.Show("Selected project: " + SelectedProject.Project_ID);
-
             }
             else
             {
@@ -68,11 +74,19 @@ namespace ProjectTracer.Forms
 
         private void GenerateInvitationCodeBtn_Click(object sender, EventArgs e)
         {
-            string Id = SelectedProject.Project_ID;
+            try
+            {
+                string Id = SelectedProject.Project_ID;
 
-            Code.Text = Encrypt.EncryptString(Id, "Pass");
-
-            MessageBox.Show(Encrypt.DecryptString(Code.Text, "Pass")); 
+                Code.Text = Encrypt.EncryptString(Id, "Pass");
+                Clipboard.SetText(Code.Text);
+                MessageBox.Show("Coppied to clipboard ");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to generate invitation code"); 
+            }
+             
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -144,11 +158,10 @@ namespace ProjectTracer.Forms
                 AdminProjectsController.RemoveProject(Unit, SelectedProject);
                 LoadProjects();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Unable to remove this project, Error: {ex}");
+                MessageBox.Show($"Unable to remove project");
             } 
-          
         }
     }
 }

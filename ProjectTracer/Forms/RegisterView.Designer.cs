@@ -34,7 +34,7 @@
             this.NameTxtBox = new System.Windows.Forms.TextBox();
             this.PasswordTxtBox = new System.Windows.Forms.TextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.CodeTxtBox = new System.Windows.Forms.TextBox();
+            this.RegistrtionCodeTxtB = new System.Windows.Forms.TextBox();
             this.RegisterBtn = new System.Windows.Forms.Button();
             this.UserLbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
@@ -87,30 +87,32 @@
             this.PasswordTxtBox.Location = new System.Drawing.Point(302, 246);
             this.PasswordTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.PasswordTxtBox.Name = "PasswordTxtBox";
+            this.PasswordTxtBox.PasswordChar = '*';
             this.PasswordTxtBox.Size = new System.Drawing.Size(280, 29);
             this.PasswordTxtBox.TabIndex = 18;
             this.PasswordTxtBox.TabStop = false;
+            this.PasswordTxtBox.UseSystemPasswordChar = true;
             // 
             // richTextBox4
             // 
             this.richTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox4.Location = new System.Drawing.Point(302, 365);
+            this.richTextBox4.Location = new System.Drawing.Point(304, 343);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(280, 1);
             this.richTextBox4.TabIndex = 24;
             this.richTextBox4.Text = "";
             // 
-            // CodeTxtBox
+            // RegistrtionCodeTxtB
             // 
-            this.CodeTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.CodeTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CodeTxtBox.ForeColor = System.Drawing.Color.White;
-            this.CodeTxtBox.Location = new System.Drawing.Point(302, 327);
-            this.CodeTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
-            this.CodeTxtBox.Name = "CodeTxtBox";
-            this.CodeTxtBox.Size = new System.Drawing.Size(280, 29);
-            this.CodeTxtBox.TabIndex = 23;
-            this.CodeTxtBox.TabStop = false;
+            this.RegistrtionCodeTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.RegistrtionCodeTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegistrtionCodeTxtB.ForeColor = System.Drawing.Color.White;
+            this.RegistrtionCodeTxtB.Location = new System.Drawing.Point(304, 305);
+            this.RegistrtionCodeTxtB.MinimumSize = new System.Drawing.Size(100, 32);
+            this.RegistrtionCodeTxtB.Name = "RegistrtionCodeTxtB";
+            this.RegistrtionCodeTxtB.Size = new System.Drawing.Size(280, 32);
+            this.RegistrtionCodeTxtB.TabIndex = 23;
+            this.RegistrtionCodeTxtB.TabStop = false;
             // 
             // RegisterBtn
             // 
@@ -171,11 +173,11 @@
             this.InvitationCodelbl.BackColor = System.Drawing.Color.Transparent;
             this.InvitationCodelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InvitationCodelbl.ForeColor = System.Drawing.Color.White;
-            this.InvitationCodelbl.Location = new System.Drawing.Point(135, 334);
+            this.InvitationCodelbl.Location = new System.Drawing.Point(97, 307);
             this.InvitationCodelbl.Name = "InvitationCodelbl";
-            this.InvitationCodelbl.Size = new System.Drawing.Size(163, 25);
+            this.InvitationCodelbl.Size = new System.Drawing.Size(201, 25);
             this.InvitationCodelbl.TabIndex = 31;
-            this.InvitationCodelbl.Text = "InvitationCode";
+            this.InvitationCodelbl.Text = "Registration Code";
             // 
             // richTextBox5
             // 
@@ -279,7 +281,7 @@
             this.Controls.Add(this.NameLbl);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.CodeTxtBox);
+            this.Controls.Add(this.RegistrtionCodeTxtB);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.NameTxtBox);
@@ -304,7 +306,7 @@
         private System.Windows.Forms.TextBox NameTxtBox;
         private System.Windows.Forms.TextBox PasswordTxtBox;
         private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.TextBox CodeTxtBox;
+        private System.Windows.Forms.TextBox RegistrtionCodeTxtB;
         private System.Windows.Forms.Button RegisterBtn;
         private System.Windows.Forms.Label UserLbl;
         private System.Windows.Forms.Label NameLbl;

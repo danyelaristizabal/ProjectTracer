@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    internal class ProjectRepository : Repository<Projects>, IProjectRepository
+    public class TaskRepository : Repository<Tasks>, ITaskRepository
     {
-        public ProjectRepository(ProjectTracerEntities Context) : base(Context)
+        public TaskRepository(ProjectTracerEntities Context) : base(Context)
         {
         }
+
         public ProjectTracerEntities ProjectTracerEntities
         {
-               get { return Context as ProjectTracerEntities; } 
+            get { return Context as ProjectTracerEntities; }
         }
     }
 }

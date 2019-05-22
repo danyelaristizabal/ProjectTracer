@@ -36,5 +36,10 @@ namespace ProjectTracer.Forms
         {
 
         }
+
+        private void TasksBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
