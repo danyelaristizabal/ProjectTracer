@@ -27,6 +27,7 @@ namespace ProjectTracer.Controllers
             return ProjectsItemList;
         }
 
+
         public static void RemoveProject(UnityOfWork unit,Projects project)
         {
             var ProjectToDelete = unit.context
@@ -35,34 +36,43 @@ namespace ProjectTracer.Controllers
                 .Include("Tasks")
                 .FirstOrDefault(searchedProject => searchedProject.Project_ID == project.Project_ID);
 
-            //var tasks = unit.context.Tasks
-            //    .Where(t => t.Project_Id == ProjectToDelete.Project_ID)
-            //    .ToList();
+            var documents = unit.Documents.GetAll()
+                .Where(d => d.Project_Id == ProjectToDelete.Project_ID)
+                .ToList();
 
-            //var documents = unit.context.Documents
-            //    .Where(d => d.Project_Id == ProjectToDelete.Project_ID)
-            //    .ToList();
+            unit.Documents.RemoveRange(documents);
+            unit.Complete();
 
-            //unit.context.Teams
-            //    .Where(t => t.Projects.Contains(ProjectToDelete))
-            //    .ToList()
-            //    .ForEach(t => t.Projects.Remove(ProjectToDelete));
+            var tasks = unit.context.Tasks
+                .Where(t => t.Project_Id == ProjectToDelete.Project_ID)
+                .ToList();
 
-            //unit.context.Clients
-            //    .Where(c => c.Projects
-            //    .Contains(ProjectToDelete))
-            //    .ToList()
-            //    .ForEach(c => c.Projects.Remove(ProjectToDelete));
+            unit.Tasks.RemoveRange(tasks);
+            unit.Complete();
 
-            //unit.Documents.RemoveRange(documents);
-            //unit.Tasks.RemoveRange(tasks);
+            unit.Teams
+                .GetAll()
+                .Where(t => t.Projects.Contains(ProjectToDelete))
+                .ToList()
+                .ForEach(t => t.Projects.Remove(ProjectToDelete));
 
-            //unit.Complete();
+            unit.Complete();
 
-            unit.context.Projects.Remove(ProjectToDelete);
+            unit.Clients
+                .GetAll()
+                .Where(c => c.Projects
+                .Contains(ProjectToDelete))
+                .ToList()
+                .ForEach(c => c.Projects.Remove(ProjectToDelete));
 
-            unit.context.SaveChanges(); 
+            unit.Complete();
+
+            unit.Projects.Remove(ProjectToDelete);
+
+            unit.Complete();
+            MessageBox.Show("Project Deleted");
         }
+
 
         public static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string Input)
         {
