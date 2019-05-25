@@ -53,7 +53,7 @@ namespace ProjectTracer.Forms.AdminView
         {
             try
             {
-                AddTaskController.AddTask(NameTxtB.Text, DescriptionTxtB.Text, DeadLineTxtB.Text, Project_Id);
+                AddTaskController.AddTask( DescriptionTxtB.Text, DeadLineTxtB.Text, Project_Id);
             }
             catch (Exception)
             {
@@ -73,5 +73,6 @@ namespace ProjectTracer.Forms.AdminView
             this.WindowState = FormWindowState.Minimized;
 
         }
+
     }
 }

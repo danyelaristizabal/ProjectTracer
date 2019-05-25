@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,13 +55,17 @@ namespace ProjectTracer.Forms.AdminView
             try
             {
                 MyTask = EditTaskController.GetTaskById(unit, Project_Id, task_Id);
-                NameTxtB.Text = MyTask.Task_Id.ToString();
                 DescriptionTxtB.Text = MyTask.Description;
-                DeadLineTxtB.Text = MyTask.DeadLine.ToString();
+
+
+                string DateString = MyTask.DeadLine.Date.ToString();
+
+                DeadLineTxtB.Text = DateString;  
+
             }
-            catch (Exception)
+            catch (Exception E)
             {
-                MessageBox.Show("Error getting the task");
+                MessageBox.Show("Error getting the task "+ E);
 
             }
            
@@ -78,16 +83,16 @@ namespace ProjectTracer.Forms.AdminView
             var date = new DateTime(); 
             try
             {
-             date = DateTime.Parse(DeadLineTxtB.Text); 
+             date = DateTime.Parse(DeadLineTxtB.Text.ToString()); 
             }
             catch (Exception)
             {
 
-                MessageBox.Show("Please add a correct");
+                MessageBox.Show("E");
             }
             var newMyTask = new Tasks()
             {
-                Task_Id = MyTask.Task_Id,
+                Task_Id = MyTask.Task_Id, 
                 Project_Id = MyTask.Project_Id,
                 Description = DescriptionTxtB.Text,
                 DeadLine = DateTime.Parse(DeadLineTxtB.Text)
@@ -97,9 +102,9 @@ namespace ProjectTracer.Forms.AdminView
             {
                 EditTaskController.UpdateTask(unit, newMyTask);
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show($"Error ocurred saving changes:{E}");
+                MessageBox.Show($"Error ocurred saving changes");
             }
             MyBool = true;
             this.Close();

@@ -178,8 +178,9 @@ namespace ProjectTracer.Forms
             {
                 AdminTasksController.RemoveTask(Unit, SelectedTask);
                 LoadProjects();
+                LoadTasks();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show($"Unable to remove this project");
             }
@@ -209,7 +210,11 @@ namespace ProjectTracer.Forms
         }
         private void AddTaskForm_BoolRegisteredChanged(object sender, BoolEvent e)
         {
-            if (e.MyBool) LoadTasks();
+            if (e.MyBool)
+            {
+                LoadTasks();
+                LoadProjects();
+            } 
         }
         private void EditTaskBtn_Click(object sender, EventArgs e)
         {

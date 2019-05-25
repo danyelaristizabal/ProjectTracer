@@ -38,12 +38,8 @@
             this.Minimizr = new System.Windows.Forms.Button();
             this.Minimize = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
+            this.DescriptionTxtB = new System.Windows.Forms.RichTextBox();
             this.DescriptionLbl = new System.Windows.Forms.Label();
-            this.TaskNamelbl = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.NameTxtB = new System.Windows.Forms.TextBox();
-            this.DescriptionTxtB = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +50,7 @@
             this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CancelBtn.ForeColor = System.Drawing.Color.White;
-            this.CancelBtn.Location = new System.Drawing.Point(240, 513);
+            this.CancelBtn.Location = new System.Drawing.Point(148, 506);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(200, 40);
             this.CancelBtn.TabIndex = 69;
@@ -65,7 +61,7 @@
             // richTextBox3
             // 
             this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox3.Location = new System.Drawing.Point(296, 339);
+            this.richTextBox3.Location = new System.Drawing.Point(286, 457);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(280, 1);
             this.richTextBox3.TabIndex = 76;
@@ -77,7 +73,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(170, 307);
+            this.label1.Location = new System.Drawing.Point(160, 425);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 25);
             this.label1.TabIndex = 75;
@@ -90,8 +86,7 @@
             this.DeadLineTxtB.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.DeadLineTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeadLineTxtB.ForeColor = System.Drawing.Color.White;
-            this.DeadLineTxtB.Location = new System.Drawing.Point(296, 308);
-            this.DeadLineTxtB.Mask = "0000-00-00";
+            this.DeadLineTxtB.Location = new System.Drawing.Point(286, 426);
             this.DeadLineTxtB.MinimumSize = new System.Drawing.Size(0, 32);
             this.DeadLineTxtB.Name = "DeadLineTxtB";
             this.DeadLineTxtB.Size = new System.Drawing.Size(280, 32);
@@ -104,7 +99,7 @@
             this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SaveBtn.ForeColor = System.Drawing.Color.White;
-            this.SaveBtn.Location = new System.Drawing.Point(473, 513);
+            this.SaveBtn.Location = new System.Drawing.Point(381, 506);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(200, 40);
             this.SaveBtn.TabIndex = 68;
@@ -191,71 +186,29 @@
             this.Close.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Close.UseVisualStyleBackColor = false;
             // 
+            // DescriptionTxtB
+            // 
+            this.DescriptionTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.DescriptionTxtB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DescriptionTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DescriptionTxtB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DescriptionTxtB.Location = new System.Drawing.Point(286, 77);
+            this.DescriptionTxtB.Name = "DescriptionTxtB";
+            this.DescriptionTxtB.Size = new System.Drawing.Size(280, 306);
+            this.DescriptionTxtB.TabIndex = 77;
+            this.DescriptionTxtB.Text = "";
+            // 
             // DescriptionLbl
             // 
             this.DescriptionLbl.AutoSize = true;
             this.DescriptionLbl.BackColor = System.Drawing.Color.Transparent;
             this.DescriptionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DescriptionLbl.ForeColor = System.Drawing.Color.White;
-            this.DescriptionLbl.Location = new System.Drawing.Point(151, 251);
+            this.DescriptionLbl.Location = new System.Drawing.Point(145, 78);
             this.DescriptionLbl.Name = "DescriptionLbl";
             this.DescriptionLbl.Size = new System.Drawing.Size(131, 25);
-            this.DescriptionLbl.TabIndex = 73;
+            this.DescriptionLbl.TabIndex = 78;
             this.DescriptionLbl.Text = "Description";
-            // 
-            // TaskNamelbl
-            // 
-            this.TaskNamelbl.AutoSize = true;
-            this.TaskNamelbl.BackColor = System.Drawing.Color.Transparent;
-            this.TaskNamelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TaskNamelbl.ForeColor = System.Drawing.Color.White;
-            this.TaskNamelbl.Location = new System.Drawing.Point(129, 184);
-            this.TaskNamelbl.Name = "TaskNamelbl";
-            this.TaskNamelbl.Size = new System.Drawing.Size(130, 25);
-            this.TaskNamelbl.TabIndex = 72;
-            this.TaskNamelbl.Text = "Task Name";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(296, 282);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(280, 1);
-            this.richTextBox1.TabIndex = 71;
-            this.richTextBox1.Text = "";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox2.Location = new System.Drawing.Point(296, 215);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(280, 1);
-            this.richTextBox2.TabIndex = 70;
-            this.richTextBox2.Text = "";
-            // 
-            // NameTxtB
-            // 
-            this.NameTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.NameTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameTxtB.ForeColor = System.Drawing.Color.White;
-            this.NameTxtB.Location = new System.Drawing.Point(296, 177);
-            this.NameTxtB.MaxLength = 60;
-            this.NameTxtB.MinimumSize = new System.Drawing.Size(100, 32);
-            this.NameTxtB.Name = "NameTxtB";
-            this.NameTxtB.Size = new System.Drawing.Size(280, 32);
-            this.NameTxtB.TabIndex = 65;
-            // 
-            // DescriptionTxtB
-            // 
-            this.DescriptionTxtB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.DescriptionTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DescriptionTxtB.ForeColor = System.Drawing.Color.White;
-            this.DescriptionTxtB.Location = new System.Drawing.Point(296, 244);
-            this.DescriptionTxtB.MaxLength = 60;
-            this.DescriptionTxtB.MinimumSize = new System.Drawing.Size(100, 32);
-            this.DescriptionTxtB.Name = "DescriptionTxtB";
-            this.DescriptionTxtB.Size = new System.Drawing.Size(280, 32);
-            this.DescriptionTxtB.TabIndex = 66;
             // 
             // EditTask
             // 
@@ -263,18 +216,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.DescriptionLbl);
+            this.Controls.Add(this.DescriptionTxtB);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DeadLineTxtB);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DescriptionLbl);
-            this.Controls.Add(this.TaskNamelbl);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.NameTxtB);
-            this.Controls.Add(this.DescriptionTxtB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditTask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -297,11 +246,7 @@
         private System.Windows.Forms.Button Minimizr;
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.RichTextBox DescriptionTxtB;
         private System.Windows.Forms.Label DescriptionLbl;
-        private System.Windows.Forms.Label TaskNamelbl;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.TextBox NameTxtB;
-        private System.Windows.Forms.TextBox DescriptionTxtB;
     }
 }

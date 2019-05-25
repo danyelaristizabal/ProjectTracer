@@ -10,7 +10,7 @@ namespace ProjectTracer.Controllers
 {
     public static class AddTaskController
     {
-        public static bool AddTask(string id, string descripton, string deadline, string project_Id)
+        public static bool AddTask( string descripton, string deadline, string project_Id)
         {
             if(project_Id == null)
             {
@@ -18,21 +18,18 @@ namespace ProjectTracer.Controllers
                 return false; 
             }
             var parseDeadLine = new DateTime();
-            var parseId = new int();
             try
             {
                 parseDeadLine = DateTime.Parse(deadline);
-                parseId = int.Parse(id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show("Not correct format deadline on Id");
+                MessageBox.Show("Incorrect DeadLine");
                 return false;
             }
             var unit = new UnityOfWork(new ProjectTracerEntities());
             unit.Tasks.Add(new Tasks()
             {
-                Task_Id = parseId,
                 Description = descripton,
                 DeadLine = parseDeadLine,
                 Project_Id = project_Id
@@ -42,7 +39,7 @@ namespace ProjectTracer.Controllers
                 unit.Complete();
                 return true;
             }
-            catch (Exception E)
+            catch (Exception)
             {
                 MessageBox.Show($"Error ocurred saving changes, please try later");
                 return false;
