@@ -61,7 +61,6 @@ namespace ProjectTracer.Forms
 
                 Result = Item.SubItems[3].Text,
 
-                Client = Item.SubItems[4].Text
 
                 };
                 MessageBox.Show("Selected project: " + SelectedProject.Project_ID);
@@ -158,9 +157,9 @@ namespace ProjectTracer.Forms
                 AdminProjectsController.RemoveProject(Unit, SelectedProject);
                 LoadProjects();
             }
-            catch (Exception)
+            catch (Exception E )
             {
-                MessageBox.Show($"Unable to remove project");
+                MessageBox.Show($"Unable to remove project: {E}" );
             } 
         }
     }

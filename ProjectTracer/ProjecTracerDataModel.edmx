@@ -19,6 +19,14 @@
           <Property Name="Client_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="ClientsAndProjects">
+          <Key>
+            <PropertyRef Name="Client_Id" />
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Client_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Project_Id" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Developers">
           <Key>
             <PropertyRef Name="Developer_Id" />
@@ -50,7 +58,6 @@
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DeadLine" Type="date" Nullable="false" />
           <Property Name="Result" Type="varchar" MaxLength="50" />
-          <Property Name="Client" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Seniors">
           <Key>
@@ -108,6 +115,30 @@
           <Property Name="Team" Type="int" Nullable="false" />
           <Property Name="Project" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ClientsAndProjects_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ClientsAndProjects" Type="Self.ClientsAndProjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Client_Id" />
+            </Principal>
+            <Dependent Role="ClientsAndProjects">
+              <PropertyRef Name="Client_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientsAndProjects_Projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ClientsAndProjects" Type="Self.ClientsAndProjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Project ID" />
+            </Principal>
+            <Dependent Role="ClientsAndProjects">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DevelopersAndTeams_Developer">
           <End Role="Developers" Type="Self.Developers" Multiplicity="1" />
           <End Role="DevelopersAndTeams" Type="Self.DevelopersAndTeams" Multiplicity="*" />
@@ -141,18 +172,6 @@
             </Principal>
             <Dependent Role="Documents">
               <PropertyRef Name="Project_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Projects_Client">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Client_Id" />
-            </Principal>
-            <Dependent Role="Projects">
-              <PropertyRef Name="Client" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -274,6 +293,7 @@
         <EntityContainer Name="ProjectTracerModelStoreContainer">
           <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientsAndProjects" EntityType="Self.ClientsAndProjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Developers" EntityType="Self.Developers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DevelopersAndTeams" EntityType="Self.DevelopersAndTeams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
@@ -285,6 +305,14 @@
           <EntitySet Name="TasksAndDevelopers" EntityType="Self.TasksAndDevelopers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeamsAndProject" EntityType="Self.TeamsAndProject" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClientsAndProjects_Clients" Association="Self.FK_ClientsAndProjects_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientsAndProjects" EntitySet="ClientsAndProjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientsAndProjects_Projects" Association="Self.FK_ClientsAndProjects_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ClientsAndProjects" EntitySet="ClientsAndProjects" />
+          </AssociationSet>
           <AssociationSet Name="FK_DevelopersAndTeams_Developer" Association="Self.FK_DevelopersAndTeams_Developer">
             <End Role="Developers" EntitySet="Developers" />
             <End Role="DevelopersAndTeams" EntitySet="DevelopersAndTeams" />
@@ -296,10 +324,6 @@
           <AssociationSet Name="FK_Documents_ProjectId" Association="Self.FK_Documents_ProjectId">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Documents" EntitySet="Documents" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Projects_Client" Association="Self.FK_Projects_Client">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
           <AssociationSet Name="FK_SeniorsAndTeams_Seniors" Association="Self.FK_SeniorsAndTeams_Seniors">
             <End Role="Seniors" EntitySet="Seniors" />
@@ -348,7 +372,7 @@
           </Key>
           <Property Name="Client_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Projects_Client" FromRole="Clients" ToRole="Projects" />
+          <NavigationProperty Name="Projects" Relationship="Self.ClientsAndProjects" FromRole="Clients" ToRole="Projects" />
         </EntityType>
         <EntityType Name="Developers">
           <Key>
@@ -376,10 +400,9 @@
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Client" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK_Projects_Client" FromRole="Projects" ToRole="Clients" />
           <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ProjectId" FromRole="Projects" ToRole="Documents" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Project" FromRole="Projects" ToRole="Tasks" />
+          <NavigationProperty Name="Clients" Relationship="Self.ClientsAndProjects" FromRole="Projects" ToRole="Clients" />
           <NavigationProperty Name="Teams" Relationship="Self.TeamsAndProject" FromRole="Projects" ToRole="Teams" />
         </EntityType>
         <EntityType Name="Seniors">
@@ -420,18 +443,6 @@
           <NavigationProperty Name="Seniors" Relationship="Self.SeniorsAndTeams" FromRole="Teams" ToRole="Seniors" />
           <NavigationProperty Name="Projects" Relationship="Self.TeamsAndProject" FromRole="Teams" ToRole="Projects" />
         </EntityType>
-        <Association Name="FK_Projects_Client">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Client_Id" />
-            </Principal>
-            <Dependent Role="Projects">
-              <PropertyRef Name="Client" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Documents_ProjectId">
           <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
           <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
@@ -455,6 +466,10 @@
               <PropertyRef Name="Project_Id" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientsAndProjects">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
         </Association>
         <Association Name="DevelopersAndTeams">
           <End Role="Developers" Type="Self.Developers" Multiplicity="*" />
@@ -482,10 +497,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" />
           <EntitySet Name="Teams" EntityType="Self.Teams" />
-          <AssociationSet Name="FK_Projects_Client" Association="Self.FK_Projects_Client">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Projects" EntitySet="Projects" />
-          </AssociationSet>
           <AssociationSet Name="FK_Documents_ProjectId" Association="Self.FK_Documents_ProjectId">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Documents" EntitySet="Documents" />
@@ -493,6 +504,10 @@
           <AssociationSet Name="FK_Tasks_Project" Association="Self.FK_Tasks_Project">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="ClientsAndProjects" Association="Self.ClientsAndProjects">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
           <AssociationSet Name="DevelopersAndTeams" Association="Self.DevelopersAndTeams">
             <End Role="Developers" EntitySet="Developers" />
@@ -598,7 +613,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DeadLine" ColumnName="DeadLine" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
-                <ScalarProperty Name="Client" ColumnName="Client" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -638,6 +652,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="ClientsAndProjects" TypeName="ProjectTracerModel.ClientsAndProjects" StoreEntitySet="ClientsAndProjects">
+            <EndProperty Name="Clients">
+              <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+            </EndProperty>
+            <EndProperty Name="Projects">
+              <ScalarProperty Name="Project_ID" ColumnName="Project_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="DevelopersAndTeams" TypeName="ProjectTracerModel.DevelopersAndTeams" StoreEntitySet="DevelopersAndTeams">
             <EndProperty Name="Developers">
               <ScalarProperty Name="Developer_Id" ColumnName="Developer" />

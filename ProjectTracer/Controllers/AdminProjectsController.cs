@@ -21,7 +21,7 @@ namespace ProjectTracer.Controllers
                 item.SubItems.Add(project.Description.ToString());
                 item.SubItems.Add(project.DeadLine.ToString());
                 item.SubItems.Add(project.Result.ToString());
-                item.SubItems.Add(project.Client.ToString());
+                if (project.Clients.Count > 0) item.SubItems.Add(project.Clients.FirstOrDefault().Client_Id); 
                 ProjectsItemList.Add(item);
             }
             return ProjectsItemList;
@@ -29,11 +29,39 @@ namespace ProjectTracer.Controllers
 
         public static void RemoveProject(UnityOfWork unit,Projects project)
         {
-            var ProjectToDelete = unit.Projects.GetAll().Where(searchedProject => searchedProject.Project_ID == project.Project_ID).FirstOrDefault();
+            var ProjectToDelete = unit.context
+                .Projects
+                .Include("Documents")
+                .Include("Tasks")
+                .FirstOrDefault(searchedProject => searchedProject.Project_ID == project.Project_ID);
 
-            unit.Projects.Remove(ProjectToDelete);
+            //var tasks = unit.context.Tasks
+            //    .Where(t => t.Project_Id == ProjectToDelete.Project_ID)
+            //    .ToList();
 
-            unit.Complete(); 
+            //var documents = unit.context.Documents
+            //    .Where(d => d.Project_Id == ProjectToDelete.Project_ID)
+            //    .ToList();
+
+            //unit.context.Teams
+            //    .Where(t => t.Projects.Contains(ProjectToDelete))
+            //    .ToList()
+            //    .ForEach(t => t.Projects.Remove(ProjectToDelete));
+
+            //unit.context.Clients
+            //    .Where(c => c.Projects
+            //    .Contains(ProjectToDelete))
+            //    .ToList()
+            //    .ForEach(c => c.Projects.Remove(ProjectToDelete));
+
+            //unit.Documents.RemoveRange(documents);
+            //unit.Tasks.RemoveRange(tasks);
+
+            //unit.Complete();
+
+            unit.context.Projects.Remove(ProjectToDelete);
+
+            unit.context.SaveChanges(); 
         }
 
         public static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string Input)
@@ -55,7 +83,7 @@ namespace ProjectTracer.Controllers
                     item.SubItems.Add(project.Description.ToString());
                     item.SubItems.Add(project.DeadLine.ToString());
                     item.SubItems.Add(project.Result.ToString());
-                    item.SubItems.Add(project.Client.ToString());
+                    if(project.Clients.Count > 0) item.SubItems.Add(project.Clients.FirstOrDefault().Client_Id);
                     ProjectsItemList.Add(item); 
                 }
             }

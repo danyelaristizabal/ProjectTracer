@@ -26,11 +26,13 @@ namespace ProjectTracer.Controllers
             {
                
                 var UnitOFWork = new UnityOfWork(new ProjectTracerEntities());
+
                 var projects = UnitOFWork.Projects.GetAll().ToList();
 
                 switch (user.GetType().Name)
                 {
                     case "Client":
+
                         if (user.InvitationCode != string.Empty)
                         {
                             var decryptedId = Encrypt.DecryptString(user.InvitationCode, "Pass");
@@ -43,16 +45,30 @@ namespace ProjectTracer.Controllers
 
                                     sq.Close();
 
-                                    UnitOFWork.Clients.Add(new Clients() { Client_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                                    // Add the new client
+                                    UnitOFWork.Clients.Add(
 
-                                    UnitOFWork.Projects
+                                        new Clients() {
+
+                                            Client_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass")
+                                        }
+                                        );
+                                    UnitOFWork.Complete();
+
+                                    //Relate client with the new project
+
+                                    UnitOFWork.Clients
                                         .GetAll()
-                                        .FirstOrDefault(i => i.Project_ID == project.Project_ID)
-                                        .Client = user.Name;
+                                        .FirstOrDefault(c => c.Client_Id == user.Name)
+                                        .Projects
+                                        .Add(
+                                             UnitOFWork.Projects
+                                            .GetAll()
+                                            .FirstOrDefault(P => P.Project_ID == decryptedId)
+                                        );
 
                                     UnitOFWork.Complete();
 
-                                    MessageBox.Show("Client registrated");
                                     return true;
                                 }
                             }
@@ -104,8 +120,10 @@ namespace ProjectTracer.Controllers
                                         // Add one team to teams 
                                         UnitOFWork.Teams
                                             .Add(new Teams() { Team_ID = teamId });
+
                                         UnitOFWork.Complete(); 
                                         //Relate this team to our project 
+
                                         UnitOFWork.Teams
                                             .GetAll()
                                             .FirstOrDefault(t => t.Team_ID == teamId)

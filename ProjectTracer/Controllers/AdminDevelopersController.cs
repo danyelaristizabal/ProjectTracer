@@ -263,7 +263,6 @@ namespace ProjectTracer.Controllers
 
             
         }
-
         internal static void AddTeam(UnityOfWork unit, string seniorId)
         {
             var allTeams = unit.context.Teams;

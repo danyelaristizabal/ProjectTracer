@@ -10,6 +10,7 @@ namespace ProjectTracer.Repository
     {
         IProjectRepository Projects { get; }
         ITaskRepository Tasks { get; }
+        IDocumentRepository Documents { get; }
         ITeamRepository Teams { get;  }
         IClientRepository Clients { get; }
         IDeveloperRepository Developers { get;  } 

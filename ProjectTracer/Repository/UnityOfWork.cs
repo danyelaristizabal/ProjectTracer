@@ -11,6 +11,7 @@ namespace ProjectTracer.Repository
         public readonly ProjectTracerEntities context;
         public IProjectRepository  Projects  { get; private  set; }
         public ITaskRepository Tasks { get; private set; }
+        public IDocumentRepository Documents { get; private set; }
         public ITeamRepository Teams { get; private set;  }
         public IClientRepository Clients { get; private set; }
         public IDeveloperRepository Developers { get; private set; }
@@ -22,6 +23,7 @@ namespace ProjectTracer.Repository
             context = _context;
             Projects = new ProjectRepository(_context);
             Tasks = new TaskRepository(_context);
+            Documents = new DocumentRepository(_context);
             Teams = new TeamRepository(_context); 
             Clients = new ClientRepository(_context);
             Developers = new DeveloperRepository(_context);

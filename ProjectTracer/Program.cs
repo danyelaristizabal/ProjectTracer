@@ -11,6 +11,8 @@ namespace ProjectTracer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var MyEntry = new EntryView(new InitialBaseView());
+           // var MyEntry = new DevelopersView();
+
             MyEntry.Show();
             Application.Run();
         }

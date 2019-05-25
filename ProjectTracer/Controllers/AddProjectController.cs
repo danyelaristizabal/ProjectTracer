@@ -29,7 +29,6 @@ namespace ProjectTracer.Controllers
                 Description = descripton,
                 DeadLine =ParsedDeadLine ,
                 Result = "notregistered",
-                Client = "notregistered"
             });
             try
             {
