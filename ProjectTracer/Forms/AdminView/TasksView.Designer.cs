@@ -50,6 +50,7 @@
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DeadLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EditTaskBtn = new System.Windows.Forms.Button();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -266,7 +267,7 @@
             this.DeleteTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteTaskBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeleteTaskBtn.ForeColor = System.Drawing.Color.White;
-            this.DeleteTaskBtn.Location = new System.Drawing.Point(353, 536);
+            this.DeleteTaskBtn.Location = new System.Drawing.Point(360, 536);
             this.DeleteTaskBtn.Name = "DeleteTaskBtn";
             this.DeleteTaskBtn.Size = new System.Drawing.Size(200, 40);
             this.DeleteTaskBtn.TabIndex = 29;
@@ -341,12 +342,29 @@
             this.EditTaskBtn.UseVisualStyleBackColor = false;
             this.EditTaskBtn.Click += new System.EventHandler(this.EditTaskBtn_Click);
             // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.BackColor = System.Drawing.Color.Transparent;
+            this.RefreshBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.RefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RefreshBtn.ForeColor = System.Drawing.Color.White;
+            this.RefreshBtn.Location = new System.Drawing.Point(794, 536);
+            this.RefreshBtn.MinimumSize = new System.Drawing.Size(194, 40);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(194, 40);
+            this.RefreshBtn.TabIndex = 32;
+            this.RefreshBtn.Text = "Refresh";
+            this.RefreshBtn.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
+            // 
             // TasksView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.RefreshBtn);
             this.Controls.Add(this.EditTaskBtn);
             this.Controls.Add(this.ProjectsViewList);
             this.Controls.Add(this.DeleteTaskBtn);
@@ -392,5 +410,6 @@
         private System.Windows.Forms.ColumnHeader Project_Id;
         private System.Windows.Forms.ColumnHeader Description;
         private System.Windows.Forms.ColumnHeader DeadLine;
+        private System.Windows.Forms.Button RefreshBtn;
     }
 }

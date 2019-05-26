@@ -51,7 +51,7 @@ namespace ProjectTracer.Forms
             }
             catch (Exception)
             {
-                MessageBox.Show("Erro loading tasks, please select a project");
+                MessageBox.Show("Error loading tasks, please select a project");
             }
         }
 
@@ -216,34 +216,51 @@ namespace ProjectTracer.Forms
                 LoadProjects();
             } 
         }
+
+        private void EditTaskForm_BoolRegisteredChangedE(object sender, BoolEvent e)
+        {
+            if (e.MyBool)
+            {
+                LoadTasks();
+                LoadProjects();
+            }
+        }
+
         private void EditTaskBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                EditTask AddProjectForm;
+                EditTask EditTaskForm;
                 if (SelectedProject.Project_ID != null)
-                    AddProjectForm = new EditTask(SelectedProject.Project_ID, SelectedTask.Task_Id);
+                    EditTaskForm = new EditTask(SelectedProject.Project_ID, SelectedTask.Task_Id);
                 else
                 {
                     MessageBox.Show("Select a task to edit first, and then click in the edit button");
                     return;
                 }
 
-                AddProjectForm.BoolRegisteredChanged += new EventHandler<BoolEvent>(AddTaskForm_BoolRegisteredChanged);
+                EditTaskForm.BoolRegisteredChangedE += new EventHandler<BoolEvent>(EditTaskForm_BoolRegisteredChangedE);
 
-                AddProjectForm.ShowDialog();
+                EditTaskForm.ShowDialog();
 
-                AddProjectForm.BoolRegisteredChanged -= AddTaskForm_BoolRegisteredChanged;
+                EditTaskForm.BoolRegisteredChangedE -= EditTaskForm_BoolRegisteredChangedE;
 
-                AddProjectForm.Dispose();
+                EditTaskForm.Dispose();
 
-                AddProjectForm = null;
+                EditTaskForm = null;
 
             }
             catch (Exception)
             {
                 MessageBox.Show("Failed to edit, try later"); 
             }
+        }
+
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            var tasksForm = new TasksView();
+            tasksForm.Show();
+            this.Close();
         }
     }
 }

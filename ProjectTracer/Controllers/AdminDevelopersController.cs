@@ -196,43 +196,22 @@ namespace ProjectTracer.Controllers
         }
         internal static void AddDevToTeam(UnityOfWork unit, string devId, int TeamId)
         {
-            var teamWhereToAdd = unit.Teams
+            unit.Developers
                 .GetAll()
-                .Where(SearchedTeam => SearchedTeam.Team_ID == TeamId)
-                .FirstOrDefault();
-
-            var devToAdd = teamWhereToAdd.Developers
-                .Where(SearchedDev => SearchedDev.Developer_Id == devId)
-                .FirstOrDefault();
-
-
-            unit.Teams
-                .GetAll()
-                .Where(SearchedTeam => SearchedTeam.Team_ID == TeamId)
-                .FirstOrDefault()
-                .Developers.Add(devToAdd);
+                .FirstOrDefault(D => D.Developer_Id == devId)
+                .Teams
+                .Add(unit.Teams.GetAll().FirstOrDefault(T => T.Team_ID == TeamId)); 
 
             unit.Complete();
         }
 
         internal static void RemoveDevFromTeam(UnityOfWork unit, string devId, int TeamId)
         {
-            var teamWhereToDelete = unit.Teams
+            unit.Developers
                 .GetAll()
-                .Where(SearchedTeam => SearchedTeam.Team_ID == TeamId)
-                .FirstOrDefault();
-
-            var devtoDelete =  teamWhereToDelete.Developers
-                .Where(SearchedDev => SearchedDev.Developer_Id == devId)
-                .FirstOrDefault();
-
-            unit.Teams
-                .GetAll()
-                .Where(SearchedTeam => SearchedTeam.Team_ID == TeamId)
-                .FirstOrDefault()
-                .Developers.Remove(devtoDelete); 
-
-            unit.Developers.Remove(devtoDelete);
+                .FirstOrDefault(D => D.Developer_Id == devId)
+                .Teams
+                .Remove(unit.Teams.GetAll().FirstOrDefault(T => T.Team_ID == TeamId));
 
             unit.Complete();
         }

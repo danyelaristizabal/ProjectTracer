@@ -16,37 +16,33 @@ namespace ProjectTracer.Forms.AdminView
 {
     public partial class EditTask : Form
     {
-        public event EventHandler<BoolEvent> BoolRegisteredChanged;
+        public event EventHandler<BoolEvent> BoolRegisteredChangedE;
         public string Project_Id { get; set; }
         public int Task_Id { get; set; }
-
         public Tasks MyTask { get; set; }
         public UnityOfWork  unit { get; set; }
 
-        private bool myBool;
-        public bool MyBool
+        private bool myBoolE;
+        public bool MyBoolE
         {
-            get { return myBool; }
+            get { return myBoolE; }
             set
             {
-                if (myBool != value)
+                if (myBoolE != value)
                 {
-                    myBool = value;
-                    OnBoolRegisteredChanged(new BoolEvent(myBool));
+                    myBoolE = value;
+                    OnBoolRegisteredChangedE(new BoolEvent(myBoolE));
                 }
             }
         }
-
-        protected virtual void OnBoolRegisteredChanged(BoolEvent e)
+        protected virtual void OnBoolRegisteredChangedE(BoolEvent a)
         {
-            EventHandler<BoolEvent> eh = BoolRegisteredChanged;
-            if (eh != null)
-                eh(this, e);
+            EventHandler<BoolEvent> ah = BoolRegisteredChangedE;
+            if (ah != null)
+                ah(this, a);
         }
-
         public EditTask(string project_Id, int task_Id)
         {
-            
             InitializeComponent();
             
             Project_Id = project_Id;
@@ -57,21 +53,18 @@ namespace ProjectTracer.Forms.AdminView
                 MyTask = EditTaskController.GetTaskById(unit, Project_Id, task_Id);
                 DescriptionTxtB.Text = MyTask.Description;
 
-
                 string DateString = MyTask.DeadLine.Date.ToString();
 
                 DeadLineTxtB.Text = DateString;  
 
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show("Error getting the task "+ E);
-
+                MessageBox.Show("Error getting the task");
             }
            
-            myBool = new bool();
+            myBoolE = new bool();
         }
-
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
@@ -88,7 +81,7 @@ namespace ProjectTracer.Forms.AdminView
             catch (Exception)
             {
 
-                MessageBox.Show("E");
+                MessageBox.Show("Incorrect DataTime Format");
             }
             var newMyTask = new Tasks()
             {
@@ -106,7 +99,7 @@ namespace ProjectTracer.Forms.AdminView
             {
                 MessageBox.Show($"Error ocurred saving changes");
             }
-            MyBool = true;
+            MyBoolE = true;
             this.Close();
         }
 
@@ -126,7 +119,6 @@ namespace ProjectTracer.Forms.AdminView
         {
             this.Close();
         }
-
         private void Minimizr_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

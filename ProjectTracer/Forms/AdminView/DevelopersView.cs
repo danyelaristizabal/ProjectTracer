@@ -1,4 +1,5 @@
 ﻿using ProjectTracer.Controllers;
+using ProjectTracer.Forms.AdminView;
 using ProjectTracer.Repository;
 using System;
 using System.Windows.Forms;
@@ -193,7 +194,7 @@ namespace ProjectTracer.Forms
             ListViewItem Item = new ListViewItem();
             try
             {
-                Item = DevelopersListView.GetItemAt(MousePosition.X - 277, MousePosition.Y - 236);
+                Item = DevelopersListView.GetItemAt(MousePosition.X - 277, MousePosition.Y - 212);
                 SelectedDeveloper = new Developers()
                 {
                     Developer_Id = Item.SubItems[0].Text,
@@ -216,7 +217,7 @@ namespace ProjectTracer.Forms
             ListViewItem Item = new ListViewItem();
             try
             {
-                Item = TeamsListView.GetItemAt(MousePosition.X - 705, MousePosition.Y - 236);
+                Item = TeamsListView.GetItemAt(MousePosition.X - 705, MousePosition.Y - 212);
 
                 SelectedTeam = new Teams()
                 {
@@ -256,44 +257,41 @@ namespace ProjectTracer.Forms
         {
             try
             {
-                AdminDevelopersController.AddTeam(Unit,  "Senior1");
-                LoadTeams();
+                var CreateTeamForm = new AddTeam();
+                CreateTeamForm.Show(); 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Unable add this Team {ex}" );
+                MessageBox.Show($"Unable create team, please try again later" );
             }
         }
         private void DevelopersListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
 
-            ListViewItem Item = new ListViewItem();
-            try
-            {
-                Item = DevelopersListView.GetItemAt(MousePosition.X - 277, MousePosition.Y - 236);
+            //ListViewItem Item = new ListViewItem();
+            //try
+            //{
+            //    Item = DevelopersListView.GetItemAt(MousePosition.X - 277, MousePosition.Y - 236);
 
-                if (Item.Selected != false & Item.SubItems[0].Text  != SelectedDeveloper.Developer_Id)
-                {
-                    SelectedDeveloper = new Developers()
-                    {
-                        Developer_Id = Item.SubItems[0].Text,
-                    };
-                    MessageBox.Show("Selected Developer: " + SelectedDeveloper.Developer_Id);
-                    TeamsListView.Items.Clear();
+            //    if (Item.Selected != false & Item.SubItems[0].Text  != SelectedDeveloper.Developer_Id)
+            //    {
+            //        SelectedDeveloper = new Developers()
+            //        {
+            //            Developer_Id = Item.SubItems[0].Text,
+            //        };
+            //        MessageBox.Show("Selected Developer: " + SelectedDeveloper.Developer_Id);
+            //        TeamsListView.Items.Clear();
 
-                    AdminDevelopersController.FindTeamsByDeveloper(Unit, SelectedDeveloper.Developer_Id).ForEach(item => TeamsListView.Items.Add(item));
-                }
-                else { return;  }
+            //        AdminDevelopersController.FindTeamsByDeveloper(Unit, SelectedDeveloper.Developer_Id).ForEach(item => TeamsListView.Items.Add(item));
+            //    }
+            //    else { return;  }
               
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error getting selected item from database, please try again later ");
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Error getting selected item from database, please try again later ");
+            //}
         }
-
-        private void DevelopersListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+        
     }
 }

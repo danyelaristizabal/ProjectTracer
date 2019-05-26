@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Controllers\AddProjectController.cs" />
     <Compile Include="Controllers\AddTaskController.cs" />
+    <Compile Include="Controllers\AdminAddTeamController.cs" />
     <Compile Include="Controllers\AdminDevelopersController.cs" />
     <Compile Include="Controllers\AdminProjectsController.cs" />
     <Compile Include="Controllers\AdminTasksController.cs" />
@@ -91,6 +92,12 @@
     </Compile>
     <Compile Include="Forms\AdminView\AddTask.Designer.cs">
       <DependentUpon>AddTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminView\AddTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminView\AddTeam.Designer.cs">
+      <DependentUpon>AddTeam.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\BaseView.cs">
       <SubType>Form</SubType>
@@ -288,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\AddTask.resx">
       <DependentUpon>AddTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminView\AddTeam.resx">
+      <DependentUpon>AddTeam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
