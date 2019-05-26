@@ -315,7 +315,7 @@
             // Project_Id
             // 
             this.Project_Id.Text = "Project Id";
-            this.Project_Id.Width = 120;
+            this.Project_Id.Width = 160;
             // 
             // Description
             // 

@@ -212,6 +212,7 @@
             this.TeamsListView.UseCompatibleStateImageBehavior = false;
             this.TeamsListView.View = System.Windows.Forms.View.Details;
             this.TeamsListView.ItemActivate += new System.EventHandler(this.TeamsListView_ItemActivate);
+            this.TeamsListView.SelectedIndexChanged += new System.EventHandler(this.TeamsListView_SelectedIndexChanged);
             // 
             // Team_Id
             // 
@@ -370,6 +371,7 @@
             this.DevelopersListView.View = System.Windows.Forms.View.Details;
             this.DevelopersListView.ItemActivate += new System.EventHandler(this.DevelopersListView_ItemActivate);
             this.DevelopersListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.DevelopersListView_ItemSelectionChanged);
+            this.DevelopersListView.SelectedIndexChanged += new System.EventHandler(this.DevelopersListView_SelectedIndexChanged);
             // 
             // Developer_Id
             // 
@@ -419,6 +421,7 @@
             this.Developers.TabIndex = 44;
             this.Developers.Text = "Developers";
             this.Developers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Developers.Click += new System.EventHandler(this.Developers_Click);
             // 
             // Teams
             // 
@@ -433,6 +436,7 @@
             this.Teams.TabIndex = 45;
             this.Teams.Text = "Teams";
             this.Teams.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Teams.Click += new System.EventHandler(this.Teams_Click);
             // 
             // ShowALL
             // 

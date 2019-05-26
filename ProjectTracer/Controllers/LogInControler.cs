@@ -7,6 +7,7 @@ using ProjectTracer.Forms.DeveloperView;
 using ProjectTracer.Forms.SeniorView;
 using ProjectTracer.Repository;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ProjectTracer.Controllers
 {
@@ -55,11 +56,12 @@ namespace ProjectTracer.Controllers
 
         public static Form ChooseStartPage(IUser user)
         {
+            UnityOfWork unit = new UnityOfWork(new ProjectTracerEntities());
             var StartPage = new Form();
             switch (user.GetType().Name)
             {
                 case "Client":
-                    StartPage = new ClientProjectsView();
+                    StartPage = new ClientProjectsView(unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == user.Name));
                     break;
                 case "Developer":
                     StartPage = new DeveloperProjectsView();

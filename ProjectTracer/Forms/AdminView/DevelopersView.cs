@@ -292,6 +292,25 @@ namespace ProjectTracer.Forms
             //    MessageBox.Show("Error getting selected item from database, please try again later ");
             //}
         }
-        
+
+        private void Teams_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Developers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DevelopersListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TeamsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

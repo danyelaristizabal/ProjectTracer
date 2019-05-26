@@ -64,13 +64,17 @@
     <Compile Include="Clients.cs">
       <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AddProjectController.cs" />
-    <Compile Include="Controllers\AddTaskController.cs" />
-    <Compile Include="Controllers\AdminAddTeamController.cs" />
-    <Compile Include="Controllers\AdminDevelopersController.cs" />
-    <Compile Include="Controllers\AdminProjectsController.cs" />
-    <Compile Include="Controllers\AdminTasksController.cs" />
-    <Compile Include="Controllers\EditTaskController.cs" />
+    <Compile Include="Controllers\Admin\AddProjectController.cs" />
+    <Compile Include="Controllers\Admin\AddTaskController.cs" />
+    <Compile Include="Controllers\Admin\AdminAddTeamController.cs" />
+    <Compile Include="Controllers\Admin\AdminClientsViewController.cs" />
+    <Compile Include="Controllers\Admin\AdminDevelopersController.cs" />
+    <Compile Include="Controllers\Admin\AdminProjectsController.cs" />
+    <Compile Include="Controllers\Admin\AdminTasksController.cs" />
+    <Compile Include="Controllers\Admin\EditTaskController.cs" />
+    <Compile Include="Controllers\ClientDevelopersController.cs" />
+    <Compile Include="Controllers\ClientProjectsController.cs" />
+    <Compile Include="Controllers\ClientTasksController.cs" />
     <Compile Include="Controllers\Encrypt.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\LogInControler.cs" />

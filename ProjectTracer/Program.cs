@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using ProjectTracer.Forms;
+using ProjectTracer.Forms.ClientView;
+
 namespace ProjectTracer
 {
     static class Program
@@ -10,8 +12,8 @@ namespace ProjectTracer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // var MyEntry = new EntryView(new InitialBaseView());
-            var MyEntry = new TasksView();
+            var MyEntry = new EntryView(new InitialBaseView());
+            //var MyEntry = new ClientDevelopersView();
 
             MyEntry.Show();
             Application.Run();
