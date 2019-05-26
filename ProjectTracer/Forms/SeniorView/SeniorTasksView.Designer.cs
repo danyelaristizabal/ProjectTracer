@@ -178,6 +178,7 @@
             this.RefreshBtn.TabIndex = 41;
             this.RefreshBtn.Text = "Refresh";
             this.RefreshBtn.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // EditTaskBtn
             // 
@@ -192,6 +193,7 @@
             this.EditTaskBtn.TabIndex = 40;
             this.EditTaskBtn.Text = "Edit Task";
             this.EditTaskBtn.UseVisualStyleBackColor = false;
+            this.EditTaskBtn.Click += new System.EventHandler(this.EditTaskBtn_Click);
             // 
             // ProjectsViewList
             // 
@@ -213,6 +215,7 @@
             this.ProjectsViewList.TabIndex = 39;
             this.ProjectsViewList.UseCompatibleStateImageBehavior = false;
             this.ProjectsViewList.View = System.Windows.Forms.View.Details;
+            this.ProjectsViewList.ItemActivate += new System.EventHandler(this.ProjectsViewList_ItemActivate);
             // 
             // Project_Id
             // 
@@ -242,6 +245,7 @@
             this.DeleteTaskBtn.TabIndex = 38;
             this.DeleteTaskBtn.Text = "Delete Task";
             this.DeleteTaskBtn.UseVisualStyleBackColor = false;
+            this.DeleteTaskBtn.Click += new System.EventHandler(this.DeleteTaskBtn_Click);
             // 
             // AddTaskBtn
             // 
@@ -256,6 +260,7 @@
             this.AddTaskBtn.TabIndex = 37;
             this.AddTaskBtn.Text = "Add Task";
             this.AddTaskBtn.UseVisualStyleBackColor = false;
+            this.AddTaskBtn.Click += new System.EventHandler(this.AddTaskBtn_Click);
             // 
             // TasksViewList
             // 
@@ -277,6 +282,7 @@
             this.TasksViewList.TabIndex = 36;
             this.TasksViewList.UseCompatibleStateImageBehavior = false;
             this.TasksViewList.View = System.Windows.Forms.View.Details;
+            this.TasksViewList.ItemActivate += new System.EventHandler(this.TasksViewList_ItemActivate);
             // 
             // Task_Id
             // 
@@ -310,7 +316,7 @@
             this.InputTextBox.Location = new System.Drawing.Point(364, 60);
             this.InputTextBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.InputTextBox.Name = "InputTextBox";
-            this.InputTextBox.Size = new System.Drawing.Size(280, 32);
+            this.InputTextBox.Size = new System.Drawing.Size(280, 29);
             this.InputTextBox.TabIndex = 34;
             this.InputTextBox.TabStop = false;
             // 
@@ -328,6 +334,7 @@
             this.ProjectName.TabIndex = 33;
             this.ProjectName.Text = "Project Name";
             this.ProjectName.UseVisualStyleBackColor = false;
+            this.ProjectName.Click += new System.EventHandler(this.ProjectName_Click);
             // 
             // SeniorTasksView
             // 
