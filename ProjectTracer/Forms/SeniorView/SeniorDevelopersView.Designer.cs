@@ -47,6 +47,9 @@
             this.FindByTeamNumberTxtB = new System.Windows.Forms.TextBox();
             this.FindByTeamBtn = new System.Windows.Forms.Button();
             this.DeleteDevFromTeam = new System.Windows.Forms.Button();
+            this.Teams = new System.Windows.Forms.Label();
+            this.TeamsListView = new MaterialSkin.Controls.MaterialListView();
+            this.Team_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -174,6 +177,7 @@
             this.ShowALL.TabIndex = 56;
             this.ShowALL.Text = "SHOW ALL";
             this.ShowALL.UseVisualStyleBackColor = false;
+            this.ShowALL.Click += new System.EventHandler(this.ShowALL_Click);
             // 
             // Developers
             // 
@@ -203,10 +207,11 @@
             this.DevelopersListView.MouseState = MaterialSkin.MouseState.OUT;
             this.DevelopersListView.Name = "DevelopersListView";
             this.DevelopersListView.OwnerDraw = true;
-            this.DevelopersListView.Size = new System.Drawing.Size(849, 242);
+            this.DevelopersListView.Size = new System.Drawing.Size(389, 242);
             this.DevelopersListView.TabIndex = 54;
             this.DevelopersListView.UseCompatibleStateImageBehavior = false;
             this.DevelopersListView.View = System.Windows.Forms.View.Details;
+            this.DevelopersListView.ItemActivate += new System.EventHandler(this.DevelopersListView_ItemActivate);
             // 
             // Developer_Id
             // 
@@ -226,6 +231,7 @@
             this.RemoveDevBtn.TabIndex = 53;
             this.RemoveDevBtn.Text = "Delete Developer";
             this.RemoveDevBtn.UseVisualStyleBackColor = false;
+            this.RemoveDevBtn.Click += new System.EventHandler(this.RemoveDevBtn_Click);
             // 
             // richTextBox3
             // 
@@ -244,7 +250,7 @@
             this.FindByIdTxtB.Location = new System.Drawing.Point(364, 395);
             this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByIdTxtB.Name = "FindByIdTxtB";
-            this.FindByIdTxtB.Size = new System.Drawing.Size(194, 32);
+            this.FindByIdTxtB.Size = new System.Drawing.Size(194, 29);
             this.FindByIdTxtB.TabIndex = 51;
             this.FindByIdTxtB.TabStop = false;
             // 
@@ -262,6 +268,7 @@
             this.FindByIdBtn.TabIndex = 50;
             this.FindByIdBtn.Text = "Find By Id";
             this.FindByIdBtn.UseVisualStyleBackColor = false;
+            this.FindByIdBtn.Click += new System.EventHandler(this.FindByIdBtn_Click);
             // 
             // richTextBox2
             // 
@@ -280,7 +287,7 @@
             this.FindByTeamNumberTxtB.Location = new System.Drawing.Point(793, 395);
             this.FindByTeamNumberTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByTeamNumberTxtB.Name = "FindByTeamNumberTxtB";
-            this.FindByTeamNumberTxtB.Size = new System.Drawing.Size(194, 32);
+            this.FindByTeamNumberTxtB.Size = new System.Drawing.Size(194, 29);
             this.FindByTeamNumberTxtB.TabIndex = 48;
             this.FindByTeamNumberTxtB.TabStop = false;
             // 
@@ -298,6 +305,7 @@
             this.FindByTeamBtn.TabIndex = 47;
             this.FindByTeamBtn.Text = "Find by Team Number";
             this.FindByTeamBtn.UseVisualStyleBackColor = false;
+            this.FindByTeamBtn.Click += new System.EventHandler(this.FindByTeamBtn_Click);
             // 
             // DeleteDevFromTeam
             // 
@@ -312,6 +320,46 @@
             this.DeleteDevFromTeam.TabIndex = 57;
             this.DeleteDevFromTeam.Text = "Delete Developer from Team";
             this.DeleteDevFromTeam.UseVisualStyleBackColor = false;
+            this.DeleteDevFromTeam.Click += new System.EventHandler(this.DeleteDevFromTeam_Click);
+            // 
+            // Teams
+            // 
+            this.Teams.AutoSize = true;
+            this.Teams.BackColor = System.Drawing.Color.Transparent;
+            this.Teams.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Teams.ForeColor = System.Drawing.Color.White;
+            this.Teams.Location = new System.Drawing.Point(575, 102);
+            this.Teams.MinimumSize = new System.Drawing.Size(400, 32);
+            this.Teams.Name = "Teams";
+            this.Teams.Size = new System.Drawing.Size(400, 32);
+            this.Teams.TabIndex = 59;
+            this.Teams.Text = "Teams";
+            this.Teams.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TeamsListView
+            // 
+            this.TeamsListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TeamsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Team_Id});
+            this.TeamsListView.Depth = 0;
+            this.TeamsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.TeamsListView.FullRowSelect = true;
+            this.TeamsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.TeamsListView.Location = new System.Drawing.Point(564, 137);
+            this.TeamsListView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.TeamsListView.MouseState = MaterialSkin.MouseState.OUT;
+            this.TeamsListView.Name = "TeamsListView";
+            this.TeamsListView.OwnerDraw = true;
+            this.TeamsListView.Size = new System.Drawing.Size(423, 242);
+            this.TeamsListView.TabIndex = 58;
+            this.TeamsListView.UseCompatibleStateImageBehavior = false;
+            this.TeamsListView.View = System.Windows.Forms.View.Details;
+            this.TeamsListView.ItemActivate += new System.EventHandler(this.TeamsListView_ItemActivate);
+            // 
+            // Team_Id
+            // 
+            this.Team_Id.Text = "Team";
+            this.Team_Id.Width = 160;
             // 
             // SeniorDevelopersView
             // 
@@ -319,6 +367,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.Teams);
+            this.Controls.Add(this.TeamsListView);
             this.Controls.Add(this.DeleteDevFromTeam);
             this.Controls.Add(this.ShowALL);
             this.Controls.Add(this.Developers);
@@ -364,5 +414,8 @@
         private System.Windows.Forms.TextBox FindByTeamNumberTxtB;
         private System.Windows.Forms.Button FindByTeamBtn;
         private System.Windows.Forms.Button DeleteDevFromTeam;
+        private System.Windows.Forms.Label Teams;
+        private MaterialSkin.Controls.MaterialListView TeamsListView;
+        private System.Windows.Forms.ColumnHeader Team_Id;
     }
 }

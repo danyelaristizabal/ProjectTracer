@@ -80,6 +80,7 @@
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\LogInControler.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SeniorDevelopersController.cs" />
     <Compile Include="Controllers\SeniorProjectsController.cs" />
     <Compile Include="Controllers\SeniorTasksController.cs" />
     <Compile Include="Developers.cs">
