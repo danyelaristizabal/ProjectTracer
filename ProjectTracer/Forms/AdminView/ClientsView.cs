@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
+using ProjectTracer.Controllers;
+using ProjectTracer.Repository;
 
 namespace ProjectTracer.Forms
 {
     public partial class ClientsView : Form
     {
+        public Clients SelectedClient { get; set; }
+        public Projects SelectedProject { get; set; }
+        public UnityOfWork Unit  { get;  set; }
         public ClientsView()
         {
             InitializeComponent();
+            Unit = new UnityOfWork(new ProjectTracerEntities());
+            SelectedClient = new Clients() { };
+            SelectedProject = new Projects() { }; 
+            LoadClients();
+            LoadProjects();
+
         }
 
         private void ProjectsBtn_Click(object sender, EventArgs e)
@@ -62,6 +73,90 @@ namespace ProjectTracer.Forms
                 // Console app
                 System.Environment.Exit(1);
             }
+        }
+
+        private void ShowALL_Click(object sender, EventArgs e)
+        {
+            LoadClients();
+            LoadProjects();
+        }
+
+        private void LoadProjects()
+        {
+            try
+            {
+                AdminProjectsView.Items.Clear();
+
+                AdminProjectsController.GetProjectsItemList(Unit).ForEach(item => AdminProjectsView.Items.Add(item));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading the projects, please try again later");
+            }
+
+        }
+
+        private void LoadClients()
+        {
+            try
+            {
+                ClientsViewList.Items.Clear();
+
+                AdminClientsViewController.GetClientsList(Unit).ForEach(item => ClientsViewList.Items.Add(item));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading the projects, please try again later");
+            }
+
+        }
+
+        private void ClientsViewList_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem Item = new ListViewItem();
+            try
+            {
+                Item = ClientsViewList.GetItemAt(MousePosition.X - 320, MousePosition.Y - 254);
+                SelectedClient = new Clients()
+                {
+                    Client_Id = Item.SubItems[0].Text,
+                };
+                MessageBox.Show("Selected Client: " + SelectedClient.Client_Id);
+
+                AdminProjectsView.Items.Clear();
+
+                AdminClientsViewController.FindProjectsByClient(Unit, SelectedClient.Client_Id).ForEach(item => AdminProjectsView.Items.Add(item));
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error getting selected item from database, please try again later ");
+            }
+
+        }
+
+        private void AdminProjectsView_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem Item = new ListViewItem();
+            try
+            {
+                Item = AdminProjectsView.GetItemAt(MousePosition.X - 320, MousePosition.Y - 489);
+
+                SelectedProject = new Projects()
+                {
+                    Project_ID = Item.SubItems[0].Text,
+                };
+                MessageBox.Show("Selected Project: " + SelectedProject.Project_ID);
+                ClientsViewList.Items.Clear();
+                AdminClientsViewController.FindClientsByProject(Unit, SelectedProject.Project_ID).ForEach(item => ClientsViewList.Items.Add(item));
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error getting selected item from database, please try again later ");
+            }
+
         }
     }
 }

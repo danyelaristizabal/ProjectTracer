@@ -36,10 +36,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Minimize = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.materialListView2 = new MaterialSkin.Controls.MaterialListView();
+            this.ClientsViewList = new MaterialSkin.Controls.MaterialListView();
+            this.Client_Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UserLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.AdminProjectsView = new MaterialSkin.Controls.MaterialListView();
+            this.ProjectId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeadLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ShowALL = new System.Windows.Forms.Button();
             this.NavigationBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -175,39 +180,30 @@
             this.Close.UseVisualStyleBackColor = false;
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
-            // materialListView1
+            // ClientsViewList
             // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(588, 132);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(400, 445);
-            this.materialListView1.TabIndex = 29;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.ClientsViewList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ClientsViewList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Client_Id});
+            this.ClientsViewList.Depth = 0;
+            this.ClientsViewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.ClientsViewList.FullRowSelect = true;
+            this.ClientsViewList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ClientsViewList.Location = new System.Drawing.Point(179, 181);
+            this.ClientsViewList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ClientsViewList.MouseState = MaterialSkin.MouseState.OUT;
+            this.ClientsViewList.Name = "ClientsViewList";
+            this.ClientsViewList.OwnerDraw = true;
+            this.ClientsViewList.Size = new System.Drawing.Size(797, 179);
+            this.ClientsViewList.TabIndex = 30;
+            this.ClientsViewList.UseCompatibleStateImageBehavior = false;
+            this.ClientsViewList.View = System.Windows.Forms.View.Details;
+            this.ClientsViewList.ItemActivate += new System.EventHandler(this.ClientsViewList_ItemActivate);
             // 
-            // materialListView2
+            // Client_Id
             // 
-            this.materialListView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView2.Depth = 0;
-            this.materialListView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView2.FullRowSelect = true;
-            this.materialListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView2.Location = new System.Drawing.Point(153, 132);
-            this.materialListView2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView2.Name = "materialListView2";
-            this.materialListView2.OwnerDraw = true;
-            this.materialListView2.Size = new System.Drawing.Size(400, 445);
-            this.materialListView2.TabIndex = 30;
-            this.materialListView2.UseCompatibleStateImageBehavior = false;
-            this.materialListView2.View = System.Windows.Forms.View.Details;
+            this.Client_Id.Text = "Client Name";
+            this.Client_Id.Width = 470;
             // 
             // UserLbl
             // 
@@ -215,7 +211,7 @@
             this.UserLbl.BackColor = System.Drawing.Color.Transparent;
             this.UserLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserLbl.ForeColor = System.Drawing.Color.White;
-            this.UserLbl.Location = new System.Drawing.Point(153, 66);
+            this.UserLbl.Location = new System.Drawing.Point(383, 128);
             this.UserLbl.MinimumSize = new System.Drawing.Size(400, 50);
             this.UserLbl.Name = "UserLbl";
             this.UserLbl.Size = new System.Drawing.Size(400, 50);
@@ -229,7 +225,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(588, 66);
+            this.label1.Location = new System.Drawing.Point(383, 363);
             this.label1.MinimumSize = new System.Drawing.Size(400, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(400, 50);
@@ -237,16 +233,69 @@
             this.label1.Text = "Projects ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // AdminProjectsView
+            // 
+            this.AdminProjectsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AdminProjectsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ProjectId,
+            this.Description,
+            this.DeadLine});
+            this.AdminProjectsView.Depth = 0;
+            this.AdminProjectsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.AdminProjectsView.FullRowSelect = true;
+            this.AdminProjectsView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.AdminProjectsView.Location = new System.Drawing.Point(179, 416);
+            this.AdminProjectsView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.AdminProjectsView.MouseState = MaterialSkin.MouseState.OUT;
+            this.AdminProjectsView.Name = "AdminProjectsView";
+            this.AdminProjectsView.OwnerDraw = true;
+            this.AdminProjectsView.Size = new System.Drawing.Size(797, 150);
+            this.AdminProjectsView.TabIndex = 33;
+            this.AdminProjectsView.UseCompatibleStateImageBehavior = false;
+            this.AdminProjectsView.View = System.Windows.Forms.View.Details;
+            this.AdminProjectsView.ItemActivate += new System.EventHandler(this.AdminProjectsView_ItemActivate);
+            // 
+            // ProjectId
+            // 
+            this.ProjectId.Text = "Project Name";
+            this.ProjectId.Width = 142;
+            // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 170;
+            // 
+            // DeadLine
+            // 
+            this.DeadLine.Text = "DeadLine";
+            this.DeadLine.Width = 121;
+            // 
+            // ShowALL
+            // 
+            this.ShowALL.BackColor = System.Drawing.Color.Transparent;
+            this.ShowALL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.ShowALL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowALL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowALL.ForeColor = System.Drawing.Color.White;
+            this.ShowALL.Location = new System.Drawing.Point(140, 56);
+            this.ShowALL.Name = "ShowALL";
+            this.ShowALL.Size = new System.Drawing.Size(848, 40);
+            this.ShowALL.TabIndex = 47;
+            this.ShowALL.Text = "SHOW ALL";
+            this.ShowALL.UseVisualStyleBackColor = false;
+            this.ShowALL.Click += new System.EventHandler(this.ShowALL_Click);
+            // 
             // ClientsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProjectTracer.Properties.Resources.BackGround1000x600;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.ShowALL);
+            this.Controls.Add(this.AdminProjectsView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UserLbl);
-            this.Controls.Add(this.materialListView2);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.ClientsViewList);
             this.Controls.Add(this.NavigationBar);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -270,9 +319,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button Close;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private MaterialSkin.Controls.MaterialListView materialListView2;
+        private MaterialSkin.Controls.MaterialListView ClientsViewList;
         private System.Windows.Forms.Label UserLbl;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader Client_Id;
+        private MaterialSkin.Controls.MaterialListView AdminProjectsView;
+        private System.Windows.Forms.ColumnHeader ProjectId;
+        private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.ColumnHeader DeadLine;
+        private System.Windows.Forms.Button ShowALL;
     }
 }
