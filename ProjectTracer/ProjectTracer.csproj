@@ -59,10 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrators.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Clients.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Admin\AddProjectController.cs" />
     <Compile Include="Controllers\Admin\AddTaskController.cs" />
@@ -72,18 +72,20 @@
     <Compile Include="Controllers\Admin\AdminProjectsController.cs" />
     <Compile Include="Controllers\Admin\AdminTasksController.cs" />
     <Compile Include="Controllers\Admin\EditTaskController.cs" />
-    <Compile Include="Controllers\ClientDevelopersController.cs" />
-    <Compile Include="Controllers\ClientProjectsController.cs" />
-    <Compile Include="Controllers\ClientTasksController.cs" />
+    <Compile Include="Controllers\Client\ClientDevelopersController.cs" />
+    <Compile Include="Controllers\Client\ClientProjectsController.cs" />
+    <Compile Include="Controllers\Client\ClientTasksController.cs" />
+    <Compile Include="Controllers\Developer\DevelopersTasksController.cs" />
     <Compile Include="Controllers\Encrypt.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\LogInControler.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SeniorProjectsController.cs" />
     <Compile Include="Developers.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Documents.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\AddProject.cs">
       <SubType>Form</SubType>
@@ -205,6 +207,7 @@
     <Compile Include="Forms\AdminView\TasksView.Designer.cs">
       <DependentUpon>TasksView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SeniorView\MyDeveloper.cs" />
     <Compile Include="Forms\SeniorView\SeniorBaseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,23 +240,23 @@
     <Compile Include="Models\Senior.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProjecTracerDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProjecTracerDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProjecTracerDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProjecTracerDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProjecTracerDataModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Projects.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTracerDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectTracerDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTracerDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTracerDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DocumentRepository.cs" />
@@ -277,22 +280,22 @@
     <Compile Include="Repository\UserRepositories\SeniorRepository.cs" />
     <Compile Include="Repository\UnityOfWork.cs" />
     <Compile Include="Seniors.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Tasks.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Teams.cs">
-      <DependentUpon>ProjecTracerDataModel.tt</DependentUpon>
+      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AdminView\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
@@ -378,12 +381,12 @@
     </Compile>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="ProjecTracerDataModel.edmx">
+    <EntityDeploy Include="ProjectTracerDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProjecTracerDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProjectTracerDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ProjecTracerDataModel.edmx.diagram">
-      <DependentUpon>ProjecTracerDataModel.edmx</DependentUpon>
+    <None Include="ProjectTracerDataModel.edmx.diagram">
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -441,16 +444,19 @@
     <None Include="Resources\Projects.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjecTracerDataModel.Context.tt">
+    <Content Include="ProjectTracerDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjecTracerDataModel.edmx</DependentUpon>
-      <LastGenOutput>ProjecTracerDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectTracerDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ProjecTracerDataModel.tt">
+    <Content Include="ProjectTracerDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjecTracerDataModel.edmx</DependentUpon>
-      <LastGenOutput>ProjecTracerDataModel.cs</LastGenOutput>
+      <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectTracerDataModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\Senior\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

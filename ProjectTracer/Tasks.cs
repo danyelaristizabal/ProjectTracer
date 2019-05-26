@@ -24,6 +24,8 @@ namespace ProjectTracer
         public string Project_Id { get; set; }
         public string Description { get; set; }
         public System.DateTime DeadLine { get; set; }
+        public string DeveloperOnTask { get; set; }
+        public Nullable<bool> Done { get; set; }
     
         public virtual Projects Projects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

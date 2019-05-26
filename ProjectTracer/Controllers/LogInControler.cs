@@ -48,12 +48,10 @@ namespace ProjectTracer.Controllers
                     return false;  
             }
         }
-
         internal static bool Autentificate(IUser myUser)
         {
             return (CheckUser(myUser) & CheckUserInUserTable(myUser)); 
         }
-
         public static Form ChooseStartPage(IUser user)
         {
             UnityOfWork unit = new UnityOfWork(new ProjectTracerEntities());
@@ -64,10 +62,10 @@ namespace ProjectTracer.Controllers
                     StartPage = new ClientProjectsView(unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == user.Name));
                     break;
                 case "Developer":
-                    StartPage = new DeveloperProjectsView();
+                    StartPage = new DeveloperProjectsView(unit.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name));
                     break;
                 case "Senior":
-                    StartPage = new SeniorProjectsView();
+                    StartPage = new SeniorProjectsView(unit.Seniors.GetAll().FirstOrDefault(s => s.Senior_Id == user.Name));
                     break;
                 case "Admin":
                     StartPage = new ProjectsView();

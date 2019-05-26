@@ -92,6 +92,8 @@
           <Property Name="Project_Id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" />
           <Property Name="DeadLine" Type="date" Nullable="false" />
+          <Property Name="DeveloperOnTask" Type="varchar" MaxLength="50" />
+          <Property Name="Done" Type="bit" />
         </EntityType>
         <EntityType Name="TasksAndDevelopers">
           <Key>
@@ -431,6 +433,8 @@
           <Property Name="Project_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeveloperOnTask" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Done" Type="Boolean" />
           <NavigationProperty Name="Projects" Relationship="Self.FK_Tasks_Project" FromRole="Tasks" ToRole="Projects" />
           <NavigationProperty Name="Developers" Relationship="Self.TasksAndDevelopers" FromRole="Tasks" ToRole="Developers" />
         </EntityType>
@@ -642,6 +646,8 @@
                 <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DeadLine" ColumnName="DeadLine" />
+                <ScalarProperty Name="DeveloperOnTask" ColumnName="DeveloperOnTask" />
+                <ScalarProperty Name="Done" ColumnName="Done" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

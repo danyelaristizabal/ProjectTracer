@@ -93,6 +93,7 @@
             this.ProjectsBtn.Text = "Projects";
             this.ProjectsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ProjectsBtn.UseVisualStyleBackColor = false;
+            this.ProjectsBtn.Click += new System.EventHandler(this.ProjectsBtn_Click);
             // 
             // panel1
             // 
@@ -167,7 +168,7 @@
             this.FindByIdTxtB.Location = new System.Drawing.Point(232, 10);
             this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByIdTxtB.Name = "FindByIdTxtB";
-            this.FindByIdTxtB.Size = new System.Drawing.Size(280, 32);
+            this.FindByIdTxtB.Size = new System.Drawing.Size(280, 29);
             this.FindByIdTxtB.TabIndex = 22;
             this.FindByIdTxtB.TabStop = false;
             // 
@@ -185,6 +186,7 @@
             this.FindById.TabIndex = 12;
             this.FindById.Text = "Find by Id:";
             this.FindById.UseVisualStyleBackColor = false;
+            this.FindById.Click += new System.EventHandler(this.FindById_Click);
             // 
             // ProjectsView
             // 

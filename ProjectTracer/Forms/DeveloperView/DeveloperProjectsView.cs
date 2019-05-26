@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectTracer.Controllers;
+using ProjectTracer.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,30 @@ using System.Windows.Forms;
 
 namespace ProjectTracer.Forms.DeveloperView
 {
+
     public partial class DeveloperProjectsView : Form
     {
-        public DeveloperProjectsView()
+        public UnityOfWork Unit { get; set; }
+        public Developers MyDeveloper { get; set; }
+        public DeveloperProjectsView(Developers myDeveloper)
         {
             InitializeComponent();
+            MyDeveloper = myDeveloper;
+            Unit = new UnityOfWork(new ProjectTracerEntities()); 
+            LoadProjects(); 
+        }
+        private void LoadProjects()
+        {
+            try
+            {
+
+                ProjectsView.Items.Clear();
+                DevelopersTasksController.GetProjectsItemList(Unit, MyDeveloper.Developer_Id).ForEach(item => ProjectsView.Items.Add(item));
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Error loading the projects, please try again later: " + E.ToString());
+            }
         }
 
         private void Minimize_Click(object sender, EventArgs e)
@@ -38,26 +59,28 @@ namespace ProjectTracer.Forms.DeveloperView
 
         private void TasksBtn_Click(object sender, EventArgs e)
         {
-            var tasksForm = new DeveloperTasksView();
+            var tasksForm = new DeveloperTasksView(MyDeveloper);
             tasksForm.Show();
             this.Close();
         }
-        private void Load_Click(object sender, EventArgs e)
-        {
-            var context = new ProjectTracerEntities();
-            var x = context.Projects;
-            List<Projects> z = x.ToList();
-            ProjectsMaterialList.Items.Clear();
-            foreach (Projects a in z)
-            {
-                ListViewItem item = new ListViewItem(a.Project_ID.ToString());
-                item.SubItems.Add(a.Description.ToString());
-                item.SubItems.Add(a.DeadLine.ToString());
-                item.SubItems.Add(a.Result.ToString());
-                ProjectsMaterialList.Items.Add(item);
-            }
 
-            ProjectsMaterialList.Refresh();
+        private void FindById_Click(object sender, EventArgs e)
+        {
+            ProjectsView.Items.Clear();
+            try
+            {
+                DevelopersTasksController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MyDeveloper.Developer_Id).ForEach(item => ProjectsView.Items.Add(item));
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error loading projects from Database");
+            }
+        }
+
+        private void ProjectsBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,8 +12,10 @@ namespace ProjectTracer.Forms.SeniorView
 {
     public partial class SeniorDevelopersView : Form
     {
-        public SeniorDevelopersView()
+        public Seniors MySenior { get; set; }
+        public SeniorDevelopersView(Seniors mySenior )
         {
+            MySenior = mySenior; 
             InitializeComponent();
         }
 
@@ -37,14 +39,14 @@ namespace ProjectTracer.Forms.SeniorView
         }
         private void ProjectsBtn_Click(object sender, EventArgs e)
         {
-            var projectsForm = new SeniorProjectsView();
+            var projectsForm = new SeniorProjectsView(MySenior);
             projectsForm.Show();
             this.Close();
         }
 
         private void TasksBtn_Click(object sender, EventArgs e)
         {
-            var tasksForm = new SeniorTasksView();
+            var tasksForm = new SeniorTasksView(MySenior);
             tasksForm.Show();
             this.Close();
         }

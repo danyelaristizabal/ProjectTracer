@@ -154,5 +154,15 @@ namespace ProjectTracer.Forms.ClientView
                 MessageBox.Show("Error getting selected item from database, please try again later ");
             }
         }
+
+        private void InputTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

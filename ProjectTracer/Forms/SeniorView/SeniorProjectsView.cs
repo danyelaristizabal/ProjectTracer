@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectTracer.Controllers;
+using ProjectTracer.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,27 @@ namespace ProjectTracer.Forms.SeniorView
 {
     public partial class SeniorProjectsView : Form
     {
-        public SeniorProjectsView()
+        public UnityOfWork Unit { get; set; }
+        public Seniors  MySenior { get; set; }
+        public SeniorProjectsView(Seniors mySenior)
         {
             InitializeComponent();
+            MySenior = mySenior;
+            Unit = new UnityOfWork(new ProjectTracerEntities());
+            LoadProjects();
         }
-
+        private void LoadProjects()
+        {
+            try
+            {
+                ProjectsView.Items.Clear();
+                SeniorProjectsController.GetProjectsItemList(Unit, MySenior.Senior_Id).ForEach(item => ProjectsView.Items.Add(item));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading the projects, please try again later: ");
+            }
+        }
         private void Minimize_Click(object sender, EventArgs e)
         {
                 this.WindowState = FormWindowState.Minimized;
@@ -37,16 +55,30 @@ namespace ProjectTracer.Forms.SeniorView
         }
         private void TasksBtn_Click(object sender, EventArgs e)
         {
-            var tasksForm = new SeniorTasksView();
+            var tasksForm = new SeniorTasksView(MySenior);
             tasksForm.Show();
             this.Close();
         }
 
         private void DevelopersBtn_Click(object sender, EventArgs e)
         {
-            var developersForm = new SeniorDevelopersView();
+            var developersForm = new SeniorDevelopersView(MySenior);
             developersForm.Show();
             this.Close();
+        }
+
+        private void FindById_Click(object sender, EventArgs e)
+        {
+            ProjectsView.Items.Clear();
+            try
+            {
+                SeniorProjectsController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MySenior.Senior_Id).ForEach(item => ProjectsView.Items.Add(item));
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error loading projects from Database");
+            }
         }
     }
 }

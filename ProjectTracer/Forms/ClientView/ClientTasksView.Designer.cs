@@ -242,6 +242,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(280, 1);
             this.richTextBox1.TabIndex = 33;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // InputTextBox
             // 
@@ -251,9 +252,10 @@
             this.InputTextBox.Location = new System.Drawing.Point(365, 57);
             this.InputTextBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.InputTextBox.Name = "InputTextBox";
-            this.InputTextBox.Size = new System.Drawing.Size(280, 32);
+            this.InputTextBox.Size = new System.Drawing.Size(280, 29);
             this.InputTextBox.TabIndex = 32;
             this.InputTextBox.TabStop = false;
+            this.InputTextBox.TextChanged += new System.EventHandler(this.InputTextBox_TextChanged);
             // 
             // ProjectName
             // 
