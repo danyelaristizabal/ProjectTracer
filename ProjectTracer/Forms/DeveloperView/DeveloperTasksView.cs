@@ -43,7 +43,7 @@ namespace ProjectTracer.Forms.DeveloperView
             }
             catch (Exception E)
             {
-                MessageBox.Show("Error loading the projects, please try again later: " + E.ToString());
+                MessageBox.Show("Error loading the projects, please try again later: ");
             }
         }
         private void LoadTasks()
@@ -55,7 +55,7 @@ namespace ProjectTracer.Forms.DeveloperView
             }
             catch (Exception E)
             {
-                MessageBox.Show("Error loading tasks, please select a project" + E.ToString());
+                MessageBox.Show("Error loading tasks, please select a project");
             }
         }
 
@@ -185,10 +185,11 @@ namespace ProjectTracer.Forms.DeveloperView
 
                 MessageBox.Show("Selected Task: " + SelectedTask.DeveloperOnTask);
             }
-            catch (Exception r)
+            catch (Exception)
             {
-                MessageBox.Show("Error getting selected item from database, please try again later "+ r.ToString());
+                MessageBox.Show("Error getting selected item from database, please try again later ");
             }
         }
+
     }
 }

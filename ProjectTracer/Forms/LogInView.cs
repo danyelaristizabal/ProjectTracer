@@ -10,11 +10,11 @@ namespace ProjectTracer
     {
         public IUser MyUser { get; set; }
         public Form MyBase { get; set; }
-        public LogInView(IUser User, Form _base)
+        public LogInView(IUser User)
         {
+            
             InitializeComponent();
             MyUser = User;
-            MyBase = _base; 
         }
         private void LogIn_Load(object sender, EventArgs e)
         {
@@ -29,8 +29,6 @@ namespace ProjectTracer
             {
                 if (LogInControler.Autentificate(MyUser))
                 {
-                    var baseForm = new BaseView();
-                    baseForm.Show();
                     var StartPage = LogInControler.ChooseStartPage(MyUser);
                     StartPage.Show();
                     this.Close();
@@ -39,7 +37,7 @@ namespace ProjectTracer
             }
             catch (Exception)
             {
-                MessageBox.Show("INCorrect User and password");
+                MessageBox.Show("Incorrect User or password");
             }
         }
         private void RegisterBtn_Click(object sender, EventArgs e)

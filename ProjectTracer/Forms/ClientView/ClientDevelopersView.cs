@@ -25,9 +25,9 @@ namespace ProjectTracer.Forms.ClientView
                 TeamsListView.Items.Clear();
                 ClientDevelopersController.GetTeamsItemList(Unit, MyClient.Client_Id).ForEach(item => TeamsListView.Items.Add(item));
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show("Error loading Teams:" + e.ToString());
+                MessageBox.Show("Error loading Teams:");
             }
         }
         private void Minimize_Click(object sender, EventArgs e)

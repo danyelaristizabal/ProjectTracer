@@ -157,9 +157,9 @@ namespace ProjectTracer.Forms
                 AdminProjectsController.RemoveProject(Unit, SelectedProject);
                 LoadProjects();
             }
-            catch (Exception E )
+            catch (Exception)
             {
-                MessageBox.Show($"Unable to remove project: {E}" );
+                MessageBox.Show($"Unable to remove project:" );
             } 
         }
     }

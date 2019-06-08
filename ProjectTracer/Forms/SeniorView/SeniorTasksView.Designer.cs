@@ -314,6 +314,7 @@
             this.InputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputTextBox.ForeColor = System.Drawing.Color.White;
             this.InputTextBox.Location = new System.Drawing.Point(364, 60);
+            this.InputTextBox.MaxLength = 100;
             this.InputTextBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.InputTextBox.Name = "InputTextBox";
             this.InputTextBox.Size = new System.Drawing.Size(280, 29);

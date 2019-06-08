@@ -1,23 +1,40 @@
-﻿using System;
+﻿using ProjectTracer.Models;
+using ProjectTracer.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectTracer.Models;
-using ProjectTracer.Controllers;
-using ProjectTracer.Repository;
 
 namespace ProjectTracer.Controllers
 {
-    static class RegisterController
+    public static class Registratator
     {
-        public static bool RegisterInServer(IUser user)
+        public static bool RegisterInDatabaseProc(IUser user)
+        {
+            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True ");
+            SqlCommand scmd = new SqlCommand($"EXEC dbo.RegisterInDatabase @UserName = '{user.Name}', @RoleName = '{user.GetType().Name}'", sq);
+            sq.Open();
+            try
+            {
+                scmd.ExecuteScalar();
+                sq.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in Database:");
+                sq.Close();
+                return false;
+            }
+        }
+        public static bool RegisterInServerProc(IUser user)
         {
             SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True");
 
-            SqlCommand scmd = new SqlCommand($"CREATE LOGIN {user.Name} WITH PASSWORD = '{Encrypt.EncryptString(user.Password, "Pass")}'", sq);
+            SqlCommand scmd = new SqlCommand($"EXEC dbo.RegisterInServer @UserName = '{user.Name}', @RoleName = '{user.GetType().Name}'", sq);
 
             scmd.Parameters.Clear();
 
@@ -25,7 +42,7 @@ namespace ProjectTracer.Controllers
 
             try
             {
-               
+
                 var UnitOFWork = new UnityOfWork(new ProjectTracerEntities());
 
                 var projects = UnitOFWork.Projects.GetAll().ToList();
@@ -49,9 +66,11 @@ namespace ProjectTracer.Controllers
                                     // Add the new client
                                     UnitOFWork.Clients.Add(
 
-                                        new Clients() {
+                                        new Clients()
+                                        {
 
-                                            Client_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass")
+                                            Client_Id = user.Name,
+                                            Password = Encrypt.EncryptString(user.Password, "Pass")
                                         }
                                         );
                                     UnitOFWork.Complete();
@@ -88,7 +107,7 @@ namespace ProjectTracer.Controllers
 
                             UnitOFWork.Complete();
                         }
-                        break; 
+                        break;
                     case "Developer":
                         if (user.InvitationCode != string.Empty)
                         {
@@ -122,7 +141,7 @@ namespace ProjectTracer.Controllers
                                         UnitOFWork.Teams
                                             .Add(new Teams() { Team_ID = teamId });
 
-                                        UnitOFWork.Complete(); 
+                                        UnitOFWork.Complete();
                                         //Relate this team to our project 
 
                                         UnitOFWork.Teams
@@ -138,7 +157,7 @@ namespace ProjectTracer.Controllers
                                             .Add(
                                             UnitOFWork.Teams
                                             .GetAll()
-                                            .FirstOrDefault(t => t.Team_ID == teamId )
+                                            .FirstOrDefault(t => t.Team_ID == teamId)
                                             );
                                         UnitOFWork.Complete();
                                     }
@@ -154,7 +173,7 @@ namespace ProjectTracer.Controllers
                                            .Add(UnitOFWork.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name));
                                         UnitOFWork.Complete();
                                     }
-                                        
+
                                     UnitOFWork.Complete();
                                     MessageBox.Show("Developer registrated");
                                     return true;
@@ -174,64 +193,34 @@ namespace ProjectTracer.Controllers
 
                             UnitOFWork.Complete();
                         }
-                            
-                        break; 
+
+                        break;
                     case "Senior":
                         scmd.ExecuteScalar();
 
                         sq.Close();
                         UnitOFWork.Seniors.Add(new Seniors() { Senior_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
-                        
-                            UnitOFWork.Complete();
-                        break; 
+
+                        UnitOFWork.Complete();
+                        break;
                     case "Admin":
                         scmd.ExecuteScalar();
 
                         sq.Close();
                         UnitOFWork.Administrators.Add(new Administrators() { Administrator = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
-                            UnitOFWork.Complete();
+                        UnitOFWork.Complete();
                         break;
                     default:
-                        break; 
+                        break;
                 }
                 return true;
             }
             catch (Exception)
             {
-                MessageBox.Show("Error in sever:" );
+                MessageBox.Show("Error in sever:");
                 sq.Close();
                 return false;
             }
         }
-        internal static bool Registrate(IUser user)
-        {
-            return (RegisterInServer(user) &
-              RegisterInDatabase(user));
-        }    
-        public static bool RegisterInDatabase(IUser user)
-        {
-            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True ");
-            SqlCommand scmd = new SqlCommand(
-                $"use ProjectTracer;  IF NOT EXISTS(SELECT * FROM sys.database_principals WHERE name = N'{user.Name}')  BEGIN CREATE USER[{user.Name}] FOR LOGIN[{user.Name}] EXEC sp_addrolemember N'{user.GetType().Name}', N'{user.Name}' END;", sq);
-            sq.Open();
-            try
-            {
-                scmd.ExecuteScalar();
-                sq.Close();
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error in Database:");
-                sq.Close();
-                return false;
-            }
-        }
-        internal static bool Registrateproc(IUser user)
-        {
-            return( Registratator.RegisterInDatabaseProc( user) &&
-                Registratator.RegisterInServerProc( user));
-        }
-       
     }
 }

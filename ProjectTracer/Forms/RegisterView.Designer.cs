@@ -73,11 +73,11 @@
             this.NameTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NameTxtBox.ForeColor = System.Drawing.Color.White;
             this.NameTxtBox.Location = new System.Drawing.Point(302, 179);
+            this.NameTxtBox.MaxLength = 100;
             this.NameTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.NameTxtBox.Name = "NameTxtBox";
             this.NameTxtBox.Size = new System.Drawing.Size(280, 29);
-            this.NameTxtBox.TabIndex = 19;
-            this.NameTxtBox.TabStop = false;
+            this.NameTxtBox.TabIndex = 0;
             // 
             // PasswordTxtBox
             // 
@@ -85,12 +85,12 @@
             this.PasswordTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PasswordTxtBox.ForeColor = System.Drawing.Color.White;
             this.PasswordTxtBox.Location = new System.Drawing.Point(302, 246);
+            this.PasswordTxtBox.MaxLength = 100;
             this.PasswordTxtBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.PasswordTxtBox.Name = "PasswordTxtBox";
             this.PasswordTxtBox.PasswordChar = '*';
             this.PasswordTxtBox.Size = new System.Drawing.Size(280, 29);
-            this.PasswordTxtBox.TabIndex = 18;
-            this.PasswordTxtBox.TabStop = false;
+            this.PasswordTxtBox.TabIndex = 1;
             this.PasswordTxtBox.UseSystemPasswordChar = true;
             // 
             // richTextBox4
@@ -108,11 +108,11 @@
             this.RegistrtionCodeTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegistrtionCodeTxtB.ForeColor = System.Drawing.Color.White;
             this.RegistrtionCodeTxtB.Location = new System.Drawing.Point(304, 305);
+            this.RegistrtionCodeTxtB.MaxLength = 200;
             this.RegistrtionCodeTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.RegistrtionCodeTxtB.Name = "RegistrtionCodeTxtB";
-            this.RegistrtionCodeTxtB.Size = new System.Drawing.Size(280, 32);
-            this.RegistrtionCodeTxtB.TabIndex = 23;
-            this.RegistrtionCodeTxtB.TabStop = false;
+            this.RegistrtionCodeTxtB.Size = new System.Drawing.Size(280, 29);
+            this.RegistrtionCodeTxtB.TabIndex = 2;
             // 
             // RegisterBtn
             // 
@@ -124,7 +124,7 @@
             this.RegisterBtn.Location = new System.Drawing.Point(346, 485);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(200, 40);
-            this.RegisterBtn.TabIndex = 26;
+            this.RegisterBtn.TabIndex = 3;
             this.RegisterBtn.Text = "Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);

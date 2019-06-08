@@ -17,7 +17,7 @@ namespace ProjectTracer.Controllers
             {
                  ParsedDeadLine = DateTime.Parse(deadline); 
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 MessageBox.Show("Not correct deadline");
                 return false; 
@@ -35,7 +35,7 @@ namespace ProjectTracer.Controllers
                 unit.Complete();
                 return true;
             }
-            catch (Exception E)
+            catch (Exception)
             {
                 MessageBox.Show($"Error ocurred saving changes, please try later");
                 return false;

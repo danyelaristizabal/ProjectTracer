@@ -203,7 +203,7 @@
             // Client_Id
             // 
             this.Client_Id.Text = "Client Name";
-            this.Client_Id.Width = 470;
+            this.Client_Id.Width = 800;
             // 
             // UserLbl
             // 
@@ -258,17 +258,17 @@
             // ProjectId
             // 
             this.ProjectId.Text = "Project Name";
-            this.ProjectId.Width = 142;
+            this.ProjectId.Width = 180;
             // 
             // Description
             // 
             this.Description.Text = "Description";
-            this.Description.Width = 170;
+            this.Description.Width = 340;
             // 
             // DeadLine
             // 
             this.DeadLine.Text = "DeadLine";
-            this.DeadLine.Width = 121;
+            this.DeadLine.Width = 300;
             // 
             // ShowALL
             // 

@@ -35,9 +35,9 @@ namespace ProjectTracer.Forms.AdminView
             {
                 AdminAddTeamController.RegistrateTeam(devId, SeniorId, Unit);
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show($"Error Saving, please try again later{E}"); 
+                MessageBox.Show($"Error Saving, please try again later"); 
             }
 
             this.Close(); 

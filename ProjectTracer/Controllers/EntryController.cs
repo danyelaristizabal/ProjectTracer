@@ -11,31 +11,51 @@ namespace ProjectTracer.Controllers
 {
     static class EntryController
     {
-        public static Form GetLogIn(String User, Form Base )
+        public static Form GetLogIn(String User )
         {
             var LogIn = new Form(); 
             switch (User)
             {
                 case "Client":
                     var myClient = new Client();
-                     LogIn = new LogInView(myClient, Base);
+                     LogIn = new LogInView(myClient);
                     break;
                 case "Developer": 
                     var myDeveloper = new Developer();
-                     LogIn = new LogInView(myDeveloper, Base);
+                     LogIn = new LogInView(myDeveloper);
                     break;
                 case "Senior":
                     var mySenior = new Senior();
-                     LogIn = new LogInView(mySenior, Base);
+                     LogIn = new LogInView(mySenior);
                     break;
                 case "Admin":
                     var myAdmin = new Admin();
-                     LogIn = new LogInView(myAdmin, Base);
+                     LogIn = new LogInView(myAdmin);
                     break;
                 default:
                     break;
             }
             return LogIn;  
         }
+
+        public static string GetTypeOfUser(String User)
+        {
+            switch (User)
+            {
+                case "Client":
+                    return "Client";
+                case "Developer":
+                    return "Developer";
+                case "Senior":
+                    return "Senior";
+                case "Admin":
+                    return "Admin";
+                default:
+                    break;
+            }
+            return"";
+        }
+
+
     }
 }

@@ -227,10 +227,11 @@
             this.FindByIdTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByIdTxtB.ForeColor = System.Drawing.Color.White;
             this.FindByIdTxtB.Location = new System.Drawing.Point(232, 10);
+            this.FindByIdTxtB.MaxLength = 100;
             this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByIdTxtB.Name = "FindByIdTxtB";
-            this.FindByIdTxtB.Size = new System.Drawing.Size(280, 32);
-            this.FindByIdTxtB.TabIndex = 22;
+            this.FindByIdTxtB.Size = new System.Drawing.Size(280, 29);
+            this.FindByIdTxtB.TabIndex = 0;
             this.FindByIdTxtB.TabStop = false;
             // 
             // FindById

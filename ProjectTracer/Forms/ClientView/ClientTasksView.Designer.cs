@@ -185,17 +185,17 @@
             // Project_Id
             // 
             this.Project_Id.Text = "Project Id";
-            this.Project_Id.Width = 160;
+            this.Project_Id.Width = 90;
             // 
             // Description
             // 
             this.Description.Text = "Description";
-            this.Description.Width = 180;
+            this.Description.Width = 156;
             // 
             // DeadLine
             // 
             this.DeadLine.Text = "DeadLine";
-            this.DeadLine.Width = 120;
+            this.DeadLine.Width = 180;
             // 
             // TasksViewList
             // 
@@ -222,17 +222,17 @@
             // Task_Id
             // 
             this.Task_Id.Text = "Task";
-            this.Task_Id.Width = 120;
+            this.Task_Id.Width = 40;
             // 
             // DescriptionTask
             // 
             this.DescriptionTask.Text = "Description";
-            this.DescriptionTask.Width = 200;
+            this.DescriptionTask.Width = 196;
             // 
             // DeadlLineTask
             // 
             this.DeadlLineTask.Text = "DeadLine";
-            this.DeadlLineTask.Width = 100;
+            this.DeadlLineTask.Width = 200;
             // 
             // richTextBox1
             // 
@@ -250,10 +250,11 @@
             this.InputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputTextBox.ForeColor = System.Drawing.Color.White;
             this.InputTextBox.Location = new System.Drawing.Point(365, 57);
+            this.InputTextBox.MaxLength = 100;
             this.InputTextBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.InputTextBox.Name = "InputTextBox";
             this.InputTextBox.Size = new System.Drawing.Size(280, 29);
-            this.InputTextBox.TabIndex = 32;
+            this.InputTextBox.TabIndex = 0;
             this.InputTextBox.TabStop = false;
             this.InputTextBox.TextChanged += new System.EventHandler(this.InputTextBox_TextChanged);
             // 

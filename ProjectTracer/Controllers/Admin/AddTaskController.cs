@@ -41,7 +41,7 @@ namespace ProjectTracer.Controllers
             }
             catch (Exception)
             {
-                MessageBox.Show($"Error ocurred saving changes, please try later");
+                MessageBox.Show("Error ocurred saving changes, please try later");
                 return false;
             }
         }

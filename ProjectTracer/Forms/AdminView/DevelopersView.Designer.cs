@@ -212,7 +212,6 @@
             this.TeamsListView.UseCompatibleStateImageBehavior = false;
             this.TeamsListView.View = System.Windows.Forms.View.Details;
             this.TeamsListView.ItemActivate += new System.EventHandler(this.TeamsListView_ItemActivate);
-            this.TeamsListView.SelectedIndexChanged += new System.EventHandler(this.TeamsListView_SelectedIndexChanged);
             // 
             // Team_Id
             // 
@@ -239,6 +238,7 @@
             this.FindByProjectTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByProjectTxtB.ForeColor = System.Drawing.Color.White;
             this.FindByProjectTxtB.Location = new System.Drawing.Point(767, 396);
+            this.FindByProjectTxtB.MaxLength = 100;
             this.FindByProjectTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByProjectTxtB.Name = "FindByProjectTxtB";
             this.FindByProjectTxtB.Size = new System.Drawing.Size(194, 29);
@@ -276,6 +276,7 @@
             this.FindByTeamNumberTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByTeamNumberTxtB.ForeColor = System.Drawing.Color.White;
             this.FindByTeamNumberTxtB.Location = new System.Drawing.Point(363, 456);
+            this.FindByTeamNumberTxtB.MaxLength = 100;
             this.FindByTeamNumberTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByTeamNumberTxtB.Name = "FindByTeamNumberTxtB";
             this.FindByTeamNumberTxtB.Size = new System.Drawing.Size(194, 29);
@@ -314,6 +315,7 @@
             this.FindByIdTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByIdTxtB.ForeColor = System.Drawing.Color.White;
             this.FindByIdTxtB.Location = new System.Drawing.Point(363, 397);
+            this.FindByIdTxtB.MaxLength = 100;
             this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByIdTxtB.Name = "FindByIdTxtB";
             this.FindByIdTxtB.Size = new System.Drawing.Size(194, 29);
@@ -371,7 +373,6 @@
             this.DevelopersListView.View = System.Windows.Forms.View.Details;
             this.DevelopersListView.ItemActivate += new System.EventHandler(this.DevelopersListView_ItemActivate);
             this.DevelopersListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.DevelopersListView_ItemSelectionChanged);
-            this.DevelopersListView.SelectedIndexChanged += new System.EventHandler(this.DevelopersListView_SelectedIndexChanged);
             // 
             // Developer_Id
             // 
@@ -421,7 +422,6 @@
             this.Developers.TabIndex = 44;
             this.Developers.Text = "Developers";
             this.Developers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Developers.Click += new System.EventHandler(this.Developers_Click);
             // 
             // Teams
             // 
@@ -436,7 +436,6 @@
             this.Teams.TabIndex = 45;
             this.Teams.Text = "Teams";
             this.Teams.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Teams.Click += new System.EventHandler(this.Teams_Click);
             // 
             // ShowALL
             // 

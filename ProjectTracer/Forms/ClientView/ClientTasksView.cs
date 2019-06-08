@@ -26,14 +26,22 @@ namespace ProjectTracer.Forms.ClientView
             Unit = new UnityOfWork(new ProjectTracerEntities()); 
             SelectedTask = new Tasks(); 
             MyClient = myClient;
-            SelectedProject = Unit.Projects
+            try
+            {
+                SelectedProject = Unit.Projects
                 .GetAll()
                 .FirstOrDefault(p => p.Clients
                                        .Contains(Unit.Clients
                                                       .GetAll()
                                                       .FirstOrDefault(c => c.Client_Id == myClient.Client_Id)));
-            LoadProjects();
-            LoadTasks();
+                LoadProjects();
+                LoadTasks();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading data "); 
+            }
+            
         }
         private void LoadProjects()
         {
@@ -43,9 +51,9 @@ namespace ProjectTracer.Forms.ClientView
                 ProjectsViewList.Items.Clear();
                 ClientTasksController.GetProjectsItemList(Unit, MyClient.Client_Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show("Error loading the projects, please try again later: " + E.ToString());
+                MessageBox.Show("Error loading the projects, please try again later: ");
             }
         }
         private void LoadTasks()
@@ -55,9 +63,9 @@ namespace ProjectTracer.Forms.ClientView
                 TasksViewList.Items.Clear();
                 ClientTasksController.GetTasksItemList(Unit, SelectedProject.Project_ID).ForEach(item => TasksViewList.Items.Add(item));
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show("Error loading tasks, please select a project" +E.ToString());
+                MessageBox.Show("Error loading tasks, please select a project");
             }
         }
 

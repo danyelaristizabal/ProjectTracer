@@ -55,7 +55,7 @@
             this.CancelBtn.Location = new System.Drawing.Point(171, 458);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(200, 40);
-            this.CancelBtn.TabIndex = 57;
+            this.CancelBtn.TabIndex = 3;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = false;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
@@ -91,7 +91,7 @@
             this.RegisterBtn.Location = new System.Drawing.Point(404, 458);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(200, 40);
-            this.RegisterBtn.TabIndex = 56;
+            this.RegisterBtn.TabIndex = 2;
             this.RegisterBtn.Text = "Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
@@ -203,8 +203,8 @@
             this.SeniorTxtB.MaxLength = 60;
             this.SeniorTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.SeniorTxtB.Name = "SeniorTxtB";
-            this.SeniorTxtB.Size = new System.Drawing.Size(280, 32);
-            this.SeniorTxtB.TabIndex = 54;
+            this.SeniorTxtB.Size = new System.Drawing.Size(280, 29);
+            this.SeniorTxtB.TabIndex = 0;
             // 
             // DeveloperTxtB
             // 
@@ -215,8 +215,8 @@
             this.DeveloperTxtB.MaxLength = 60;
             this.DeveloperTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.DeveloperTxtB.Name = "DeveloperTxtB";
-            this.DeveloperTxtB.Size = new System.Drawing.Size(280, 32);
-            this.DeveloperTxtB.TabIndex = 65;
+            this.DeveloperTxtB.Size = new System.Drawing.Size(280, 29);
+            this.DeveloperTxtB.TabIndex = 1;
             // 
             // label2
             // 

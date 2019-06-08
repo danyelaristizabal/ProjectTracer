@@ -248,6 +248,7 @@
             this.FindByIdTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByIdTxtB.ForeColor = System.Drawing.Color.White;
             this.FindByIdTxtB.Location = new System.Drawing.Point(364, 395);
+            this.FindByIdTxtB.MaxLength = 100;
             this.FindByIdTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByIdTxtB.Name = "FindByIdTxtB";
             this.FindByIdTxtB.Size = new System.Drawing.Size(194, 29);
@@ -285,6 +286,7 @@
             this.FindByTeamNumberTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FindByTeamNumberTxtB.ForeColor = System.Drawing.Color.White;
             this.FindByTeamNumberTxtB.Location = new System.Drawing.Point(793, 395);
+            this.FindByTeamNumberTxtB.MaxLength = 100;
             this.FindByTeamNumberTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.FindByTeamNumberTxtB.Name = "FindByTeamNumberTxtB";
             this.FindByTeamNumberTxtB.Size = new System.Drawing.Size(194, 29);

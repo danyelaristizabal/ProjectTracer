@@ -19,14 +19,13 @@ namespace ProjectTracer.Controllers
           Password={Encrypt.EncryptString(user.Password,"Pass")};");
             try
             {
-                MessageBox.Show($"Password: {user.Password} Encrypted: {Encrypt.EncryptString(user.Password, "Pass")}");
                 sq.Open();
                 sq.Close();
                 return true;
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show($"Incorrect User Name or Password, Error:{E}");
+                MessageBox.Show($"Incorrect User Name or Password");
                 sq.Close();
                 return false;
             }

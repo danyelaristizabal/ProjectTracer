@@ -10,7 +10,6 @@ namespace ProjectTracer.Models
             int m = t.Length;
             int[,] d = new int[n + 1, m + 1];
 
-            // Step 1
             if (n == 0)
             {
                 return m;
@@ -30,16 +29,12 @@ namespace ProjectTracer.Models
             {
             }
 
-            // Step 3
             for (int i = 1; i <= n; i++)
             {
-                //Step 4
                 for (int j = 1; j <= m; j++)
                 {
-                    // Step 5
                     int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
 
-                    // Step 6
                     d[i, j] = Math.Min(
                         Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
                         d[i - 1, j - 1] + cost);

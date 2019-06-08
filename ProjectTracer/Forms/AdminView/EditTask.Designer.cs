@@ -89,7 +89,7 @@
             this.DeadLineTxtB.Location = new System.Drawing.Point(286, 426);
             this.DeadLineTxtB.MinimumSize = new System.Drawing.Size(0, 32);
             this.DeadLineTxtB.Name = "DeadLineTxtB";
-            this.DeadLineTxtB.Size = new System.Drawing.Size(280, 32);
+            this.DeadLineTxtB.Size = new System.Drawing.Size(280, 22);
             this.DeadLineTxtB.TabIndex = 67;
             // 
             // SaveBtn
@@ -193,6 +193,7 @@
             this.DescriptionTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DescriptionTxtB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DescriptionTxtB.Location = new System.Drawing.Point(286, 77);
+            this.DescriptionTxtB.MaxLength = 10000;
             this.DescriptionTxtB.Name = "DescriptionTxtB";
             this.DescriptionTxtB.Size = new System.Drawing.Size(280, 306);
             this.DescriptionTxtB.TabIndex = 77;

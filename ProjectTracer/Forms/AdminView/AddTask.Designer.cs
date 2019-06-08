@@ -53,7 +53,7 @@
             this.CancelBtn.Location = new System.Drawing.Point(172, 506);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(200, 40);
-            this.CancelBtn.TabIndex = 57;
+            this.CancelBtn.TabIndex = 3;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = false;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
@@ -103,7 +103,7 @@
             this.SaveBtn.Location = new System.Drawing.Point(405, 506);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(200, 40);
-            this.SaveBtn.TabIndex = 3;
+            this.SaveBtn.TabIndex = 2;
             this.SaveBtn.Text = "Save";
             this.SaveBtn.UseVisualStyleBackColor = false;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
@@ -206,6 +206,7 @@
             this.DescriptionTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DescriptionTxtB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DescriptionTxtB.Location = new System.Drawing.Point(288, 138);
+            this.DescriptionTxtB.MaxLength = 10000;
             this.DescriptionTxtB.Name = "DescriptionTxtB";
             this.DescriptionTxtB.Size = new System.Drawing.Size(280, 306);
             this.DescriptionTxtB.TabIndex = 0;

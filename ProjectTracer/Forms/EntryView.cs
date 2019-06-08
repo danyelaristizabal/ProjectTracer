@@ -13,35 +13,70 @@ namespace ProjectTracer
 {
     public partial class EntryView : Form
     {
-        public Form Base { get; set; }
-        public EntryView(Form _Base )
+        public EntryView( )
         {
-            Base = _Base; 
             InitializeComponent();
         }
         private void ClientBtn_Click(object sender, EventArgs e)
         {
-              var myLogin = EntryController.GetLogIn("Client", Base);
-              myLogin.Show(); 
-              this.Close();
+              
+            try
+            {
+                var myLogin = EntryController.GetLogIn("Client");
+                myLogin.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Log in Error, please try later");
+            }
         }
         private void Developer_Click(object sender, EventArgs e)
         {
-            var myLogin = EntryController.GetLogIn("Developer", Base);
-            myLogin.Show(); 
-            this.Close();
+            try
+            {
+                var myLogin = EntryController.GetLogIn("Developer");
+                myLogin.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Log in Error, please try later"); 
+            }
+           
         }
         private void SeniorDevBtn_Click(object sender, EventArgs e)
         {
-            var myLogin = EntryController.GetLogIn("Senior", Base);
-            myLogin.Show();
-            this.Close();
+
+            try
+            {
+                var myLogin = EntryController.GetLogIn("Senior");
+                myLogin.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Log in Error, please try later");
+            }
+          
         }
         private void AdminBtn_Click(object sender, EventArgs e)
         {
-            var myLogin = EntryController.GetLogIn("Admin", Base);
-            myLogin.Show();
-            this.Close();
+          
+            try
+            {
+                var myLogin = EntryController.GetLogIn("Admin");
+                myLogin.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Log in Error, please try later");
+            }
         }
         private void Minimizr_Click(object sender, EventArgs e)
         {

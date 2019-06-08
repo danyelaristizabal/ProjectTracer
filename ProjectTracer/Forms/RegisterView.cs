@@ -11,7 +11,14 @@ namespace ProjectTracer.Forms
         public RegisterView(IUser myUser) 
         {
             InitializeComponent();
-            User = myUser; 
+            User = myUser;
+
+            if (User.GetType().Name == "Senior" || User.GetType().Name == "Admin")
+            {
+                RegistrtionCodeTxtB.Visible = false;
+                InvitationCodelbl.Visible = false;
+                richTextBox4.Visible = false;
+            }
         }
         private void RegisterView_Load(object sender, EventArgs e)
         {

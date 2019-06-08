@@ -12,7 +12,7 @@ namespace ProjectTracer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var MyEntry = new EntryView(new InitialBaseView());
+            var MyEntry = new EntryView();
             //var MyEntry = new ClientDevelopersView();
 
             MyEntry.Show();

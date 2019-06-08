@@ -201,6 +201,7 @@
             this.InputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputTextBox.ForeColor = System.Drawing.Color.White;
             this.InputTextBox.Location = new System.Drawing.Point(374, 73);
+            this.InputTextBox.MaxLength = 100;
             this.InputTextBox.MinimumSize = new System.Drawing.Size(100, 32);
             this.InputTextBox.Name = "InputTextBox";
             this.InputTextBox.Size = new System.Drawing.Size(280, 29);
@@ -248,17 +249,17 @@
             // Task_Id
             // 
             this.Task_Id.Text = "Task";
-            this.Task_Id.Width = 120;
+            this.Task_Id.Width = 45;
             // 
             // DescriptionTask
             // 
             this.DescriptionTask.Text = "Description";
-            this.DescriptionTask.Width = 200;
+            this.DescriptionTask.Width = 220;
             // 
             // DeadlLineTask
             // 
             this.DeadlLineTask.Text = "DeadLine";
-            this.DeadlLineTask.Width = 100;
+            this.DeadlLineTask.Width = 170;
             // 
             // DeleteTaskBtn
             // 
@@ -315,7 +316,7 @@
             // Project_Id
             // 
             this.Project_Id.Text = "Project Id";
-            this.Project_Id.Width = 160;
+            this.Project_Id.Width = 90;
             // 
             // Description
             // 
@@ -325,7 +326,7 @@
             // DeadLine
             // 
             this.DeadLine.Text = "DeadLine";
-            this.DeadLine.Width = 120;
+            this.DeadLine.Width = 170;
             // 
             // EditTaskBtn
             // 

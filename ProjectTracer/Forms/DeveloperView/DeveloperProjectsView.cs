@@ -32,9 +32,9 @@ namespace ProjectTracer.Forms.DeveloperView
                 ProjectsView.Items.Clear();
                 DevelopersTasksController.GetProjectsItemList(Unit, MyDeveloper.Developer_Id).ForEach(item => ProjectsView.Items.Add(item));
             }
-            catch (Exception E)
+            catch (Exception)
             {
-                MessageBox.Show("Error loading the projects, please try again later: " + E.ToString());
+                MessageBox.Show("Error loading the projects, please try again later: ");
             }
         }
 

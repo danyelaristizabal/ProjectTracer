@@ -97,7 +97,7 @@
             this.PasswordTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PasswordTxtB.ForeColor = System.Drawing.Color.White;
             this.PasswordTxtB.Location = new System.Drawing.Point(139, 220);
-            this.PasswordTxtB.MaxLength = 50;
+            this.PasswordTxtB.MaxLength = 140;
             this.PasswordTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.PasswordTxtB.Name = "PasswordTxtB";
             this.PasswordTxtB.PasswordChar = '*';
@@ -111,7 +111,7 @@
             this.UserTxtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserTxtB.ForeColor = System.Drawing.Color.White;
             this.UserTxtB.Location = new System.Drawing.Point(139, 165);
-            this.UserTxtB.MaxLength = 50;
+            this.UserTxtB.MaxLength = 100;
             this.UserTxtB.MinimumSize = new System.Drawing.Size(100, 32);
             this.UserTxtB.Name = "UserTxtB";
             this.UserTxtB.Size = new System.Drawing.Size(164, 29);

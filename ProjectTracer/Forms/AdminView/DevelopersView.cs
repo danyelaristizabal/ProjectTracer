@@ -262,7 +262,7 @@ namespace ProjectTracer.Forms
             }
             catch (Exception)
             {
-                MessageBox.Show($"Unable create team, please try again later" );
+                MessageBox.Show("Unable create team, please try again later" );
             }
         }
         private void DevelopersListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -293,24 +293,5 @@ namespace ProjectTracer.Forms
             //}
         }
 
-        private void Teams_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Developers_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DevelopersListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TeamsListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

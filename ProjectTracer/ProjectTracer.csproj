@@ -80,9 +80,10 @@
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\LogInControler.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\SeniorDevelopersController.cs" />
-    <Compile Include="Controllers\SeniorProjectsController.cs" />
-    <Compile Include="Controllers\SeniorTasksController.cs" />
+    <Compile Include="Controllers\Registrate.cs" />
+    <Compile Include="Controllers\Senior\SeniorDevelopersController.cs" />
+    <Compile Include="Controllers\Senior\SeniorProjectsController.cs" />
+    <Compile Include="Controllers\Senior\SeniorTasksController.cs" />
     <Compile Include="Developers.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
@@ -107,12 +108,6 @@
     <Compile Include="Forms\AdminView\AddTeam.Designer.cs">
       <DependentUpon>AddTeam.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\BaseView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AdminView\BaseView.Designer.cs">
-      <DependentUpon>BaseView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AdminView\ClientsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,12 +125,6 @@
     </Compile>
     <Compile Include="Forms\AdminView\EditTask.Designer.cs">
       <DependentUpon>EditTask.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ClientView\ClientBaseView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ClientView\ClientBaseView.Designer.cs">
-      <DependentUpon>ClientBaseView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ClientView\ClientDevelopersView.cs">
       <SubType>Form</SubType>
@@ -155,12 +144,6 @@
     <Compile Include="Forms\ClientView\ClientTasksView.Designer.cs">
       <DependentUpon>ClientTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperView\DeveloperBaseView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DeveloperView\DeveloperBaseView.Designer.cs">
-      <DependentUpon>DeveloperBaseView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\DeveloperView\DeveloperProjectsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,12 +161,6 @@
     </Compile>
     <Compile Include="Forms\EntryView.Designer.cs">
       <DependentUpon>EntryView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\InitialBaseView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InitialBaseView.Designer.cs">
-      <DependentUpon>InitialBaseView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LogInView.cs">
       <SubType>Form</SubType>
@@ -208,12 +185,6 @@
     </Compile>
     <Compile Include="Forms\AdminView\TasksView.Designer.cs">
       <DependentUpon>TasksView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SeniorView\SeniorBaseView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SeniorView\SeniorBaseView.Designer.cs">
-      <DependentUpon>SeniorBaseView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SeniorView\SeniorDevelopersView.cs">
       <SubType>Form</SubType>
@@ -307,9 +278,6 @@
     <EmbeddedResource Include="Forms\AdminView\AddTeam.resx">
       <DependentUpon>AddTeam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\BaseView.resx">
-      <DependentUpon>BaseView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\ClientsView.resx">
       <DependentUpon>ClientsView.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,9 +286,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\EditTask.resx">
       <DependentUpon>EditTask.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ClientView\ClientBaseView.resx">
-      <DependentUpon>ClientBaseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientView\ClientDevelopersView.resx">
       <DependentUpon>ClientDevelopersView.cs</DependentUpon>
@@ -331,9 +296,6 @@
     <EmbeddedResource Include="Forms\ClientView\ClientTasksView.resx">
       <DependentUpon>ClientTasksView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperView\DeveloperBaseView.resx">
-      <DependentUpon>DeveloperBaseView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DeveloperView\DeveloperProjectsView.resx">
       <DependentUpon>DeveloperProjectsView.cs</DependentUpon>
     </EmbeddedResource>
@@ -342,9 +304,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntryView.resx">
       <DependentUpon>EntryView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InitialBaseView.resx">
-      <DependentUpon>InitialBaseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
@@ -357,9 +316,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\TasksView.resx">
       <DependentUpon>TasksView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SeniorView\SeniorBaseView.resx">
-      <DependentUpon>SeniorBaseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SeniorView\SeniorDevelopersView.resx">
       <DependentUpon>SeniorDevelopersView.cs</DependentUpon>
@@ -456,8 +412,6 @@
       <LastGenOutput>ProjectTracerDataModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\Senior\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
