@@ -76,11 +76,11 @@
     <Compile Include="Controllers\Client\ClientProjectsController.cs" />
     <Compile Include="Controllers\Client\ClientTasksController.cs" />
     <Compile Include="Controllers\Developer\DevelopersTasksController.cs" />
-    <Compile Include="Controllers\Encrypt.cs" />
-    <Compile Include="Controllers\EntryController.cs" />
-    <Compile Include="Controllers\LogInControler.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\Registrate.cs" />
+    <Compile Include="Controllers\Helpers\Encrypt.cs" />
+    <Compile Include="Controllers\Entry\EntryController.cs" />
+    <Compile Include="Controllers\Entry\LogInControler.cs" />
+    <Compile Include="Controllers\Entry\RegisterController.cs" />
+    <Compile Include="Controllers\Entry\Registrate.cs" />
     <Compile Include="Controllers\Senior\SeniorDevelopersController.cs" />
     <Compile Include="Controllers\Senior\SeniorProjectsController.cs" />
     <Compile Include="Controllers\Senior\SeniorTasksController.cs" />
@@ -156,16 +156,16 @@
     <Compile Include="Forms\DeveloperView\DeveloperTasksView.Designer.cs">
       <DependentUpon>DeveloperTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EntryView.cs">
+    <Compile Include="Forms\EntryView\EntryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EntryView.Designer.cs">
+    <Compile Include="Forms\EntryView\EntryView.Designer.cs">
       <DependentUpon>EntryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LogInView.cs">
+    <Compile Include="Forms\EntryView\LogInView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LogInView.Designer.cs">
+    <Compile Include="Forms\EntryView\LogInView.Designer.cs">
       <DependentUpon>LogInView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\ProjectsView.cs">
@@ -174,10 +174,10 @@
     <Compile Include="Forms\AdminView\ProjectsView.Designer.cs">
       <DependentUpon>ProjectsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RegisterView.cs">
+    <Compile Include="Forms\EntryView\RegisterView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RegisterView.Designer.cs">
+    <Compile Include="Forms\EntryView\RegisterView.Designer.cs">
       <DependentUpon>RegisterView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\TasksView.cs">
@@ -204,8 +204,8 @@
     <Compile Include="Forms\SeniorView\SeniorTasksView.Designer.cs">
       <DependentUpon>SeniorTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BoolEvent.cs" />
-    <Compile Include="Models\LevenshteinDistance.cs" />
+    <Compile Include="Controllers\Helpers\BoolEvent.cs" />
+    <Compile Include="Controllers\Helpers\LevenshteinDistance.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs">
@@ -240,13 +240,13 @@
     <Compile Include="Repository\IUserRepositories\IClientRepository.cs" />
     <Compile Include="Repository\IUserRepositories\IDeveloperRepository.cs" />
     <Compile Include="Repository\INonUserEntities\IProjectRepository.cs" />
-    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\RepositoryControl\IRepository.cs" />
     <Compile Include="Repository\IUserRepositories\ISeniorRepository.cs" />
-    <Compile Include="Repository\IUnityOfWork.cs" />
+    <Compile Include="Repository\RepositoryControl\IUnityOfWork.cs" />
     <Compile Include="Repository\NonUserEntities\ProjectRepository.cs" />
-    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\RepositoryControl\Repository.cs" />
     <Compile Include="Repository\UserRepositories\SeniorRepository.cs" />
-    <Compile Include="Repository\UnityOfWork.cs" />
+    <Compile Include="Repository\RepositoryControl\UnityOfWork.cs" />
     <Compile Include="Senior.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
@@ -292,16 +292,16 @@
     <EmbeddedResource Include="Forms\DeveloperView\DeveloperTasksView.resx">
       <DependentUpon>DeveloperTasksView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EntryView.resx">
+    <EmbeddedResource Include="Forms\EntryView\EntryView.resx">
       <DependentUpon>EntryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LogInView.resx">
+    <EmbeddedResource Include="Forms\EntryView\LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\ProjectsView.resx">
       <DependentUpon>ProjectsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RegisterView.resx">
+    <EmbeddedResource Include="Forms\EntryView\RegisterView.resx">
       <DependentUpon>RegisterView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminView\TasksView.resx">

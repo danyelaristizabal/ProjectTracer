@@ -1,11 +1,8 @@
 ﻿using ProjectTracer.Models;
 using ProjectTracer.Repository;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectTracer.Controllers
@@ -15,7 +12,7 @@ namespace ProjectTracer.Controllers
         public static bool RegisterInDatabaseProc(IUser user)
         {
             SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True ");
-            SqlCommand scmd = new SqlCommand($"EXEC dbo.RegisterInDatabase @UserName = '{user.Name}', @RoleName = '{user.GetType().Name}'", sq);
+            SqlCommand scmd = new SqlCommand($"EXEC dbo.RegisterInDatabase @UserName = '{user.Id}', @RoleName = '{user.GetType().Name}'", sq);
             sq.Open();
             try
             {
@@ -34,7 +31,7 @@ namespace ProjectTracer.Controllers
         {
             SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True");
 
-            SqlCommand scmd = new SqlCommand($"EXEC dbo.RegisterInServer @UserName = '{user.Name}', @RoleName = '{user.GetType().Name}'", sq);
+            SqlCommand scmd = new SqlCommand($"EXEC dbo.RegisterInServer @UserName = '{user.Id}', @RoleName = '{user.GetType().Name}'", sq);
 
             scmd.Parameters.Clear();
 
@@ -45,7 +42,7 @@ namespace ProjectTracer.Controllers
 
                 var UnitOFWork = new UnityOfWork(new ProjectTracerEntities());
 
-                var projects = UnitOFWork.Projects.GetAll().ToList();
+                var projects = UnitOFWork.Project.GetAll().ToList();
 
                 switch (user.GetType().Name)
                 {
@@ -64,12 +61,12 @@ namespace ProjectTracer.Controllers
                                     sq.Close();
 
                                     // Add the new client
-                                    UnitOFWork.Clients.Add(
+                                    UnitOFWork.Client.Add(
 
-                                        new Clients()
+                                        new Client()
                                         {
 
-                                            Client_Id = user.Name,
+                                            Id = user.Id,
                                             Password = Encrypt.EncryptString(user.Password, "Pass")
                                         }
                                         );
@@ -77,12 +74,12 @@ namespace ProjectTracer.Controllers
 
                                     //Relate client with the new project
 
-                                    UnitOFWork.Clients
+                                    UnitOFWork.Client
                                         .GetAll()
-                                        .FirstOrDefault(c => c.Client_Id == user.Name)
-                                        .Projects
+                                        .FirstOrDefault(c => c.Id == user.Id)
+                                        .Project
                                         .Add(
-                                             UnitOFWork.Projects
+                                             UnitOFWork.Project
                                             .GetAll()
                                             .FirstOrDefault(P => P.Project_ID == decryptedId)
                                         );
@@ -103,7 +100,7 @@ namespace ProjectTracer.Controllers
 
                             sq.Close();
 
-                            UnitOFWork.Clients.Add(new Clients() { Client_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                            UnitOFWork.Client.Add(new Client() { Id = user.Id, Password = Encrypt.EncryptString(user.Password, "Pass") });
 
                             UnitOFWork.Complete();
                         }
@@ -121,41 +118,41 @@ namespace ProjectTracer.Controllers
 
                                     sq.Close();
                                     // Add the new dev 
-                                    UnitOFWork.Developers
+                                    UnitOFWork.Developer
                                         .Add(
-                                                new Developers()
+                                                new Developer()
                                                 {
-                                                    Developer_Id = user.Name,
+                                                    Id = user.Id,
                                                     Password = Encrypt.EncryptString(user.Password, "Pass")
                                                 }
                                             );
                                     UnitOFWork.Complete();
                                     //No teams in this project? ok, then we create one
-                                    var teamId = UnitOFWork.Teams.GetAll().Count() + 1;
-                                    if (UnitOFWork.Projects
+                                    var teamId = UnitOFWork.Team.GetAll().Count() + 1;
+                                    if (UnitOFWork.Project
                                     .GetAll()
                                     .FirstOrDefault(p => p.Project_ID == project.Project_ID)
-                                    .Teams.Count == 0)
+                                    .Team.Count == 0)
                                     {
                                         // Add one team to teams 
-                                        UnitOFWork.Teams
-                                            .Add(new Teams() { Team_ID = teamId });
+                                        UnitOFWork.Team
+                                            .Add(new Team() { Team_ID = teamId });
 
                                         UnitOFWork.Complete();
                                         //Relate this team to our project 
 
-                                        UnitOFWork.Teams
+                                        UnitOFWork.Team
                                             .GetAll()
                                             .FirstOrDefault(t => t.Team_ID == teamId)
-                                            .Projects
-                                            .Add(UnitOFWork.Projects.GetAll().FirstOrDefault(t => t.Project_ID == project.Project_ID));
+                                            .Project
+                                            .Add(UnitOFWork.Project.GetAll().FirstOrDefault(t => t.Project_ID == project.Project_ID));
                                         UnitOFWork.Complete();
 
                                         //Add our Team to our Developer
-                                        UnitOFWork.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name)
-                                            .Teams
+                                        UnitOFWork.Developer.GetAll().FirstOrDefault(d => d.Id == user.Id)
+                                            .Team
                                             .Add(
-                                            UnitOFWork.Teams
+                                            UnitOFWork.Team
                                             .GetAll()
                                             .FirstOrDefault(t => t.Team_ID == teamId)
                                             );
@@ -164,13 +161,13 @@ namespace ProjectTracer.Controllers
                                     else
                                     {
                                         //In case that there is already teams working on the project we add the developer to the first
-                                        UnitOFWork.Projects
+                                        UnitOFWork.Project
                                            .GetAll()
                                            .FirstOrDefault(p => p.Project_ID == project.Project_ID)
-                                           .Teams
+                                           .Team
                                            .FirstOrDefault()
-                                           .Developers
-                                           .Add(UnitOFWork.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name));
+                                           .Developer
+                                           .Add(UnitOFWork.Developer.GetAll().FirstOrDefault(d => d.Id == user.Id));
                                         UnitOFWork.Complete();
                                     }
 
@@ -189,7 +186,7 @@ namespace ProjectTracer.Controllers
                             scmd.ExecuteScalar();
 
                             sq.Close();
-                            UnitOFWork.Developers.Add(new Developers() { Developer_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                            UnitOFWork.Developer.Add(new Developer() { Id = user.Id, Password = Encrypt.EncryptString(user.Password, "Pass") });
 
                             UnitOFWork.Complete();
                         }
@@ -199,7 +196,7 @@ namespace ProjectTracer.Controllers
                         scmd.ExecuteScalar();
 
                         sq.Close();
-                        UnitOFWork.Seniors.Add(new Seniors() { Senior_Id = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                        UnitOFWork.Senior.Add(new Senior() { Id = user.Id, Password = Encrypt.EncryptString(user.Password, "Pass") });
 
                         UnitOFWork.Complete();
                         break;
@@ -207,7 +204,7 @@ namespace ProjectTracer.Controllers
                         scmd.ExecuteScalar();
 
                         sq.Close();
-                        UnitOFWork.Administrators.Add(new Administrators() { Administrator = user.Name, Password = Encrypt.EncryptString(user.Password, "Pass") });
+                        UnitOFWork.Administrator.Add(new Administrator() { Id = user.Id, Password = Encrypt.EncryptString(user.Password, "Pass") });
                         UnitOFWork.Complete();
                         break;
                     default:

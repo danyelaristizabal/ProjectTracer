@@ -7,27 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer.Models
+namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Developer
+    public partial class Team
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Developer()
+        public Team()
         {
-            this.Team = new HashSet<Team>();
-            this.Task = new HashSet<Task>();
+            this.Developer = new HashSet<Developer>();
+            this.Senior = new HashSet<Senior>();
+            this.Project = new HashSet<Project>();
         }
     
-        public string Id { get; set; }
-        public string Password { get; set; }
-        public string InvitationCode { get; set; }
+        public int Team_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team> Team { get; set; }
+        public virtual ICollection<Developer> Developer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Task { get; set; }
+        public virtual ICollection<Senior> Senior { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Project> Project { get; set; }
     }
 }

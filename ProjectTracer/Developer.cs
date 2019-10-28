@@ -7,34 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer.Models
+namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
+    using ProjectTracer.Models; 
     
-    public partial class Project
+    public partial class Developer : IUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Project()
+        public Developer()
         {
-            this.Document = new HashSet<Document>();
-            this.Task = new HashSet<Task>();
-            this.Client = new HashSet<Client>();
             this.Team = new HashSet<Team>();
+            this.Task = new HashSet<Task>();
         }
     
-        public string Project_ID { get; set; }
-        public string Description { get; set; }
-        public System.DateTime DeadLine { get; set; }
-        public string Result { get; set; }
+        public string Id { get; set; }
+        public string Password { get; set; }
+        public string InvitationCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Document> Document { get; set; }
+        public virtual ICollection<Team> Team { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Task { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team> Team { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer.Models
+namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;

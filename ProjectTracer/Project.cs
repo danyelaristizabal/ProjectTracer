@@ -7,28 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer.Models
+namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Team
+    public partial class Project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Team()
+        public Project()
         {
-            this.Developer = new HashSet<Developer>();
-            this.Senior = new HashSet<Senior>();
-            this.Project = new HashSet<Project>();
+            this.Document = new HashSet<Document>();
+            this.Task = new HashSet<Task>();
+            this.Client = new HashSet<Client>();
+            this.Team = new HashSet<Team>();
         }
     
-        public int Team_ID { get; set; }
+        public string Project_ID { get; set; }
+        public string Description { get; set; }
+        public System.DateTime DeadLine { get; set; }
+        public string Result { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Developer> Developer { get; set; }
+        public virtual ICollection<Document> Document { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Senior> Senior { get; set; }
+        public virtual ICollection<Task> Task { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Project> Project { get; set; }
+        public virtual ICollection<Client> Client { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Team> Team { get; set; }
     }
 }

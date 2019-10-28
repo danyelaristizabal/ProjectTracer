@@ -23,7 +23,7 @@ namespace ProjectTracer
 
         private void LogInBtn_Click(object sender, EventArgs e)
         {
-            MyUser.Name = UserTxtB.Text;
+            MyUser.Id = UserTxtB.Text;
 
             MyUser.Password = PasswordTxtB.Text;
 

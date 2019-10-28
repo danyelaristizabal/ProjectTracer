@@ -29,7 +29,7 @@ namespace ProjectTracer.Forms
         }
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            User.Name = NameTxtBox.Text;
+            User.Id = NameTxtBox.Text;
 
             User.Password = PasswordTxtBox.Text;
 

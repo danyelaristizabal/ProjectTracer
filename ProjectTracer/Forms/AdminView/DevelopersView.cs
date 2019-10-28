@@ -1,9 +1,8 @@
-﻿using ProjectTracer.Controllers;
+﻿using System;
+using System.Windows.Forms;
+using ProjectTracer.Controllers;
 using ProjectTracer.Forms.AdminView;
 using ProjectTracer.Repository;
-using System;
-using System.Windows.Forms;
-
 namespace ProjectTracer.Forms
 {
     public partial class DevelopersView : Form

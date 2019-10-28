@@ -7,15 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer.Models
+namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Administrator
+    public partial class Document
     {
-        public string Id { get; set; }
-        public string Password { get; set; }
-        public string InvitationCode { get; set; }
+        public int Document_ID { get; set; }
+        public string Description { get; set; }
+        public string Project_Id { get; set; }
+    
+        public virtual Project Project { get; set; }
     }
 }
