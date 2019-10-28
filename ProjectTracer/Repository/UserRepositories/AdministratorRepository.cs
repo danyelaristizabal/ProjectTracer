@@ -9,7 +9,7 @@
         {
             var Admin = Context.Administrators.Find(id);
 
-            return Admin.Password == password;
+            return Admin.Password.Contains(password);
         }
     }
 }
