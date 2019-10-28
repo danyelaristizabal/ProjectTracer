@@ -1,13 +1,13 @@
 ﻿namespace ProjectTracer.Repository
 {
-    public class AdministratorRepository : Repository<Administrators>, IAdministratorRepository
+    public class AdministratorRepository : Repository<Administrator>, IAdministratorRepository
     {
         public AdministratorRepository(ProjectTracerEntities Context) : base(Context)
         {
         }
         public bool CheckExistance(string id, string password)
         {
-            var Admin = Context.Administrators.Find(id);
+            var Admin = Context.Administrator.Find(id);
 
             return Admin.Password.Contains(password);
         }

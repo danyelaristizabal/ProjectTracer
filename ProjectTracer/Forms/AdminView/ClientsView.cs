@@ -7,15 +7,15 @@ namespace ProjectTracer.Forms
 {
     public partial class ClientsView : Form
     {
-        public Clients SelectedClient { get; set; }
-        public Projects SelectedProject { get; set; }
+        public Client SelectedClient { get; set; }
+        public Project SelectedProject { get; set; }
         public UnityOfWork Unit  { get;  set; }
         public ClientsView()
         {
             InitializeComponent();
             Unit = new UnityOfWork(new ProjectTracerEntities());
-            SelectedClient = new Clients() { };
-            SelectedProject = new Projects() { }; 
+            SelectedClient = new Client() { };
+            SelectedProject = new Project() { }; 
             LoadClients();
             LoadProjects();
 
@@ -117,15 +117,15 @@ namespace ProjectTracer.Forms
             try
             {
                 Item = ClientsViewList.GetItemAt(MousePosition.X - 320, MousePosition.Y - 254);
-                SelectedClient = new Clients()
+                SelectedClient = new Client()
                 {
-                    Client_Id = Item.SubItems[0].Text,
+                    Id = Item.SubItems[0].Text,
                 };
-                MessageBox.Show("Selected Client: " + SelectedClient.Client_Id);
+                MessageBox.Show("Selected Client: " + SelectedClient.Id);
 
                 AdminProjectsView.Items.Clear();
 
-                AdminClientsViewController.FindProjectsByClient(Unit, SelectedClient.Client_Id).ForEach(item => AdminProjectsView.Items.Add(item));
+                AdminClientsViewController.FindProjectsByClient(Unit, SelectedClient.Id).ForEach(item => AdminProjectsView.Items.Add(item));
 
             }
             catch (Exception)
@@ -142,7 +142,7 @@ namespace ProjectTracer.Forms
             {
                 Item = AdminProjectsView.GetItemAt(MousePosition.X - 320, MousePosition.Y - 489);
 
-                SelectedProject = new Projects()
+                SelectedProject = new Project()
                 {
                     Project_ID = Item.SubItems[0].Text,
                 };

@@ -58,10 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrators.cs">
+    <Compile Include="Administrator.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Clients.cs">
+    <Compile Include="Client.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Admin\AddProjectController.cs" />
@@ -84,10 +84,10 @@
     <Compile Include="Controllers\Senior\SeniorDevelopersController.cs" />
     <Compile Include="Controllers\Senior\SeniorProjectsController.cs" />
     <Compile Include="Controllers\Senior\SeniorTasksController.cs" />
-    <Compile Include="Developers.cs">
+    <Compile Include="Developer.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Documents.cs">
+    <Compile Include="Document.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminView\AddProject.cs">
@@ -174,7 +174,6 @@
     <Compile Include="Forms\AdminView\ProjectsView.Designer.cs">
       <DependentUpon>ProjectsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NativeWinApi.cs" />
     <Compile Include="Forms\RegisterView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,15 +204,11 @@
     <Compile Include="Forms\SeniorView\SeniorTasksView.Designer.cs">
       <DependentUpon>SeniorTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\BoolEvent.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\Developer.cs" />
     <Compile Include="Models\LevenshteinDistance.cs" />
-    <Compile Include="Models\Senior.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Projects.cs">
+    <Compile Include="Project.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProjectTracerDataModel.Context.cs">
@@ -252,22 +247,16 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepositories\SeniorRepository.cs" />
     <Compile Include="Repository\UnityOfWork.cs" />
-    <Compile Include="Seniors.cs">
-      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
+    <Compile Include="Senior.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tasks.cs">
+    <Compile Include="Task.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Teams.cs">
+    <Compile Include="Team.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AdminView\AddProject.resx">
@@ -413,6 +402,5 @@
       <LastGenOutput>ProjectTracerDataModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

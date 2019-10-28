@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4ce76d222f0343209c89c25ca16479b9" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectTracerModel.Administrator" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Client" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Developer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Document" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Project" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Senior" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Task" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTracerModel.Team" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="ProjectTracerModel.FK_Documents_ProjectId" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTracerModel.FK_Tasks_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTracerModel.ClientAndProject" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTracerModel.DeveloperAndTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTracerModel.SeniorAndTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTracerModel.TaskAndDeveloper" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTracerModel.TeamAndProject" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

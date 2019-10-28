@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Models;
 using ProjectTracer.Repository;
@@ -13,10 +10,10 @@ namespace ProjectTracer.Controllers
     {
         internal static List<ListViewItem> GetProjectsItemList(UnityOfWork unit, string client_Id )
         {
-            List<Projects> ListOfProjects = unit.Projects
+            List<Project> ListOfProjects = unit.Project
                 .GetAll()
-                .Where(p => p.Clients.Contains(
-                    unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == client_Id))
+                .Where(p => p.Client.Contains(
+                    unit.Client.GetAll().FirstOrDefault(c => c.Id == client_Id))
                     ).ToList();
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
@@ -34,15 +31,15 @@ namespace ProjectTracer.Controllers
 
         internal static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string text, string client_Id)
         {
-            var projects = unit.Projects
+            var projects = unit.Project
                 .GetAll()
-                .Where(p => p.Clients.Contains(
-                    unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == client_Id))
+                .Where(p => p.Client.Contains(
+                    unit.Client.GetAll().FirstOrDefault(c => c.Id == client_Id))
                     );
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
-            var SearchedProject = new Projects()
+            var SearchedProject = new Project()
             {
                 Project_ID = text
             };
@@ -56,7 +53,7 @@ namespace ProjectTracer.Controllers
                     item.SubItems.Add(project.Description.ToString());
                     item.SubItems.Add(project.DeadLine.ToString());
                     item.SubItems.Add(project.Result.ToString());
-                    if (project.Clients.Count > 0) item.SubItems.Add(project.Clients.FirstOrDefault().Client_Id);
+                    if (project.Client.Count > 0) item.SubItems.Add(project.Client.FirstOrDefault().Id);
                     ProjectsItemList.Add(item);
                 }
             }

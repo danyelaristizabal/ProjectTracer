@@ -1,10 +1,5 @@
 ﻿using ProjectTracer.Repository;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ProjectTracer.Controllers
 {
@@ -12,22 +7,22 @@ namespace ProjectTracer.Controllers
     {
         internal static void RegistrateTeam(string devId, string seniorId, UnityOfWork unit)
         {
-            var teamId = unit.Teams.GetAll().Count() + 1; 
-            unit.Teams
-                 .Add(new Teams() { Team_ID = teamId });
+            var teamId = unit.Team.GetAll().Count() + 1; 
+            unit.Team
+                 .Add(new Team() { Team_ID = teamId });
             unit.Complete(); 
 
-            unit.Seniors
+            unit.Senior
                 .GetAll()
-                .FirstOrDefault(S => S.Senior_Id == seniorId)
-                .Teams.Add(unit.Teams.GetAll().FirstOrDefault(T=>T.Team_ID == teamId));
+                .FirstOrDefault(S => S.Id == seniorId)
+                .Team.Add(unit.Team.GetAll().FirstOrDefault(T=>T.Team_ID == teamId));
             unit.Complete();
 
-            unit.Developers
+            unit.Developer
                 .GetAll()
-                .FirstOrDefault(D => D.Developer_Id == devId)
-                .Teams
-                .Add(unit.Teams.GetAll().FirstOrDefault(T => T.Team_ID == teamId));
+                .FirstOrDefault(D => D.Id == devId)
+                .Team
+                .Add(unit.Team.GetAll().FirstOrDefault(T => T.Team_ID == teamId));
             unit.Complete(); 
         }
     }

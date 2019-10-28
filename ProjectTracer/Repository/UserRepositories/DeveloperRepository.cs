@@ -1,13 +1,13 @@
 ﻿namespace ProjectTracer.Repository
 {
-     public class DeveloperRepository : Repository<Developers>, IDeveloperRepository
+     public class DeveloperRepository : Repository<Developer>, IDeveloperRepository
     {
         public DeveloperRepository(ProjectTracerEntities Context) : base(Context)
         {
         }
         public bool CheckExistance(string id, string password)
         {
-            var Developer = Context.Developers.Find(id);
+            var Developer = Context.Developer.Find(id);
 
             return Developer.Password.Contains(password);
         }

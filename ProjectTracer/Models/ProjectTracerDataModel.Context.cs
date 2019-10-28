@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer
+namespace ProjectTracer.Models
 {
     using System;
     using System.Data.Entity;
@@ -27,15 +27,41 @@ namespace ProjectTracer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Administrators> Administrators { get; set; }
-        public virtual DbSet<Clients> Clients { get; set; }
-        public virtual DbSet<Developers> Developers { get; set; }
-        public virtual DbSet<Documents> Documents { get; set; }
-        public virtual DbSet<Projects> Projects { get; set; }
-        public virtual DbSet<Seniors> Seniors { get; set; }
+        public virtual DbSet<Administrator> Administrator { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Developer> Developer { get; set; }
+        public virtual DbSet<Document> Document { get; set; }
+        public virtual DbSet<Project> Project { get; set; }
+        public virtual DbSet<Senior> Senior { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Tasks> Tasks { get; set; }
-        public virtual DbSet<Teams> Teams { get; set; }
+        public virtual DbSet<Task> Task { get; set; }
+        public virtual DbSet<Team> Team { get; set; }
+    
+        public virtual int RegisterInDatabase(string userName, string roleName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("RoleName", roleName) :
+                new ObjectParameter("RoleName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterInDatabase", userNameParameter, roleNameParameter);
+        }
+    
+        public virtual int RegisterInServer(string userName, string roleName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("RoleName", roleName) :
+                new ObjectParameter("RoleName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterInServer", userNameParameter, roleNameParameter);
+        }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -92,7 +118,7 @@ namespace ProjectTracer
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -102,10 +128,10 @@ namespace ProjectTracer
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -115,7 +141,7 @@ namespace ProjectTracer
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)

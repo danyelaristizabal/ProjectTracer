@@ -15,8 +15,8 @@ namespace ProjectTracer.Forms.SeniorView
     public partial class SeniorProjectsView : Form
     {
         public UnityOfWork Unit { get; set; }
-        public Seniors  MySenior { get; set; }
-        public SeniorProjectsView(Seniors mySenior)
+        public Senior  MySenior { get; set; }
+        public SeniorProjectsView(Senior mySenior)
         {
             InitializeComponent();
             MySenior = mySenior;
@@ -28,7 +28,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 ProjectsView.Items.Clear();
-                SeniorProjectsController.GetProjectsItemList(Unit, MySenior.Senior_Id).ForEach(item => ProjectsView.Items.Add(item));
+                SeniorProjectsController.GetProjectsItemList(Unit, MySenior.Id).ForEach(item => ProjectsView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -72,7 +72,7 @@ namespace ProjectTracer.Forms.SeniorView
             ProjectsView.Items.Clear();
             try
             {
-                SeniorProjectsController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MySenior.Senior_Id).ForEach(item => ProjectsView.Items.Add(item));
+                SeniorProjectsController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MySenior.Id).ForEach(item => ProjectsView.Items.Add(item));
             }
             catch (Exception)
             {

@@ -19,7 +19,7 @@ namespace ProjectTracer.Forms.AdminView
         public event EventHandler<BoolEvent> BoolRegisteredChangedE;
         public string Project_Id { get; set; }
         public int Task_Id { get; set; }
-        public Tasks MyTask { get; set; }
+        public Task MyTask { get; set; }
         public UnityOfWork  unit { get; set; }
 
         private bool myBoolE;
@@ -83,7 +83,7 @@ namespace ProjectTracer.Forms.AdminView
 
                 MessageBox.Show("Incorrect DataTime Format");
             }
-            var newMyTask = new Tasks()
+            var newMyTask = new Task()
             {
                 Task_Id = MyTask.Task_Id, 
                 Project_Id = MyTask.Project_Id,

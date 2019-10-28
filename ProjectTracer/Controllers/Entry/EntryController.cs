@@ -39,7 +39,7 @@ namespace ProjectTracer.Controllers
 
                 case "Admin":
 
-                    var myAdmin = new Admin();
+                    var myAdmin = new Administrator();
 
                      LogIn = new LogInView(myAdmin);
 

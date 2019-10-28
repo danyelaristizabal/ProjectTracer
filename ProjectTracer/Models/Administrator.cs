@@ -7,13 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer
+namespace ProjectTracer.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class Administrator
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string Id { get; set; }
+        public string Password { get; set; }
+        public string InvitationCode { get; set; }
     }
 }

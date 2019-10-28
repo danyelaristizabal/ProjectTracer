@@ -14,26 +14,26 @@ namespace ProjectTracer.Forms.ClientView
 {
     public partial class ClientTasksView : Form
     {
-        public Clients MyClient { get; set; }
-        public Projects SelectedProject { get; set; }
+        public Client MyClient { get; set; }
+        public Project SelectedProject { get; set; }
         public UnityOfWork Unit { get; set; }
-        public Tasks SelectedTask  { get; set; }
+        public Task SelectedTask  { get; set; }
 
-        public ClientTasksView(Clients myClient)
+        public ClientTasksView(Client myClient)
         {
             InitializeComponent();
 
             Unit = new UnityOfWork(new ProjectTracerEntities()); 
-            SelectedTask = new Tasks(); 
+            SelectedTask = new Task(); 
             MyClient = myClient;
             try
             {
-                SelectedProject = Unit.Projects
+                SelectedProject = Unit.Project
                 .GetAll()
-                .FirstOrDefault(p => p.Clients
-                                       .Contains(Unit.Clients
+                .FirstOrDefault(p => p.Client
+                                       .Contains(Unit.Client
                                                       .GetAll()
-                                                      .FirstOrDefault(c => c.Client_Id == myClient.Client_Id)));
+                                                      .FirstOrDefault(c => c.Id == myClient.Id)));
                 LoadProjects();
                 LoadTasks();
             }
@@ -49,7 +49,7 @@ namespace ProjectTracer.Forms.ClientView
             {
 
                 ProjectsViewList.Items.Clear();
-                ClientTasksController.GetProjectsItemList(Unit, MyClient.Client_Id).ForEach(item => ProjectsViewList.Items.Add(item));
+                ClientTasksController.GetProjectsItemList(Unit, MyClient.Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
             catch (Exception)
             {
@@ -108,7 +108,7 @@ namespace ProjectTracer.Forms.ClientView
             ProjectsViewList.Items.Clear();
             try
             {
-                ClientTasksController.GetProjectsByInput(Unit, InputTextBox.Text, MyClient.Client_Id).ForEach(item => ProjectsViewList.Items.Add(item));
+                ClientTasksController.GetProjectsByInput(Unit, InputTextBox.Text, MyClient.Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
             catch (Exception)
             {
@@ -123,7 +123,7 @@ namespace ProjectTracer.Forms.ClientView
             try
             {
                 Item = ProjectsViewList.GetItemAt(MousePosition.X - 288, MousePosition.Y - 194);
-                SelectedProject = new Projects()
+                SelectedProject = new Project()
                 {
                     Project_ID = Item.SubItems[0].Text,
 
@@ -147,7 +147,7 @@ namespace ProjectTracer.Forms.ClientView
             try
             {
                 Item = TasksViewList.GetItemAt(MousePosition.X - 707, MousePosition.Y - 194);
-                SelectedTask = new Tasks()
+                SelectedTask = new Task()
                 {
                     Task_Id = int.Parse(Item.SubItems[0].Text),
 

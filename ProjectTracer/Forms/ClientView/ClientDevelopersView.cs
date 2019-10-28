@@ -7,11 +7,11 @@ namespace ProjectTracer.Forms.ClientView
 {
     public partial class ClientDevelopersView : Form
     {
-        public Clients  MyClient { get; set; }
+        public Client  MyClient { get; set; }
         public UnityOfWork Unit { get; set; }
-        public Teams SelectedTeam { get; set; }
-        public Developers SelectedDeveloper { get; set;  }
-        public ClientDevelopersView(Clients myClient )
+        public Team SelectedTeam { get; set; }
+        public Developer SelectedDeveloper { get; set;  }
+        public ClientDevelopersView(Client myClient )
         {
              Unit = new UnityOfWork(new ProjectTracerEntities()); 
              MyClient = myClient;
@@ -23,7 +23,7 @@ namespace ProjectTracer.Forms.ClientView
             try
             {
                 TeamsListView.Items.Clear();
-                ClientDevelopersController.GetTeamsItemList(Unit, MyClient.Client_Id).ForEach(item => TeamsListView.Items.Add(item));
+                ClientDevelopersController.GetTeamsItemList(Unit, MyClient.Id).ForEach(item => TeamsListView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -70,7 +70,7 @@ namespace ProjectTracer.Forms.ClientView
             {
                 Item = TeamsListView.GetItemAt(MousePosition.X - 280, MousePosition.Y - 232);
 
-                SelectedTeam = new Teams()
+                SelectedTeam = new Team()
                 {
                     Team_ID = int.Parse(Item.SubItems[0].Text),
                 };

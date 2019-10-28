@@ -9,17 +9,17 @@ namespace ProjectTracer.Forms.SeniorView
 {
     public partial class SeniorTasksView : Form
     {
-        private Projects SelectedProject { get; set; }
-        private Tasks SelectedTask { get; set; }
+        private Project SelectedProject { get; set; }
+        private Task SelectedTask { get; set; }
         public UnityOfWork Unit { get; set; }
-        public Seniors  MySenior { get; set; }
-        public SeniorTasksView(Seniors mySenior )
+        public Senior  MySenior { get; set; }
+        public SeniorTasksView(Senior mySenior )
         {
             InitializeComponent();
             MySenior = mySenior;
             Unit = new UnityOfWork(new ProjectTracerEntities());
-            SelectedProject = new Projects();
-            SelectedTask = new Tasks();
+            SelectedProject = new Project();
+            SelectedTask = new Task();
             LoadTasks();
             LoadProjects();
         }
@@ -29,7 +29,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 ProjectsViewList.Items.Clear();
-                SeniorTasksController.GetProjectsItemList(Unit, MySenior.Senior_Id).ForEach(item => ProjectsViewList.Items.Add(item));
+                SeniorTasksController.GetProjectsItemList(Unit, MySenior.Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
             catch (Exception)
             {
@@ -84,7 +84,7 @@ namespace ProjectTracer.Forms.SeniorView
             TasksViewList.Items.Clear();
             try
             {
-                SeniorTasksController.GetProjectsByInput(Unit, InputTextBox.Text, MySenior.Senior_Id).ForEach(item => ProjectsViewList.Items.Add(item));
+                SeniorTasksController.GetProjectsByInput(Unit, InputTextBox.Text, MySenior.Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
             catch (Exception)
             {
@@ -191,7 +191,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 Item = ProjectsViewList.GetItemAt(MousePosition.X - 288, MousePosition.Y - 194);
-                SelectedProject = new Projects()
+                SelectedProject = new Project()
                 {
                     Project_ID = Item.SubItems[0].Text,
 
@@ -215,7 +215,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 Item = TasksViewList.GetItemAt(MousePosition.X - 707, MousePosition.Y - 194);
-                SelectedTask = new Tasks()
+                SelectedTask = new Task()
                 {
                     Task_Id = int.Parse(Item.SubItems[0].Text),
 

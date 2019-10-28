@@ -14,9 +14,9 @@ namespace ProjectTracer.Forms.ClientView
 {
     public partial class ClientProjectsView : Form
     {
-        private Clients MyClient { get; set; }
+        private Client MyClient { get; set; }
         private UnityOfWork Unit { get; set; }
-        public ClientProjectsView(Clients myClient)
+        public ClientProjectsView(Client myClient)
         {
             MyClient = myClient; 
             Unit = new UnityOfWork(new ProjectTracerEntities()); 
@@ -30,7 +30,7 @@ namespace ProjectTracer.Forms.ClientView
             {
                 ProjectsView.Items.Clear();
 
-                ClientProjectsController.GetProjectsItemList(Unit, MyClient.Client_Id).ForEach(item => ProjectsView.Items.Add(item));
+                ClientProjectsController.GetProjectsItemList(Unit, MyClient.Id).ForEach(item => ProjectsView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -73,7 +73,7 @@ namespace ProjectTracer.Forms.ClientView
         private void FindById_Click(object sender, EventArgs e)
         {
             ProjectsView.Items.Clear();
-            ClientProjectsController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MyClient.Client_Id).ForEach(item => ProjectsView.Items.Add(item));
+            ClientProjectsController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MyClient.Id).ForEach(item => ProjectsView.Items.Add(item));
         }
     }
 }

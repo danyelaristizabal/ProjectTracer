@@ -11,61 +11,66 @@ namespace ProjectTracer.Controllers
     {
         public static List<ListViewItem> GetProjectsItemList(UnityOfWork unit)
         {
-            List<Projects> ListOfProjects = unit.Projects.GetAll().ToList();
+            List<Project> ListOfProjects = unit.Project.GetAll().ToList();
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>(); 
 
             foreach (var project in ListOfProjects)
             {
                 ListViewItem item = new ListViewItem(project.Project_ID.ToString());
+
                 item.SubItems.Add(project.Description.ToString());
+
                 item.SubItems.Add(project.DeadLine.ToString());
+
                 item.SubItems.Add(project.Result.ToString());
-                if (project.Clients.Count > 0) item.SubItems.Add(project.Clients.FirstOrDefault().Client_Id); 
+
+                if (project.Client.Count > 0) item.SubItems.Add(project.Client.FirstOrDefault().Id); 
+
                 ProjectsItemList.Add(item);
             }
             return ProjectsItemList;
         }
-        public static void RemoveProject(UnityOfWork unit,Projects project)
+        public static void RemoveProject(UnityOfWork unit,Project project)
         {
             var ProjectToDelete = unit.context
-                .Projects
-                .Include("Documents")
-                .Include("Tasks")
+                .Project
+                .Include("Document")
+                .Include("Task")
                 .FirstOrDefault(searchedProject => searchedProject.Project_ID == project.Project_ID);
 
-            var documents = unit.Documents.GetAll()
+            var documents = unit.Document.GetAll()
                 .Where(d => d.Project_Id == ProjectToDelete.Project_ID)
                 .ToList();
 
-            unit.Documents.RemoveRange(documents);
+            unit.Document.RemoveRange(documents);
             unit.Complete();
 
-            var tasks = unit.context.Tasks
+            var tasks = unit.context.Task
                 .Where(t => t.Project_Id == ProjectToDelete.Project_ID)
                 .ToList();
 
-            unit.Tasks.RemoveRange(tasks);
+            unit.Task.RemoveRange(tasks);
             unit.Complete();
 
-            unit.Teams
+            unit.Team
                 .GetAll()
-                .Where(t => t.Projects.Contains(ProjectToDelete))
+                .Where(t => t.Project.Contains(ProjectToDelete))
                 .ToList()
-                .ForEach(t => t.Projects.Remove(ProjectToDelete));
+                .ForEach(t => t.Project.Remove(ProjectToDelete));
 
             unit.Complete();
 
-            unit.Clients
+            unit.Client
                 .GetAll()
-                .Where(c => c.Projects
+                .Where(c => c.Project
                 .Contains(ProjectToDelete))
                 .ToList()
-                .ForEach(c => c.Projects.Remove(ProjectToDelete));
+                .ForEach(c => c.Project.Remove(ProjectToDelete));
 
             unit.Complete();
 
-            unit.Projects.Remove(ProjectToDelete);
+            unit.Project.Remove(ProjectToDelete);
 
             unit.Complete();
             MessageBox.Show("Project Deleted");
@@ -74,10 +79,10 @@ namespace ProjectTracer.Controllers
 
         public static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string Input)
         {
-            var projects = unit.Projects.GetAll();
+            var projects = unit.Project.GetAll();
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
-            var SearchedProject = new Projects()
+            var SearchedProject = new Project()
             {
                 Project_ID = Input
             };
@@ -88,10 +93,15 @@ namespace ProjectTracer.Controllers
                 if (Distance <= 4)
                 {
                     ListViewItem item = new ListViewItem(project.Project_ID.ToString());
+
                     item.SubItems.Add(project.Description.ToString());
+
                     item.SubItems.Add(project.DeadLine.ToString());
+
                     item.SubItems.Add(project.Result.ToString());
-                    if(project.Clients.Count > 0) item.SubItems.Add(project.Clients.FirstOrDefault().Client_Id);
+
+                    if(project.Client.Count > 0) item.SubItems.Add(project.Client.FirstOrDefault().Id);
+
                     ProjectsItemList.Add(item); 
                 }
             }

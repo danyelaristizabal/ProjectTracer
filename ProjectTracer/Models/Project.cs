@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectTracer
+namespace ProjectTracer.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Projects
+    public partial class Project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Projects()
+        public Project()
         {
-            this.Documents = new HashSet<Documents>();
-            this.Tasks = new HashSet<Tasks>();
-            this.Clients = new HashSet<Clients>();
-            this.Teams = new HashSet<Teams>();
+            this.Document = new HashSet<Document>();
+            this.Task = new HashSet<Task>();
+            this.Client = new HashSet<Client>();
+            this.Team = new HashSet<Team>();
         }
     
         public string Project_ID { get; set; }
@@ -29,12 +29,12 @@ namespace ProjectTracer
         public string Result { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Documents> Documents { get; set; }
+        public virtual ICollection<Document> Document { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tasks> Tasks { get; set; }
+        public virtual ICollection<Task> Task { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clients> Clients { get; set; }
+        public virtual ICollection<Client> Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teams> Teams { get; set; }
+        public virtual ICollection<Team> Team { get; set; }
     }
 }

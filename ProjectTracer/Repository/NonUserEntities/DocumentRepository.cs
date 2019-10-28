@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectTracer.Repository
 {
-    class DocumentRepository  : Repository<Documents>, IDocumentRepository
+    class DocumentRepository  : Repository<Document>, IDocumentRepository
     {
         public DocumentRepository(ProjectTracerEntities Context) : base(Context)
         {

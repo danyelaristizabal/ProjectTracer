@@ -14,20 +14,20 @@ namespace ProjectTracer.Forms.SeniorView
 {
     public partial class SeniorDevelopersView : Form
     {
-        public Seniors MySenior { get; set; }
+        public Senior MySenior { get; set; }
 
-        private Teams SelectedTeam { get; set; }
-        private Developers SelectedDeveloper { get; set; }
+        private Team SelectedTeam { get; set; }
+        private Developer SelectedDeveloper { get; set; }
         public UnityOfWork Unit { get; set; }
         public object SenioDevelopersController { get; private set; }
 
-        public SeniorDevelopersView(Seniors mySenior )
+        public SeniorDevelopersView(Senior mySenior )
         {
             InitializeComponent();
             MySenior = mySenior;
             Unit = new UnityOfWork(new ProjectTracerEntities());
-            SelectedTeam = new Teams();
-            SelectedDeveloper = new Developers();
+            SelectedTeam = new Team();
+            SelectedDeveloper = new Developer();
             LoadTeams();
             LoadDevelopers();
         }
@@ -37,7 +37,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 TeamsListView.Items.Clear();
-                SeniorDevelopersController.GetTeamsItemList(Unit, MySenior.Senior_Id).ForEach(item => TeamsListView.Items.Add(item));
+                SeniorDevelopersController.GetTeamsItemList(Unit, MySenior.Id).ForEach(item => TeamsListView.Items.Add(item));
             }
             catch (Exception )
             {
@@ -50,7 +50,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 DevelopersListView.Items.Clear();
-                SeniorDevelopersController.GetDevelopersItemList(Unit, MySenior.Senior_Id).ForEach(item => DevelopersListView.Items.Add(item));
+                SeniorDevelopersController.GetDevelopersItemList(Unit, MySenior.Id).ForEach(item => DevelopersListView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -104,14 +104,14 @@ namespace ProjectTracer.Forms.SeniorView
                 Item = DevelopersListView.GetItemAt(MousePosition.X - 277, MousePosition.Y - 236);
 
                 
-                    SelectedDeveloper = new Developers()
+                    SelectedDeveloper = new Developer()
                     {
-                        Developer_Id = Item.SubItems[0].Text,
+                        Id = Item.SubItems[0].Text,
                     };
-                    MessageBox.Show("Selected Developer: " + SelectedDeveloper.Developer_Id);
+                    MessageBox.Show("Selected Developer: " + SelectedDeveloper.Id);
                     TeamsListView.Items.Clear();
 
-                    AdminDevelopersController.FindTeamsByDeveloper(Unit, SelectedDeveloper.Developer_Id).ForEach(item => TeamsListView.Items.Add(item));
+                    AdminDevelopersController.FindTeamsByDeveloper(Unit, SelectedDeveloper.Id).ForEach(item => TeamsListView.Items.Add(item));
                 
 
             }
@@ -129,7 +129,7 @@ namespace ProjectTracer.Forms.SeniorView
             {
                 Item = TeamsListView.GetItemAt(MousePosition.X - 705, MousePosition.Y - 212);
 
-                SelectedTeam = new Teams()
+                SelectedTeam = new Team()
                 {
                     Team_ID = int.Parse(Item.SubItems[0].Text),
                 };
@@ -151,7 +151,7 @@ namespace ProjectTracer.Forms.SeniorView
             DevelopersListView.Items.Clear();
             try
             {
-                SeniorDevelopersController.FindDeveloperById(Unit, FindByIdTxtB.Text, MySenior.Senior_Id).ForEach(item => DevelopersListView.Items.Add(item));
+                SeniorDevelopersController.FindDeveloperById(Unit, FindByIdTxtB.Text, MySenior.Id).ForEach(item => DevelopersListView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -166,7 +166,7 @@ namespace ProjectTracer.Forms.SeniorView
             try
             {
                 int teamid = int.Parse(FindByTeamNumberTxtB.Text);
-                SeniorDevelopersController.FindDevelopersByTeam(Unit, teamid, MySenior.Senior_Id).ForEach(item => DevelopersListView.Items.Add(item));
+                SeniorDevelopersController.FindDevelopersByTeam(Unit, teamid, MySenior.Id).ForEach(item => DevelopersListView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -192,7 +192,7 @@ namespace ProjectTracer.Forms.SeniorView
         {
             try
             {
-                AdminDevelopersController.RemoveDevFromTeam(Unit, SelectedDeveloper.Developer_Id, SelectedTeam.Team_ID);
+                AdminDevelopersController.RemoveDevFromTeam(Unit, SelectedDeveloper.Id, SelectedTeam.Team_ID);
             }
             catch (Exception)
             {

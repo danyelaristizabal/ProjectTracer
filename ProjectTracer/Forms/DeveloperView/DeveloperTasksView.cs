@@ -8,22 +8,22 @@ namespace ProjectTracer.Forms.DeveloperView
 {
     public partial class DeveloperTasksView : Form
     {
-        public Developers MyDeveloper { get; set; }
-        public Projects SelectedProject { get; set; }
+        public Developer MyDeveloper { get; set; }
+        public Project SelectedProject { get; set; }
         public UnityOfWork Unit { get; set; }
-        public Tasks SelectedTask { get; set; }
-        public DeveloperTasksView(Developers myDeveloper)
+        public Task SelectedTask { get; set; }
+        public DeveloperTasksView(Developer myDeveloper)
         {
             InitializeComponent();
             MyDeveloper = myDeveloper;
             Unit = new UnityOfWork(new ProjectTracerEntities());
             try
             {
-                SelectedProject = Unit.Teams
+                SelectedProject = Unit.Team
                    .GetAll()
-                   .Where(t => t.Developers.Contains(Unit.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == myDeveloper.Developer_Id)))
+                   .Where(t => t.Developer.Contains(Unit.Developer.GetAll().FirstOrDefault(d => d.Id == myDeveloper.Id)))
                    .FirstOrDefault()
-                   .Projects
+                   .Project
                    .FirstOrDefault();
 
             }
@@ -39,7 +39,7 @@ namespace ProjectTracer.Forms.DeveloperView
             {
 
                 ProjectsViewList.Items.Clear();
-                DevelopersTasksController.GetProjectsItemList(Unit, MyDeveloper.Developer_Id).ForEach(item => ProjectsViewList.Items.Add(item));
+                DevelopersTasksController.GetProjectsItemList(Unit, MyDeveloper.Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
             catch (Exception E)
             {
@@ -90,7 +90,7 @@ namespace ProjectTracer.Forms.DeveloperView
             ProjectsViewList.Items.Clear();
             try
             {
-                DevelopersTasksController.GetProjectsByInput(Unit, InputTextBox.Text, MyDeveloper.Developer_Id).ForEach(item => ProjectsViewList.Items.Add(item));
+                DevelopersTasksController.GetProjectsByInput(Unit, InputTextBox.Text, MyDeveloper.Id).ForEach(item => ProjectsViewList.Items.Add(item));
             }
             catch (Exception)
             {
@@ -157,7 +157,7 @@ namespace ProjectTracer.Forms.DeveloperView
             try
             {
                 Item = ProjectsViewList.GetItemAt(MousePosition.X - 288, MousePosition.Y - 194);
-                SelectedProject = new Projects()
+                SelectedProject = new Project()
                 {
                     Project_ID = Item.SubItems[0].Text,
 
@@ -181,7 +181,7 @@ namespace ProjectTracer.Forms.DeveloperView
             try
             {
                 Item = TasksViewList.GetItemAt(MousePosition.X - 707, MousePosition.Y - 178);
-                SelectedTask = Unit.Tasks.GetAll().FirstOrDefault(T => T.Task_Id == int.Parse(Item.SubItems[0].Text));
+                SelectedTask = Unit.Task.GetAll().FirstOrDefault(T => T.Task_Id == int.Parse(Item.SubItems[0].Text));
 
                 MessageBox.Show("Selected Task: " + SelectedTask.DeveloperOnTask);
             }

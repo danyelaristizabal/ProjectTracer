@@ -9,11 +9,11 @@ namespace ProjectTracer.Forms
 {
     public partial class ProjectsView : Form
     {
-        private Projects SelectedProject { get; set; }
+        private Project SelectedProject { get; set; }
         private UnityOfWork Unit { get; set;  } 
         public ProjectsView()
         {
-            SelectedProject = new Projects();
+            SelectedProject = new Project();
             Unit = new UnityOfWork(new ProjectTracerEntities()); 
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace ProjectTracer.Forms
                     MessageBox.Show("Error getting selected item from database, please try again later ");
                 }
 
-                SelectedProject = new Projects() {
+                SelectedProject = new Project() {
 
                 Project_ID = Item.SubItems[0].Text,
 

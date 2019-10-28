@@ -13,18 +13,18 @@ namespace ProjectTracer.Controllers
     {
         internal static List<ListViewItem> GetProjectsItemList(UnityOfWork unit, string Senior_Id )
         {
-            var teams = unit.Teams
+            var teams = unit.Team
                       .GetAll()
-                      .Where(T => T.Seniors
-                                   .Contains(unit.Seniors.GetAll().FirstOrDefault(s => s.Senior_Id == Senior_Id)));
+                      .Where(T => T.Senior
+                                   .Contains(unit.Senior.GetAll().FirstOrDefault(s => s.Id == Senior_Id)));
 
-            List<Projects> ListOfProjects = new List<Projects>();
+            List<Project> ListOfProjects = new List<Project>();
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
             foreach (var team in teams)
             {
-                foreach (var project in team.Projects)
+                foreach (var project in team.Project)
                 {
                     ListViewItem item = new ListViewItem(project.Project_ID.ToString());
                     item.SubItems.Add(project.Description.ToString());
@@ -37,16 +37,16 @@ namespace ProjectTracer.Controllers
 
         internal static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string Input, string senior_Id)
         {
-            var teams = unit.Teams
+            var teams = unit.Team
                       .GetAll()
-                      .Where(T => T.Seniors
-                                   .Contains(unit.Seniors.GetAll().FirstOrDefault(s => s.Senior_Id == senior_Id)));
+                      .Where(T => T.Senior
+                                   .Contains(unit.Senior.GetAll().FirstOrDefault(s => s.Id == senior_Id)));
 
-            List<Projects> projects = new List<Projects>();
+            List<Project> projects = new List<Project>();
 
             foreach (var team in teams)
             {
-                foreach (var project in team.Projects)
+                foreach (var project in team.Project)
                 {
                     if (!projects.Contains(project))
                     {
@@ -57,7 +57,7 @@ namespace ProjectTracer.Controllers
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
-            var SearchedProject = new Projects()
+            var SearchedProject = new Project()
             {
                 Project_ID = Input
             };

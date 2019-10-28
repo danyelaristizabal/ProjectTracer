@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Models;
 using ProjectTracer.Repository;
@@ -13,18 +10,18 @@ namespace ProjectTracer.Controllers
     {
         internal static List<ListViewItem> GetProjectsItemList(UnityOfWork unit, string developer_Id)
         {
-            var teams = unit.Teams
+            var teams = unit.Team
                         .GetAll()
-                        .Where(T => T.Developers
-                                     .Contains(unit.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == developer_Id)));
+                        .Where(T => T.Developer
+                                     .Contains(unit.Developer.GetAll().FirstOrDefault(d => d.Id == developer_Id)));
 
-            List<Projects> ListOfProjects = new List<Projects>();
+            List<Project> ListOfProjects = new List<Project>();
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
             foreach (var team in teams)
             {
-                foreach (var project in team.Projects)
+                foreach (var project in team.Project)
                 {
                     ListViewItem item = new ListViewItem(project.Project_ID.ToString());
                     item.SubItems.Add(project.Description.ToString());
@@ -41,7 +38,7 @@ namespace ProjectTracer.Controllers
             {
                 return ProjectsItemList;
             }
-            List<Tasks> ListOfTasks = unit.Tasks
+            List<Task> ListOfTasks = unit.Task
                 .GetAll()
                 .Where(searchedtask => searchedtask.Project_Id == project_ID)
                 .ToList();
@@ -58,18 +55,18 @@ namespace ProjectTracer.Controllers
 
         internal static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string Input, string developer_Id)
         {
-            var teams = unit.Teams
+            var teams = unit.Team
                         .GetAll()
                         .Where(
-                                T => T.Developers
-                                .Contains(unit.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == developer_Id))
+                                T => T.Developer
+                                .Contains(unit.Developer.GetAll().FirstOrDefault(d => d.Id == developer_Id))
                                );
 
-            List<Projects> projects = new List<Projects>(); 
+            List<Project> projects = new List<Project>(); 
 
             foreach (var team in teams)
             {
-                foreach (var project in team.Projects)
+                foreach (var project in team.Project)
                 {
                     if (!projects.Contains(project))
                     {
@@ -80,7 +77,7 @@ namespace ProjectTracer.Controllers
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
-            var SearchedProject = new Projects()
+            var SearchedProject = new Project()
             {
                 Project_ID = Input
             };
@@ -99,12 +96,12 @@ namespace ProjectTracer.Controllers
             return ProjectsItemList;
         }
 
-        internal static bool TakeTask(UnityOfWork unit, Tasks selectedTask, Developers myDeveloper)
+        internal static bool TakeTask(UnityOfWork unit, Task selectedTask, Developer myDeveloper)
         {
             if (selectedTask.DeveloperOnTask == null)
             {
-                var task = unit.Tasks.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id);
-                    task.DeveloperOnTask = myDeveloper.Developer_Id;
+                var task = unit.Task.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id);
+                    task.DeveloperOnTask = myDeveloper.Id;
                 unit.Complete();
                 return true; 
             }
@@ -114,20 +111,20 @@ namespace ProjectTracer.Controllers
 
 
 
-        internal static void FinishTask(UnityOfWork unit, Tasks selectedTask)
+        internal static void FinishTask(UnityOfWork unit, Task selectedTask)
         {
-            var task = unit.Tasks.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id);
+            var task = unit.Task.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id);
             task.Done = true;
             unit.Complete(); 
 
         }
 
-        internal static bool ReleaseTask(UnityOfWork unit, Tasks selectedTask, Developers myDeveloper)
+        internal static bool ReleaseTask(UnityOfWork unit, Task selectedTask, Developer myDeveloper)
         {
-            var task = unit.Tasks.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id);
+            var task = unit.Task.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id);
             task.DeveloperOnTask = null;
             unit.Complete();
-            return (unit.Tasks.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id).DeveloperOnTask == null);
+            return (unit.Task.GetAll().FirstOrDefault(T => T.Task_Id == selectedTask.Task_Id).DeveloperOnTask == null);
         }
     }
 }

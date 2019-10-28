@@ -1,6 +1,6 @@
 ﻿namespace ProjectTracer.Repository
 {
-    public interface ITaskRepository : IRepository<Tasks>
+    public interface ITaskRepository : IRepository<Task>
     {
     }
 }

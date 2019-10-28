@@ -13,20 +13,20 @@ namespace ProjectTracer.Controllers
     {
         internal static List<ListViewItem> GetTeamsItemList(UnityOfWork unit, string client_Id)
         {
-            var projects = unit.Projects.GetAll().Where(p => p.Clients.Contains(unit.Clients.GetAll().FirstOrDefault(C => C.Client_Id == client_Id)));
-            List<Teams> ListOfTeams = new List<Teams>();
+            var projects = unit.Project.GetAll().Where(p => p.Client.Contains(unit.Client.GetAll().FirstOrDefault(C => C.Id == client_Id)));
+            List<Team> ListOfTeams = new List<Team>();
             List<ListViewItem> TeamsItemList = new List<ListViewItem>();
 
             foreach (var project in projects)
             {
 
-                foreach (var Team in project.Teams)
+                foreach (var Team in project.Team)
                 {
                     ListViewItem item = new ListViewItem(Team.Team_ID.ToString());
 
-                    if (Team.Seniors.Count > 0)
+                    if (Team.Senior.Count > 0)
                     {
-                        item.SubItems.Add(Team.Seniors.FirstOrDefault().Senior_Id);
+                        item.SubItems.Add(Team.Senior.FirstOrDefault().Id);
 
                     }
                     else
@@ -45,16 +45,16 @@ namespace ProjectTracer.Controllers
 
         internal static List<ListViewItem> FindDevelopersByTeam(UnityOfWork unit, int team_ID)
         {
-            var developers = unit.Developers.GetAll();
+            var developers = unit.Developer.GetAll();
             List<ListViewItem> developersItemList = new List<ListViewItem>();
 
             foreach (var developer in developers)
             {
-                foreach (var team in developer.Teams)
+                foreach (var team in developer.Team)
                 {
                     if (team.Team_ID == team_ID)
                     {
-                        ListViewItem item = new ListViewItem(developer.Developer_Id);
+                        ListViewItem item = new ListViewItem(developer.Id);
 
                         developersItemList.Add(item);
                     }

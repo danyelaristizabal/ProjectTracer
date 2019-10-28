@@ -8,15 +8,15 @@ namespace ProjectTracer.Forms
 {
     public partial class DevelopersView : Form
     {
-        private Developers SelectedDeveloper { get; set; }
-        private Teams SelectedTeam { get; set; }
+        private Developer SelectedDeveloper { get; set; }
+        private Team SelectedTeam { get; set; }
         public UnityOfWork Unit { get; set; }
         public DevelopersView()
         {
             InitializeComponent();
             Unit = new UnityOfWork(new ProjectTracerEntities());
-            SelectedTeam = new Teams();
-            SelectedDeveloper = new Developers();
+            SelectedTeam = new Team();
+            SelectedDeveloper = new Developer();
             LoadTeams();
             LoadDevelopers();
         }
@@ -151,7 +151,7 @@ namespace ProjectTracer.Forms
         {
             try
             {
-                AdminDevelopersController.AddDevToTeam(Unit,SelectedDeveloper.Developer_Id, SelectedTeam.Team_ID); 
+                AdminDevelopersController.AddDevToTeam(Unit,SelectedDeveloper.Id, SelectedTeam.Team_ID); 
 
             }
             catch (Exception)
@@ -164,7 +164,7 @@ namespace ProjectTracer.Forms
         {
             try
             {
-                AdminDevelopersController.RemoveDevFromTeam(Unit, SelectedDeveloper.Developer_Id, SelectedTeam.Team_ID);
+                AdminDevelopersController.RemoveDevFromTeam(Unit, SelectedDeveloper.Id, SelectedTeam.Team_ID);
             }
             catch (Exception)
             {
@@ -195,14 +195,14 @@ namespace ProjectTracer.Forms
             try
             {
                 Item = DevelopersListView.GetItemAt(MousePosition.X - 277, MousePosition.Y - 212);
-                SelectedDeveloper = new Developers()
+                SelectedDeveloper = new Developer()
                 {
-                    Developer_Id = Item.SubItems[0].Text,
+                    Id = Item.SubItems[0].Text,
                 };
-                MessageBox.Show("Selected Developer: " + SelectedDeveloper.Developer_Id);
+                MessageBox.Show("Selected Developer: " + SelectedDeveloper.Id);
                 TeamsListView.Items.Clear();
                 
-                AdminDevelopersController.FindTeamsByDeveloper(Unit, SelectedDeveloper.Developer_Id).ForEach(item => TeamsListView.Items.Add(item));
+                AdminDevelopersController.FindTeamsByDeveloper(Unit, SelectedDeveloper.Id).ForEach(item => TeamsListView.Items.Add(item));
 
             }
             catch (Exception)
@@ -219,7 +219,7 @@ namespace ProjectTracer.Forms
             {
                 Item = TeamsListView.GetItemAt(MousePosition.X - 705, MousePosition.Y - 212);
 
-                SelectedTeam = new Teams()
+                SelectedTeam = new Team()
                 {
                     Team_ID = int.Parse(Item.SubItems[0].Text),
                 };

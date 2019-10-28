@@ -17,15 +17,15 @@ namespace ProjectTracer.Forms
 {
     public partial class TasksView : Form
     {
-        private Projects SelectedProject { get; set; }
-        private Tasks SelectedTask { get; set; }
+        private Project SelectedProject { get; set; }
+        private Task SelectedTask { get; set; }
         public UnityOfWork Unit { get; set; }
         public TasksView()
         {
             InitializeComponent();
             Unit = new UnityOfWork(new ProjectTracerEntities());
-            SelectedProject = new Projects();
-            SelectedTask = new Tasks(); 
+            SelectedProject = new Project();
+            SelectedTask = new Task(); 
             LoadTasks();
             LoadProjects(); 
         }
@@ -130,7 +130,7 @@ namespace ProjectTracer.Forms
             try
             {
                 Item = ProjectsViewList.GetItemAt(MousePosition.X - 288, MousePosition.Y - 194);
-                SelectedProject = new Projects()
+                SelectedProject = new Project()
                 {
                     Project_ID = Item.SubItems[0].Text,
 
@@ -154,7 +154,7 @@ namespace ProjectTracer.Forms
             try
             {
                 Item = TasksViewList.GetItemAt(MousePosition.X - 707, MousePosition.Y - 194);
-                SelectedTask = new Tasks()
+                SelectedTask = new Task()
                 {
                     Task_Id = int.Parse(Item.SubItems[0].Text),
 

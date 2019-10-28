@@ -16,8 +16,8 @@ namespace ProjectTracer.Forms.DeveloperView
     public partial class DeveloperProjectsView : Form
     {
         public UnityOfWork Unit { get; set; }
-        public Developers MyDeveloper { get; set; }
-        public DeveloperProjectsView(Developers myDeveloper)
+        public Developer MyDeveloper { get; set; }
+        public DeveloperProjectsView(Developer myDeveloper)
         {
             InitializeComponent();
             MyDeveloper = myDeveloper;
@@ -30,7 +30,7 @@ namespace ProjectTracer.Forms.DeveloperView
             {
 
                 ProjectsView.Items.Clear();
-                DevelopersTasksController.GetProjectsItemList(Unit, MyDeveloper.Developer_Id).ForEach(item => ProjectsView.Items.Add(item));
+                DevelopersTasksController.GetProjectsItemList(Unit, MyDeveloper.Id).ForEach(item => ProjectsView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -69,7 +69,7 @@ namespace ProjectTracer.Forms.DeveloperView
             ProjectsView.Items.Clear();
             try
             {
-                DevelopersTasksController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MyDeveloper.Developer_Id).ForEach(item => ProjectsView.Items.Add(item));
+                DevelopersTasksController.GetProjectsByInput(Unit, FindByIdTxtB.Text, MyDeveloper.Id).ForEach(item => ProjectsView.Items.Add(item));
             }
             catch (Exception)
             {

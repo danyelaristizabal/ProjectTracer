@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTracer.Repository
 {
-    public interface IDeveloperRepository : IRepository<Developers>
+    public interface IDeveloperRepository : IRepository<Developer>
     {
         bool CheckExistance(string id, string password);
 

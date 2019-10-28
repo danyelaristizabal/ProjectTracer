@@ -18,13 +18,13 @@ namespace ProjectTracer.Controllers
             switch (user.GetType().Name)
             {
                 case "Client":
-                    return UnitOFWork.Clients.CheckExistance(user.Name, Encrypt.EncryptString(user.Password,"Pass")); 
+                    return UnitOFWork.Client.CheckExistance(user.Id, Encrypt.EncryptString(user.Password,"Pass")); 
                 case "Developer":
-                    return UnitOFWork.Developers.CheckExistance(user.Name, Encrypt.EncryptString(user.Password,"Pass"));
+                    return UnitOFWork.Developer.CheckExistance(user.Id, Encrypt.EncryptString(user.Password,"Pass"));
                 case "Senior":
-                    return UnitOFWork.Seniors.CheckExistance(user.Name, Encrypt.EncryptString(user.Password,"Pass"));
+                    return UnitOFWork.Senior.CheckExistance(user.Id, Encrypt.EncryptString(user.Password,"Pass"));
                 case "Admin":
-                    return UnitOFWork.Administrators.CheckExistance(user.Name, Encrypt.EncryptString(user.Password,"Pass"));
+                    return UnitOFWork.Administrator.CheckExistance(user.Id, Encrypt.EncryptString(user.Password,"Pass"));
                 default:
                     return false;  
             }
@@ -36,13 +36,13 @@ namespace ProjectTracer.Controllers
             switch (user.GetType().Name)
             {
                 case "Client":
-                    StartPage = new ClientProjectsView(unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == user.Name));
+                    StartPage = new ClientProjectsView(unit.Client.GetAll().FirstOrDefault(c => c.Id == user.Id));
                     break;
                 case "Developer":
-                    StartPage = new DeveloperProjectsView(unit.Developers.GetAll().FirstOrDefault(d => d.Developer_Id == user.Name));
+                    StartPage = new DeveloperProjectsView(unit.Developer.GetAll().FirstOrDefault(d => d.Id == user.Id));
                     break;
                 case "Senior":
-                    StartPage = new SeniorProjectsView(unit.Seniors.GetAll().FirstOrDefault(s => s.Senior_Id == user.Name));
+                    StartPage = new SeniorProjectsView(unit.Senior.GetAll().FirstOrDefault(s => s.Id == user.Id));
                     break;
                 case "Admin":
                     StartPage = new ProjectsView();

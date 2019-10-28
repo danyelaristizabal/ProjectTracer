@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Repository;
 
@@ -23,7 +19,7 @@ namespace ProjectTracer.Controllers
                 return false; 
             }
             var unit = new UnityOfWork(new ProjectTracerEntities());
-            unit.Projects.Add(new Projects()
+            unit.Project.Add(new Project()
             {
                 Project_ID = id,
                 Description = descripton,

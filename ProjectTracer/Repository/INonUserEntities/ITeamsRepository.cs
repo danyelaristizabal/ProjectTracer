@@ -1,6 +1,6 @@
 ﻿namespace ProjectTracer.Repository
 {
-    public interface ITeamRepository : IRepository<Teams>
+    public interface ITeamRepository : IRepository<Team>
     {
     }
 }

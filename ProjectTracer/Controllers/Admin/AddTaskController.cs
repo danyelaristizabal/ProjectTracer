@@ -1,9 +1,5 @@
 ﻿using ProjectTracer.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectTracer.Controllers
@@ -28,7 +24,7 @@ namespace ProjectTracer.Controllers
                 return false;
             }
             var unit = new UnityOfWork(new ProjectTracerEntities());
-            unit.Tasks.Add(new Tasks()
+            unit.Task.Add(new Task()
             {
                 Description = descripton,
                 DeadLine = parseDeadLine,

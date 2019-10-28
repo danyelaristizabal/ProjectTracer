@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectTracer.Models;
 using ProjectTracer.Repository;
@@ -13,10 +10,10 @@ namespace ProjectTracer.Controllers
     {
         internal static List<ListViewItem> GetProjectsItemList(UnityOfWork unit, string client_Id)
         {
-            List<Projects> ListOfProjects = unit.Projects
+            List<Project> ListOfProjects = unit.Project
                                             .GetAll()
-                                            .Where(P => P.Clients
-                                                         .Contains(unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == client_Id))
+                                            .Where(P => P.Client
+                                                         .Contains(unit.Client.GetAll().FirstOrDefault(c => c.Id == client_Id))
                                                   )
                                             .ToList();
                     
@@ -39,7 +36,7 @@ namespace ProjectTracer.Controllers
             {
                 return ProjectsItemList;
             }
-            List<Tasks> ListOfTasks = unit.Tasks
+            List<Task> ListOfTasks = unit.Task
                 .GetAll()
                 .Where(searchedtask => searchedtask.Project_Id == project_ID)
                 .ToList();
@@ -56,13 +53,13 @@ namespace ProjectTracer.Controllers
 
         internal static List<ListViewItem> GetProjectsByInput(UnityOfWork unit, string Input, string client_Id)
         {
-            var projects = unit.Projects
+            var projects = unit.Project
                 .GetAll()
-                .Where(P => P.Clients.Contains(unit.Clients.GetAll().FirstOrDefault(c => c.Client_Id == client_Id)));
+                .Where(P => P.Client.Contains(unit.Client.GetAll().FirstOrDefault(c => c.Id == client_Id)));
 
             List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
 
-            var SearchedProject = new Projects()
+            var SearchedProject = new Project()
             {
                 Project_ID = Input
             };
