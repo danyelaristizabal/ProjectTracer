@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectTracer.Forms;
-using ProjectTracer.Forms.ClientView;
 
 namespace ProjectTracer
 {
@@ -11,12 +9,12 @@ namespace ProjectTracer
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var MyEntry = new EntryView();
-            //var MyEntry = new ClientDevelopersView();
 
-            MyEntry.Show();
-            Application.Run();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var MyEntry = new EntryView();
+
+            Application.Run(MyEntry);
         }
     }
 }

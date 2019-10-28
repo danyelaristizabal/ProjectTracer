@@ -15,7 +15,7 @@ namespace ProjectTracer.Controllers
     {
         public static bool RegisterInServer(IUser user)
         {
-            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True");
+            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-7IPPT3O\MYSERVERSQL;initial catalog=ProjectTracer;integrated security=True");
 
             SqlCommand scmd = new SqlCommand($"CREATE LOGIN {user.Name} WITH PASSWORD = '{Encrypt.EncryptString(user.Password, "Pass")}'", sq);
 
@@ -210,12 +210,13 @@ namespace ProjectTracer.Controllers
         }    
         public static bool RegisterInDatabase(IUser user)
         {
-            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer;integrated security=True ");
+            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-7IPPT3O\MYSERVERSQL;initial catalog=ProjectTracer;integrated security=True ");
             SqlCommand scmd = new SqlCommand(
                 $"use ProjectTracer;  IF NOT EXISTS(SELECT * FROM sys.database_principals WHERE name = N'{user.Name}')  BEGIN CREATE USER[{user.Name}] FOR LOGIN[{user.Name}] EXEC sp_addrolemember N'{user.GetType().Name}', N'{user.Name}' END;", sq);
-            sq.Open();
+            
             try
             {
+                sq.Open();
                 scmd.ExecuteScalar();
                 sq.Close();
                 return true;

@@ -9,6 +9,5 @@ namespace ProjectTracer.Repository
     public interface ISeniorRepository : IRepository<Seniors>
     {
         bool CheckExistance(string id, string password);
-
     }
 }

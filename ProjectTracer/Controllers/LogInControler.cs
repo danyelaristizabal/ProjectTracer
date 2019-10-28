@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
-using ProjectTracer.Models;
+﻿using ProjectTracer.Models;
 using ProjectTracer.Forms;
 using ProjectTracer.Forms.ClientView;
 using ProjectTracer.Forms.DeveloperView;
@@ -13,26 +11,10 @@ namespace ProjectTracer.Controllers
 {
     public static class LogInControler
     {
-        public static bool CheckUser(IUser user)
-        {
-            SqlConnection sq = new SqlConnection($@"data source=DESKTOP-KGC5T7J;initial catalog=ProjectTracer; User Id={user.Name};
-          Password={Encrypt.EncryptString(user.Password,"Pass")};");
-            try
-            {
-                sq.Open();
-                sq.Close();
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show($"Incorrect User Name or Password");
-                sq.Close();
-                return false;
-            }
-        }
         public static bool CheckUserInUserTable(IUser user)
         {
             var UnitOFWork = new UnityOfWork(new ProjectTracerEntities());
+
             switch (user.GetType().Name)
             {
                 case "Client":
@@ -46,10 +28,6 @@ namespace ProjectTracer.Controllers
                 default:
                     return false;  
             }
-        }
-        internal static bool Autentificate(IUser myUser)
-        {
-            return (CheckUser(myUser) & CheckUserInUserTable(myUser)); 
         }
         public static Form ChooseStartPage(IUser user)
         {

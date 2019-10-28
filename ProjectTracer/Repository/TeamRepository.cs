@@ -12,10 +12,5 @@ namespace ProjectTracer.Repository
         {
         }
 
-        public ProjectTracerEntities ProjectTracerEntities
-        {
-            get { return Context as ProjectTracerEntities; }
-        }
-
     }
 }

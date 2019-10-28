@@ -26,8 +26,6 @@ namespace ProjectTracer.Controllers
             }
             return ProjectsItemList;
         }
-
-
         public static void RemoveProject(UnityOfWork unit,Projects project)
         {
             var ProjectToDelete = unit.context
