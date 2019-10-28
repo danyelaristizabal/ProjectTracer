@@ -9,9 +9,10 @@ namespace ProjectTracer.Repository
         }
         public bool CheckExistance(string id, string password)
         {
-                var client = Context.Clients.Find(id);
+            var client = Context.Clients.Find(id);
 
-                return client.Password.Contains(password);
+            return client.Password.Contains(password);
         }
+
     }
 } 

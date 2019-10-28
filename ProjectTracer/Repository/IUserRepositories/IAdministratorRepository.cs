@@ -9,6 +9,5 @@ namespace ProjectTracer.Repository
     public interface IAdministratorRepository : IRepository<Administrators>
     {
         bool CheckExistance(string id, string password);
-
     }
 }

@@ -12,5 +12,6 @@ namespace ProjectTracer.Repository
         void AddRange(List<TEntity> entities);
         void Remove(TEntity entity);
         void RemoveRange(List<TEntity> entities);
+        bool CheckExistance(TEntity entity); 
     }
 }

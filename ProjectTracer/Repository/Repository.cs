@@ -48,5 +48,13 @@ namespace ProjectTracer.Repository
         {
             Context.Set<TEntity>().RemoveRange(entities);
         }
+
+        public bool CheckExistance(TEntity entity)
+        {
+            if (Context.Set<TEntity>().Find(entity) == null)
+                return false;
+            else
+                return true; 
+        }
     }
 }

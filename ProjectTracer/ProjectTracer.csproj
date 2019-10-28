@@ -232,23 +232,23 @@
       <DependentUpon>ProjectTracerDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\DocumentRepository.cs" />
-    <Compile Include="Repository\IDocumentRepository.cs" />
-    <Compile Include="Repository\ITaskRepository.cs" />
-    <Compile Include="Repository\ITeamsRepository.cs" />
-    <Compile Include="Repository\TaskRepository.cs" />
-    <Compile Include="Repository\TeamRepository.cs" />
+    <Compile Include="Repository\NonUserEntities\DocumentRepository.cs" />
+    <Compile Include="Repository\INonUserEntities\IDocumentRepository.cs" />
+    <Compile Include="Repository\INonUserEntities\ITaskRepository.cs" />
+    <Compile Include="Repository\INonUserEntities\ITeamsRepository.cs" />
+    <Compile Include="Repository\NonUserEntities\TaskRepository.cs" />
+    <Compile Include="Repository\NonUserEntities\TeamRepository.cs" />
     <Compile Include="Repository\UserRepositories\AdministratorRepository.cs" />
     <Compile Include="Repository\IUserRepositories\IAdministratorRepository.cs" />
     <Compile Include="Repository\UserRepositories\ClientRepository.cs" />
     <Compile Include="Repository\UserRepositories\DeveloperRepository.cs" />
     <Compile Include="Repository\IUserRepositories\IClientRepository.cs" />
     <Compile Include="Repository\IUserRepositories\IDeveloperRepository.cs" />
-    <Compile Include="Repository\IProjectRepository.cs" />
+    <Compile Include="Repository\INonUserEntities\IProjectRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IUserRepositories\ISeniorRepository.cs" />
     <Compile Include="Repository\IUnityOfWork.cs" />
-    <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\NonUserEntities\ProjectRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepositories\SeniorRepository.cs" />
     <Compile Include="Repository\UnityOfWork.cs" />
