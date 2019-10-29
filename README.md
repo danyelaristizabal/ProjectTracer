@@ -9,10 +9,6 @@ Developed using:
 - MS SQL SERVER Database
 - Unit-Testing
 
-### Implementation of MVC 
-
-Logic is devided in three main parts: Model, views(in this case forms) and controllers:[here](/master/ProjectTracer)
-
 ### Design Patterns: Repository patern, Unit of Work design pattern, MVC with Windows forms. 
 
 Implementation of Repository patern: [here](ProjectTracer/Repository/RepositoryControl/IRepository.cs)
@@ -124,6 +120,9 @@ internal static class Encrypt
         }
 
 ```
+### Implementation of MVC 
+
+Logic is devided in three main parts: Model, views(in this case forms) and controllers:[here](ProjectTracer/)
 
 ### Entity Framework
 The interaction with the Database was done all through Entity Framework: [here](/ProjectTracer/ProjectTracerDataModel.Context.cs)
@@ -133,9 +132,9 @@ DataBase Diagram with its respective one to many, many to many relationships: [h
 
 ### Screenshots of the final product
 
-![EntryForm](/ProjectTracer/Screenshots/img.png)
-![LogInForm](/ProjectTracer/Screenshots/img.png)
-![Administrator view](/ProjectTracer/Screenshots/img.png)
-![Developer view](/ProjectTracer/Screenshots/img.png)
-![Senior developer view](/ProjectTracer/screenShots/img.png)
-![Client view](/ProjectTracer/screenShots/img.png)
+![EntryForm](/ProjectTracer/Screenshots/img1.png)
+![LogInForm](/ProjectTracer/Screenshots/img2.png)
+![Administrator view](/ProjectTracer/Screenshots/img3.png)
+![Developer view](/ProjectTracer/Screenshots/img4.png)
+![Senior developer view](/ProjectTracer/screenShots/img5.png)
+![Client view](/ProjectTracer/screenShots/img6.png)
