@@ -11,9 +11,8 @@ namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
-    using ProjectTracer.Models; 
     
-    public partial class Developer : IUser
+    public partial class Developer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Developer()

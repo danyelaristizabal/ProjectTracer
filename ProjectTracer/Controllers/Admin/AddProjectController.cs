@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using ProjectTracer.Repository;
 
 namespace ProjectTracer.Controllers
@@ -9,33 +8,64 @@ namespace ProjectTracer.Controllers
         public static bool AddProject(string id, string descripton, string deadline  )
         {
             var ParsedDeadLine = new DateTime(); 
+
             try
             {
                  ParsedDeadLine = DateTime.Parse(deadline); 
             }
+
             catch(Exception)
             {
-                MessageBox.Show("Not correct deadline");
+
                 return false; 
+
             }
+
             var unit = new UnityOfWork(new ProjectTracerEntities());
+
             unit.Project.Add(new Project()
             {
                 Project_ID = id,
                 Description = descripton,
-                DeadLine =ParsedDeadLine ,
+                DeadLine = ParsedDeadLine ,
                 Result = "notregistered",
             });
+
             try
             {
                 unit.Complete();
+                unit.Dispose();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show($"Error ocurred saving changes, please try later");
                 return false;
             }
+        }
+
+        public static bool FindProject(Project expectedResult)
+        {
+            try
+            {
+                var unit = new ProjectTracerEntities();
+                
+                unit.SaveChanges(); 
+                unit.Dispose();
+
+                return false ;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return true; 
+            }
+           
+           
+        }
+
+        public static bool asktrue()
+        {
+            return true;
         }
     }
 }
