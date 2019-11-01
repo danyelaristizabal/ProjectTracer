@@ -132,9 +132,14 @@ DataBase Diagram with its respective one to many, many to many relationships: [h
 
 ### Screenshots of the final product
 
-![EntryForm](/ProjectTracer/Screenshots/img1.png)
-![LogInForm](/ProjectTracer/Screenshots/img2.png)
-![Administrator view](/ProjectTracer/Screenshots/img3.png)
-![Developer view](/ProjectTracer/Screenshots/img4.png)
-![Senior developer view](/ProjectTracer/screenShots/img5.png)
-![Client view](/ProjectTracer/screenShots/img6.png)
+![](Screenshots/img1.PNG)
+
+![LogInForm](Screenshots/img2.PNG)
+
+![Administrator view](Screenshots/img3.PNG)
+
+![Developer view](Screenshots/img4.PNG)
+
+![Senior developer view](Screenshots/img5.PNG)
+
+![Client view](Screenshots/img6.PNG)
