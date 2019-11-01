@@ -63,5 +63,10 @@ namespace ProjectTracer.Forms.AdminView
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void AddProject_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

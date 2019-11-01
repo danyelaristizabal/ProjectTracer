@@ -16,7 +16,6 @@ namespace ProjectTracer
             {
                 var myLogin = EntryController.GetLogIn("Client");
 
-
                 myLogin.Show();
 
                 this.Hide();

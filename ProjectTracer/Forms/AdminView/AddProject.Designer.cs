@@ -279,6 +279,7 @@
             this.Name = "AddProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddProject";
+            this.Load += new System.EventHandler(this.AddProject_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

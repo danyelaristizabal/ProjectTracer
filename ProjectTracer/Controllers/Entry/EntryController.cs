@@ -1,14 +1,16 @@
 ﻿using System;
 using ProjectTracer.Models;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("ProjectTracerUnitTests")]
 namespace ProjectTracer.Controllers
 {
     static class EntryController
     {
-        public static Form GetLogIn(String User)
+        public static LogInView GetLogIn(String User)
         {
-            var LogIn = new Form(); 
+            var logIn = new LogInView(new Client()); 
 
             switch (User)
             {
@@ -17,7 +19,7 @@ namespace ProjectTracer.Controllers
 
                     var myClient = new Client();
 
-                     LogIn = new LogInView(myClient);
+                     logIn = new LogInView(myClient);
 
                     break;
 
@@ -25,7 +27,7 @@ namespace ProjectTracer.Controllers
 
                     var myDeveloper = new Developer();
 
-                     LogIn = new LogInView(myDeveloper);
+                     logIn = new LogInView(myDeveloper);
 
                     break;
 
@@ -33,24 +35,23 @@ namespace ProjectTracer.Controllers
 
                     var mySenior = new Senior();
 
-                     LogIn = new LogInView(mySenior);
+                     logIn = new LogInView(mySenior);
 
                     break;
 
-                case "Admin":
+                case "Administrator":
 
                     var myAdmin = new Administrator();
 
-                     LogIn = new LogInView(myAdmin);
+                     logIn = new LogInView(myAdmin);
 
                     break;
 
                 default:
-
-                    break;
+                    throw new  NullReferenceException(); 
             }
 
-            return LogIn;  
+            return logIn;  
         }
     }
 }
