@@ -9,18 +9,11 @@ namespace ProjectTracerUnitTesting
         [Fact]
         public void AddProjectTest()
         {
-            //Arrangee
-            var expectedResult = new Project()
-            {
-                Project_ID = "Redbull",
-                Description = "",
-                DeadLine = new DateTime(2011, 11, 11)
-            };
-
+            //Arrange
+            
             //Act
 
             //Assert 
-            Assert.True(AddProjectController.FindProject(expectedResult));
 
         }
     }

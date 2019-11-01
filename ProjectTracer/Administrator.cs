@@ -11,8 +11,8 @@ namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Administrator
+    using ProjectTracer.Models;
+    public partial class Administrator :IUser
     {
         public string Id { get; set; }
         public string Password { get; set; }

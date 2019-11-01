@@ -11,8 +11,9 @@ namespace ProjectTracer
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Senior
+    using ProjectTracer.Models;
+
+    public partial class Senior : IUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Senior()
