@@ -3,13 +3,13 @@ Platform to track Software development progress.
 
 Developed using: 
 
-- Design Patterns: Repository patern, Unit of Work design pattern, MVC with in Windows forms. 
+- Design Patterns: Repository patern, Unit of Work design pattern, MVVM (Model-View-ViewModel) For Windows Form Applications. 
 - Authorization with Password Encryption. 
 - Entity Framework
 - MS SQL SERVER Database
 - Unit-Testing
 
-### Design Patterns: Repository patern, Unit of Work design pattern, MVC with Windows forms. 
+### Design Patterns: Repository patern, Unit of Work design pattern, MVVM (Model-View-ViewModel) For Windows Form Applications. 
 
 Implementation of Repository patern: [here](ProjectTracer/Repository/RepositoryControl/IRepository.cs)
 ```c#
@@ -120,9 +120,9 @@ internal static class Encrypt
         }
 
 ```
-### Implementation of MVC 
+### MVVM (Model-View-ViewModel) For Windows Form Applications
 
-Logic is devided in three main parts: Model, views(in this case forms) and controllers:[here](ProjectTracer/)
+Logic is devided in three main parts: model view view-model :[here](ProjectTracer/)
 
 ### Entity Framework
 The interaction with the Database was done all through Entity Framework: [here](/ProjectTracer/ProjectTracerDataModel.Context.cs)
