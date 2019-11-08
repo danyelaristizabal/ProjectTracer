@@ -189,6 +189,7 @@
             this.ClientsViewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.ClientsViewList.FullRowSelect = true;
             this.ClientsViewList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ClientsViewList.HideSelection = false;
             this.ClientsViewList.Location = new System.Drawing.Point(179, 181);
             this.ClientsViewList.MouseLocation = new System.Drawing.Point(-1, -1);
             this.ClientsViewList.MouseState = MaterialSkin.MouseState.OUT;
@@ -244,6 +245,7 @@
             this.AdminProjectsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.AdminProjectsView.FullRowSelect = true;
             this.AdminProjectsView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.AdminProjectsView.HideSelection = false;
             this.AdminProjectsView.Location = new System.Drawing.Point(179, 416);
             this.AdminProjectsView.MouseLocation = new System.Drawing.Point(-1, -1);
             this.AdminProjectsView.MouseState = MaterialSkin.MouseState.OUT;

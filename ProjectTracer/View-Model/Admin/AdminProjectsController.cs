@@ -31,6 +31,25 @@ namespace ProjectTracer.Controllers
             }
             return ProjectsItemList;
         }
+        public static List<ListViewItem> GetProjectsItemListIgnoreDeadLineAndClient(UnityOfWork unit)
+        {
+            List<Project> ListOfProjects = unit.Project.GetAll().ToList();
+
+            List<ListViewItem> ProjectsItemList = new List<ListViewItem>();
+
+            foreach (var project in ListOfProjects)
+            {
+                ListViewItem item = new ListViewItem(project.Project_ID.ToString());
+
+                item.SubItems.Add(project.Description.ToString());
+
+                item.SubItems.Add(project.DeadLine.ToString());
+
+                ProjectsItemList.Add(item);
+            }
+            return ProjectsItemList;
+        }
+
         public static void RemoveProject(UnityOfWork unit,Project project)
         {
             var ProjectToDelete = unit.context

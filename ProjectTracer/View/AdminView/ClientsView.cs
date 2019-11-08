@@ -100,7 +100,7 @@ namespace ProjectTracer.Forms
             {
                 AdminProjectsView.Items.Clear();
 
-                AdminProjectsController.GetProjectsItemList(Unit).ForEach(item => AdminProjectsView.Items.Add(item));
+                AdminProjectsController.GetProjectsItemListIgnoreDeadLineAndClient(Unit).ForEach(item => AdminProjectsView.Items.Add(item));
             }
             catch (Exception)
             {
@@ -174,5 +174,7 @@ namespace ProjectTracer.Forms
             }
 
         }
+
+     
     }
 }
