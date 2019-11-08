@@ -65,7 +65,7 @@ namespace ProjectTracer
           
             try
             {
-                var myLogin = EntryController.GetLogIn("Admin");
+                var myLogin = EntryController.GetLogIn("Administrator");
 
                 myLogin.Show();
 

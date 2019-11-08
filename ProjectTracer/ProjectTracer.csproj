@@ -64,149 +64,149 @@
     <Compile Include="Client.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\Admin\AddProjectController.cs" />
-    <Compile Include="Controllers\Admin\AddTaskController.cs" />
-    <Compile Include="Controllers\Admin\AdminAddTeamController.cs" />
-    <Compile Include="Controllers\Admin\AdminClientsViewController.cs" />
-    <Compile Include="Controllers\Admin\AdminDevelopersController.cs" />
-    <Compile Include="Controllers\Admin\AdminProjectsController.cs" />
-    <Compile Include="Controllers\Admin\AdminTasksController.cs" />
-    <Compile Include="Controllers\Admin\EditTaskController.cs" />
-    <Compile Include="Controllers\Client\ClientDevelopersController.cs" />
-    <Compile Include="Controllers\Client\ClientProjectsController.cs" />
-    <Compile Include="Controllers\Client\ClientTasksController.cs" />
-    <Compile Include="Controllers\Developer\DevelopersTasksController.cs" />
-    <Compile Include="Controllers\Helpers\Encrypt.cs" />
-    <Compile Include="Controllers\Entry\EntryController.cs" />
-    <Compile Include="Controllers\Entry\LogInControler.cs" />
-    <Compile Include="Controllers\Entry\RegisterController.cs" />
-    <Compile Include="Controllers\Entry\Registrate.cs" />
-    <Compile Include="Controllers\Senior\SeniorDevelopersController.cs" />
-    <Compile Include="Controllers\Senior\SeniorProjectsController.cs" />
-    <Compile Include="Controllers\Senior\SeniorTasksController.cs" />
+    <Compile Include="View-Model\Admin\AddProjectController.cs" />
+    <Compile Include="View-Model\Admin\AddTaskController.cs" />
+    <Compile Include="View-Model\Admin\AdminAddTeamController.cs" />
+    <Compile Include="View-Model\Admin\AdminClientsViewController.cs" />
+    <Compile Include="View-Model\Admin\AdminDevelopersController.cs" />
+    <Compile Include="View-Model\Admin\AdminProjectsController.cs" />
+    <Compile Include="View-Model\Admin\AdminTasksController.cs" />
+    <Compile Include="View-Model\Admin\EditTaskController.cs" />
+    <Compile Include="View-Model\Client\ClientDevelopersController.cs" />
+    <Compile Include="View-Model\Client\ClientProjectsController.cs" />
+    <Compile Include="View-Model\Client\ClientTasksController.cs" />
+    <Compile Include="View-Model\Developer\DevelopersTasksController.cs" />
+    <Compile Include="View-Model\Helpers\Encrypt.cs" />
+    <Compile Include="View-Model\Entry\EntryController.cs" />
+    <Compile Include="View-Model\Entry\LogInControler.cs" />
+    <Compile Include="View-Model\Entry\RegisterController.cs" />
+    <Compile Include="View-Model\Entry\Registrate.cs" />
+    <Compile Include="View-Model\Senior\SeniorDevelopersController.cs" />
+    <Compile Include="View-Model\Senior\SeniorProjectsController.cs" />
+    <Compile Include="View-Model\Senior\SeniorTasksController.cs" />
     <Compile Include="Developer.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Document.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\AddProject.cs">
+    <Compile Include="View\AdminView\AddProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\AddProject.Designer.cs">
+    <Compile Include="View\AdminView\AddProject.Designer.cs">
       <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\AddTask.cs">
+    <Compile Include="View\AdminView\AddTask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\AddTask.Designer.cs">
+    <Compile Include="View\AdminView\AddTask.Designer.cs">
       <DependentUpon>AddTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\AddTeam.cs">
+    <Compile Include="View\AdminView\AddTeam.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\AddTeam.Designer.cs">
+    <Compile Include="View\AdminView\AddTeam.Designer.cs">
       <DependentUpon>AddTeam.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\ClientsView.cs">
+    <Compile Include="View\AdminView\ClientsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\ClientsView.Designer.cs">
+    <Compile Include="View\AdminView\ClientsView.Designer.cs">
       <DependentUpon>ClientsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\DevelopersView.cs">
+    <Compile Include="View\AdminView\DevelopersView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\DevelopersView.Designer.cs">
+    <Compile Include="View\AdminView\DevelopersView.Designer.cs">
       <DependentUpon>DevelopersView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\EditTask.cs">
+    <Compile Include="View\AdminView\EditTask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\EditTask.Designer.cs">
+    <Compile Include="View\AdminView\EditTask.Designer.cs">
       <DependentUpon>EditTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ClientView\ClientDevelopersView.cs">
+    <Compile Include="View\ClientView\ClientDevelopersView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ClientView\ClientDevelopersView.Designer.cs">
+    <Compile Include="View\ClientView\ClientDevelopersView.Designer.cs">
       <DependentUpon>ClientDevelopersView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ClientView\ClientProjectsView.cs">
+    <Compile Include="View\ClientView\ClientProjectsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ClientView\ClientProjectsView.Designer.cs">
+    <Compile Include="View\ClientView\ClientProjectsView.Designer.cs">
       <DependentUpon>ClientProjectsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ClientView\ClientTasksView.cs">
+    <Compile Include="View\ClientView\ClientTasksView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ClientView\ClientTasksView.Designer.cs">
+    <Compile Include="View\ClientView\ClientTasksView.Designer.cs">
       <DependentUpon>ClientTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperView\DeveloperProjectsView.cs">
+    <Compile Include="View\DeveloperView\DeveloperProjectsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperView\DeveloperProjectsView.Designer.cs">
+    <Compile Include="View\DeveloperView\DeveloperProjectsView.Designer.cs">
       <DependentUpon>DeveloperProjectsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperView\DeveloperTasksView.cs">
+    <Compile Include="View\DeveloperView\DeveloperTasksView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperView\DeveloperTasksView.Designer.cs">
+    <Compile Include="View\DeveloperView\DeveloperTasksView.Designer.cs">
       <DependentUpon>DeveloperTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EntryView\EntryView.cs">
+    <Compile Include="View\EntryView\EntryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EntryView\EntryView.Designer.cs">
+    <Compile Include="View\EntryView\EntryView.Designer.cs">
       <DependentUpon>EntryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EntryView\LogInView.cs">
+    <Compile Include="View\EntryView\LogInView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EntryView\LogInView.Designer.cs">
+    <Compile Include="View\EntryView\LogInView.Designer.cs">
       <DependentUpon>LogInView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\ProjectsView.cs">
+    <Compile Include="View\AdminView\ProjectsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\ProjectsView.Designer.cs">
+    <Compile Include="View\AdminView\ProjectsView.Designer.cs">
       <DependentUpon>ProjectsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EntryView\RegisterView.cs">
+    <Compile Include="View\EntryView\RegisterView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EntryView\RegisterView.Designer.cs">
+    <Compile Include="View\EntryView\RegisterView.Designer.cs">
       <DependentUpon>RegisterView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminView\TasksView.cs">
+    <Compile Include="View\AdminView\TasksView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminView\TasksView.Designer.cs">
+    <Compile Include="View\AdminView\TasksView.Designer.cs">
       <DependentUpon>TasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SeniorView\SeniorDevelopersView.cs">
+    <Compile Include="View\SeniorView\SeniorDevelopersView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SeniorView\SeniorDevelopersView.Designer.cs">
+    <Compile Include="View\SeniorView\SeniorDevelopersView.Designer.cs">
       <DependentUpon>SeniorDevelopersView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SeniorView\SeniorProjectsView.cs">
+    <Compile Include="View\SeniorView\SeniorProjectsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SeniorView\SeniorProjectsView.Designer.cs">
+    <Compile Include="View\SeniorView\SeniorProjectsView.Designer.cs">
       <DependentUpon>SeniorProjectsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SeniorView\SeniorTasksView.cs">
+    <Compile Include="View\SeniorView\SeniorTasksView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SeniorView\SeniorTasksView.Designer.cs">
+    <Compile Include="View\SeniorView\SeniorTasksView.Designer.cs">
       <DependentUpon>SeniorTasksView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\Helpers\BoolEvent.cs" />
-    <Compile Include="Controllers\Helpers\LevenshteinDistance.cs" />
-    <Compile Include="Models\IUser.cs" />
+    <Compile Include="View-Model\Helpers\BoolEvent.cs" />
+    <Compile Include="View-Model\Helpers\LevenshteinDistance.cs" />
+    <Compile Include="Model\IUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
@@ -259,61 +259,61 @@
     <Compile Include="Team.cs">
       <DependentUpon>ProjectTracerDataModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AdminView\AddProject.resx">
+    <EmbeddedResource Include="View\AdminView\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\AddTask.resx">
+    <EmbeddedResource Include="View\AdminView\AddTask.resx">
       <DependentUpon>AddTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\AddTeam.resx">
+    <EmbeddedResource Include="View\AdminView\AddTeam.resx">
       <DependentUpon>AddTeam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\ClientsView.resx">
+    <EmbeddedResource Include="View\AdminView\ClientsView.resx">
       <DependentUpon>ClientsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\DevelopersView.resx">
+    <EmbeddedResource Include="View\AdminView\DevelopersView.resx">
       <DependentUpon>DevelopersView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\EditTask.resx">
+    <EmbeddedResource Include="View\AdminView\EditTask.resx">
       <DependentUpon>EditTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ClientView\ClientDevelopersView.resx">
+    <EmbeddedResource Include="View\ClientView\ClientDevelopersView.resx">
       <DependentUpon>ClientDevelopersView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ClientView\ClientProjectsView.resx">
+    <EmbeddedResource Include="View\ClientView\ClientProjectsView.resx">
       <DependentUpon>ClientProjectsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ClientView\ClientTasksView.resx">
+    <EmbeddedResource Include="View\ClientView\ClientTasksView.resx">
       <DependentUpon>ClientTasksView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperView\DeveloperProjectsView.resx">
+    <EmbeddedResource Include="View\DeveloperView\DeveloperProjectsView.resx">
       <DependentUpon>DeveloperProjectsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperView\DeveloperTasksView.resx">
+    <EmbeddedResource Include="View\DeveloperView\DeveloperTasksView.resx">
       <DependentUpon>DeveloperTasksView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EntryView\EntryView.resx">
+    <EmbeddedResource Include="View\EntryView\EntryView.resx">
       <DependentUpon>EntryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EntryView\LogInView.resx">
+    <EmbeddedResource Include="View\EntryView\LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\ProjectsView.resx">
+    <EmbeddedResource Include="View\AdminView\ProjectsView.resx">
       <DependentUpon>ProjectsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EntryView\RegisterView.resx">
+    <EmbeddedResource Include="View\EntryView\RegisterView.resx">
       <DependentUpon>RegisterView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminView\TasksView.resx">
+    <EmbeddedResource Include="View\AdminView\TasksView.resx">
       <DependentUpon>TasksView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SeniorView\SeniorDevelopersView.resx">
+    <EmbeddedResource Include="View\SeniorView\SeniorDevelopersView.resx">
       <DependentUpon>SeniorDevelopersView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SeniorView\SeniorProjectsView.resx">
+    <EmbeddedResource Include="View\SeniorView\SeniorProjectsView.resx">
       <DependentUpon>SeniorProjectsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SeniorView\SeniorTasksView.resx">
+    <EmbeddedResource Include="View\SeniorView\SeniorTasksView.resx">
       <DependentUpon>SeniorTasksView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

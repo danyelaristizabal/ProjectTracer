@@ -18,7 +18,9 @@ namespace ProjectTracerUnitTests
         {
             //Arrange
             var userType = "Administrator";
+
             var Admin = new Administrator();
+
             var expectedResult = new LogInView(Admin);// Expected result is the loginview for an Admin
 
             //Act

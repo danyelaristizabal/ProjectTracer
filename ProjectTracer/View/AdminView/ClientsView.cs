@@ -13,10 +13,15 @@ namespace ProjectTracer.Forms
         public ClientsView()
         {
             InitializeComponent();
+
             Unit = new UnityOfWork(new ProjectTracerEntities());
+
             SelectedClient = new Client() { };
+
             SelectedProject = new Project() { }; 
+
             LoadClients();
+
             LoadProjects();
 
         }
@@ -24,28 +29,36 @@ namespace ProjectTracer.Forms
         private void ProjectsBtn_Click(object sender, EventArgs e)
         {
             var projectsForm = new ProjectsView();
+
             projectsForm.Show();
+
             this.Close();
         }
 
         private void TasksBtn_Click(object sender, EventArgs e)
         {
             var tasksForm = new TasksView();
+
             tasksForm.Show();
+
             this.Close();
         }
 
         private void DevelopersBtn_Click(object sender, EventArgs e)
         {
             var developersForm = new DevelopersView();
+
             developersForm.Show();
+
             this.Close();
         }
 
         private void Clients_Click(object sender, EventArgs e)
         {
             var clientsForm = new ClientsView();
+
             clientsForm.Show();
+
             this.Close();
         }
 
@@ -146,8 +159,11 @@ namespace ProjectTracer.Forms
                 {
                     Project_ID = Item.SubItems[0].Text,
                 };
+
                 MessageBox.Show("Selected Project: " + SelectedProject.Project_ID);
+
                 ClientsViewList.Items.Clear();
+
                 AdminClientsViewController.FindClientsByProject(Unit, SelectedProject.Project_ID).ForEach(item => ClientsViewList.Items.Add(item));
 
             }
