@@ -3,7 +3,7 @@ Platform to track Software development progress.
 
 Developed using: 
 
-- Design Patterns: Repository patern, Unit of Work design pattern, MVVM (Model-View-ViewModel) For Windows Form Applications. 
+- Design Patterns: Repository patern, Unit of Work design pattern. 
 - Authorization with Password Encryption. 
 - Entity Framework
 - MS SQL SERVER Database
